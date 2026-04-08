@@ -1,0 +1,11 @@
+1:"$Sreact.fragment"
+2:I[105,["/_next/static/chunks/0.4-w2-i2aqgs.js","/_next/static/chunks/0642j8-1sq0~2.js","/_next/static/chunks/0d3shmwh5_nmn.js","/_next/static/chunks/150111xiqin~w.js"],"DivisionsHeader"]
+3:I[98111,["/_next/static/chunks/0.4-w2-i2aqgs.js","/_next/static/chunks/0642j8-1sq0~2.js","/_next/static/chunks/0d3shmwh5_nmn.js","/_next/static/chunks/150111xiqin~w.js"],"WriterSection"]
+4:I[24569,["/_next/static/chunks/0.4-w2-i2aqgs.js","/_next/static/chunks/0642j8-1sq0~2.js","/_next/static/chunks/0d3shmwh5_nmn.js","/_next/static/chunks/150111xiqin~w.js"],"ForgeSection"]
+5:I[96783,["/_next/static/chunks/0.4-w2-i2aqgs.js","/_next/static/chunks/0642j8-1sq0~2.js","/_next/static/chunks/0d3shmwh5_nmn.js","/_next/static/chunks/150111xiqin~w.js"],"GamesSection"]
+6:I[64635,["/_next/static/chunks/0.4-w2-i2aqgs.js","/_next/static/chunks/0642j8-1sq0~2.js","/_next/static/chunks/0d3shmwh5_nmn.js","/_next/static/chunks/150111xiqin~w.js"],"VisionSection"]
+7:I[78366,["/_next/static/chunks/0.4-w2-i2aqgs.js","/_next/static/chunks/0642j8-1sq0~2.js","/_next/static/chunks/0d3shmwh5_nmn.js","/_next/static/chunks/150111xiqin~w.js"],"CTASection"]
+8:I[97367,["/_next/static/chunks/0.4-w2-i2aqgs.js","/_next/static/chunks/0642j8-1sq0~2.js","/_next/static/chunks/0d3shmwh5_nmn.js"],"OutletBoundary"]
+9:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[[["$","$L2",null,{}],["$","$L3",null,{}],["$","$L4",null,{}],["$","$L5",null,{}],["$","$L6",null,{}],["$","$L7",null,{}]],[["$","script","script-0",{"src":"/_next/static/chunks/150111xiqin~w.js","async":true}]],["$","$L8",null,{"children":["$","$9",null,{"name":"Next.MetadataOutlet","children":"$@a"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"FdYs3sj2--uNZ-dtSQ7zr"}
+a:null

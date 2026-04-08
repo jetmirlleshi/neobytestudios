@@ -1,0 +1,186 @@
+"use client";
+
+import Link from "next/link";
+import { motion } from "framer-motion";
+import type { Division } from "@/lib/types";
+import { DIVISIONS } from "@/lib/constants";
+import { GlassCard } from "@/components/ui/GlassCard";
+import { Icon } from "@/components/ui/Icon";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+
+/**
+ * Homepage Divisions Grid.
+ *
+ * Asymmetric bento:
+ *   row 1 (desktop ≥lg, 4 cols): Writer spans 2 cols | Forge 1 col | Games 1 col
+ *   row 2                      : Vision spans the full 4 cols (banner)
+ *
+ * On smaller screens collapses to 2 cols and then 1.
+ * Each card is a Link to /divisions/[slug].
+ */
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 32 },
+  show: { opacity: 1, y: 0 },
+};
+
+function DivisionCard({
+  division,
+  className,
+  variant,
+}: {
+  division: Division;
+  className?: string;
+  variant: "tall" | "standard" | "banner";
+}) {
+  const isBanner = variant === "banner";
+  const isTall = variant === "tall";
+  const color = division.hex;
+
+  return (
+    <motion.div
+      variants={fadeUp}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className={className}
+    >
+      <Link
+        href={`/divisions/${division.slug}`}
+        className="group relative block h-full"
+      >
+        <GlassCard
+          className={[
+            "relative h-full overflow-hidden p-8 transition-all duration-500",
+            "hover:border-white/20",
+            isBanner ? "md:p-12" : "",
+          ].join(" ")}
+        >
+          {/* Colored glow that intensifies on hover */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -inset-[1px] rounded-[inherit] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            style={{
+              background: `radial-gradient(circle at 30% 20%, ${color}22 0%, transparent 60%)`,
+            }}
+          />
+
+          <div
+            className={[
+              "relative z-10 flex h-full",
+              isBanner
+                ? "flex-col gap-8 md:flex-row md:items-center md:justify-between"
+                : "flex-col gap-8",
+              isTall ? "min-h-[28rem]" : "min-h-[20rem]",
+            ].join(" ")}
+          >
+            <div className="flex-1">
+              <div className="flex items-center gap-3">
+                <div
+                  className="inline-flex h-12 w-12 items-center justify-center rounded-xl"
+                  style={{
+                    background: `${color}1F`,
+                    border: `1px solid ${color}40`,
+                    color: color,
+                  }}
+                >
+                  <Icon name={division.icon} size={24} />
+                </div>
+                <span
+                  className="inline-flex items-center gap-1.5 font-headline text-[10px] font-semibold uppercase tracking-[0.3em]"
+                  style={{ color }}
+                >
+                  <span
+                    className="h-1.5 w-1.5 rounded-full"
+                    style={{ background: color }}
+                  />
+                  {division.statusLabel}
+                </span>
+              </div>
+
+              <h3
+                className={[
+                  "mt-6 font-headline font-bold tracking-tight text-on-background",
+                  isBanner
+                    ? "text-4xl md:text-5xl"
+                    : isTall
+                      ? "text-3xl md:text-4xl"
+                      : "text-2xl md:text-3xl",
+                ].join(" ")}
+              >
+                {division.name}
+              </h3>
+
+              <p
+                className={[
+                  "mt-4 max-w-xl font-body text-on-surface-variant",
+                  isBanner ? "text-base md:text-lg" : "text-sm md:text-base",
+                ].join(" ")}
+              >
+                {division.tagline}
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2 font-headline text-[11px] font-semibold uppercase tracking-[0.3em] text-on-background transition-transform duration-300 group-hover:translate-x-1">
+              <span style={{ color }}>Enter</span>
+              <Icon
+                name="arrow_forward"
+                size={16}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </div>
+          </div>
+        </GlassCard>
+      </Link>
+    </motion.div>
+  );
+}
+
+export function DivisionsGrid() {
+  // Pin by slug so markup order matches design regardless of constants order.
+  const writer = DIVISIONS.find((d) => d.slug === "writer")!;
+  const forge = DIVISIONS.find((d) => d.slug === "forge")!;
+  const games = DIVISIONS.find((d) => d.slug === "games")!;
+  const vision = DIVISIONS.find((d) => d.slug === "vision")!;
+
+  return (
+    <section
+      id="divisions"
+      className="relative px-6 py-24 md:px-12 md:py-32"
+    >
+      <div className="mx-auto max-w-7xl">
+        <SectionHeader
+          label="The Framework"
+          title={
+            <>
+              Four Divisions.{" "}
+              <span className="cosmic-gradient-text font-light italic">
+                One Shared Dream.
+              </span>
+            </>
+          }
+          subtitle="Each division carries its own color signature and specialty, unified under the same filosofia: the auteur directs, the AI amplifies."
+        />
+
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ staggerChildren: 0.12 }}
+          className="mt-20 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4"
+        >
+          <DivisionCard
+            division={writer}
+            variant="tall"
+            className="lg:col-span-2 lg:row-span-1"
+          />
+          <DivisionCard division={forge} variant="standard" />
+          <DivisionCard division={games} variant="standard" />
+          <DivisionCard
+            division={vision}
+            variant="banner"
+            className="md:col-span-2 lg:col-span-4"
+          />
+        </motion.div>
+      </div>
+    </section>
+  );
+}

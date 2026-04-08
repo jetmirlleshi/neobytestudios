@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   NEOBYTE CINEMATIC — Design System
+   Single source of truth for tokens. Tailwind v4 @theme inline.
+   ========================================================================== */
+
+@theme inline {
+  /* ---------- Surfaces & background (dark mode only) ---------- */
+  --color-background: #0a0a10;
+  --color-surface: #0a0a10;
+  --color-surface-container-lowest: #000000;
+  --color-surface-container-low: #0f0f17;
+  --color-surface-container: #15151f;
+  --color-surface-container-high: #1c1c28;
+  --color-surface-container-highest: #242432;
+  --color-surface-variant: #1c1c28;
+
+  /* ---------- Text ---------- */
+  --color-on-background: #dde6ff;
+  --color-on-surface: #dde6ff;
+  --color-on-surface-variant: #a4b3d4;
+
+  /* ---------- Primary — Viola — NeoByteWriter ---------- */
+  --color-primary: #c084fc;
+  --color-primary-dim: #7c3aed;
+  --color-primary-container: #a78bfa;
+  --color-on-primary: #2e006c;
+
+  /* ---------- Secondary — Blu elettrico — NeoByteForge ---------- */
+  --color-secondary: #60a5fa;
+  --color-secondary-dim: #3b82f6;
+  --color-secondary-container: #1e40af;
+  --color-on-secondary: #001e4a;
+
+  /* ---------- Tertiary — Verde menta — NeoByteGames ---------- */
+  --color-tertiary: #65ffc8;
+  --color-tertiary-dim: #2de3ac;
+  --color-tertiary-container: #10b981;
+  --color-on-tertiary: #003827;
+
+  /* ---------- Accent yellow — Ambra — NeoByteVision ---------- */
+  --color-accent-yellow: #fbbf24;
+  --color-accent-yellow-dim: #d97706;
+
+  /* ---------- Outline ---------- */
+  --color-outline: #8884a0;
+  --color-outline-variant: #4a4860;
+
+  /* ---------- Fonts ---------- */
+  --font-headline: var(--font-headline), "Space Grotesk", sans-serif;
+  --font-body: var(--font-body), "Inter", sans-serif;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+html {
+  background: var(--color-background);
+  color: var(--color-on-background);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-on-background);
+  font-family: var(--font-body), "Inter", sans-serif;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+/* ==========================================================================
+   Material Symbols
+   ========================================================================== */
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+/* ==========================================================================
+   Glassmorphism
+   ========================================================================== */
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.06);
+}
+
+/* ==========================================================================
+   Cosmic gradient text
+   ========================================================================== */
+
+.cosmic-gradient-text {
+  background: linear-gradient(to right, #c084fc, #60a5fa, #65ffc8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ==========================================================================
+   Glow orbs (atmospheric background)
+   ========================================================================== */
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glow-orb--primary {
+  background: var(--color-primary-dim);
+}
+.glow-orb--secondary {
+  background: var(--color-secondary-dim);
+}
+.glow-orb--pink {
+  background: #ec4899;
+}
+
+/* ==========================================================================
+   Tech grid overlay (used in About hero, Studio Evolution)
+   ========================================================================== */
+
+.tech-grid {
+  background-image:
+    linear-gradient(rgba(192, 132, 252, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(192, 132, 252, 0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+
+@keyframes bounce-soft {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+.animate-bounce-soft {
+  animation: bounce-soft 2.4s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   Scrollbar (subtle, on-brand)
+   ========================================================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-outline-variant);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline);
+}
