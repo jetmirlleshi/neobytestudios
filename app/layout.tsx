@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/JsonLd";
+import { SITE } from "@/lib/constants";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -29,8 +30,7 @@ export const metadata: Metadata = {
     default: "NEOBYTE STUDIOS — Where AI Unlocks Imagination",
     template: "%s — NEOBYTE STUDIOS",
   },
-  description:
-    "A monoauthor creative studio amplified by artificial intelligence. Sculpting cosmic narratives, engineering immersive worlds, and weaving visual poems through the prism of AI.",
+  description: SITE.description,
   keywords: [
     "NeoByte Studios",
     "Cosmic Auteur",

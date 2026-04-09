@@ -13,6 +13,8 @@ export const SITE = {
   shortName: "NEOBYTE",
   tagline: "Where AI Unlocks Imagination",
   motto: "Beyond The Void",
+  description:
+    "A monoauthor creative studio amplified by artificial intelligence. Sculpting cosmic narratives, engineering immersive worlds, and weaving visual poems through the prism of AI.",
   founder: "Jetmir",
   founderTitle: "Architect",
   location: "UTC+1",

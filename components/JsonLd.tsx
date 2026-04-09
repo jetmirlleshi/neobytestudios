@@ -11,8 +11,7 @@ const organizationSchema = {
     name: SITE.founder,
     jobTitle: SITE.founderTitle,
   },
-  description:
-    "A monoauthor creative studio amplified by artificial intelligence. Sculpting cosmic narratives, engineering immersive worlds, and weaving visual poems through the prism of AI.",
+  description: SITE.description,
 };
 
 export function JsonLd() {
