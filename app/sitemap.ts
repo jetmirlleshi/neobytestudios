@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { DIVISIONS } from "@/lib/constants";
 
-const BASE = "https://neobytestudios.vercel.app";
+const BASE = "https://neobytestudios.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

@@ -65,7 +65,7 @@ export async function POST(req: Request) {
           </div>
           <div style="text-align:center;padding:24px 0;color:#555;font-size:12px">
             <p style="margin:0">NeoByte Studios — Where AI Unlocks Imagination</p>
-            <p style="margin:4px 0 0"><a href="https://neobytestudios.vercel.app" style="color:#a78bfa;text-decoration:none">neobytestudios.com</a></p>
+            <p style="margin:4px 0 0"><a href="https://neobytestudios.com" style="color:#a78bfa;text-decoration:none">neobytestudios.com</a></p>
           </div>
         </div>
       `,

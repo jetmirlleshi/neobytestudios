@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://neobytestudios.vercel.app/sitemap.xml",
+    sitemap: "https://neobytestudios.com/sitemap.xml",
   };
 }

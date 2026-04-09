@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Jetmir" }],
   creator: "Jetmir",
-  metadataBase: new URL("https://neobytestudios.vercel.app"),
+  metadataBase: new URL("https://neobytestudios.com"),
   openGraph: {
     title: "NEOBYTE STUDIOS — Where AI Unlocks Imagination",
     description:
