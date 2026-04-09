@@ -16,7 +16,7 @@ export const SITE = {
   founder: "Jetmir",
   founderTitle: "Architect",
   location: "Tirana / UTC+1",
-  email: "hello@neobytestudios.com",
+  email: "contact@neobytestudios.com",
 } as const;
 
 export const NAV_LINKS: NavLink[] = [

@@ -12,11 +12,13 @@ const RESOURCES = [
   { label: "Archives", href: "/portfolio" },
   { label: "Terminal", href: "/divisions" },
   { label: "Network", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const LEGAL = [
   { label: "Privacy", href: "/legal/privacy" },
   { label: "Terms", href: "/legal/terms" },
+  { label: "Support", href: "mailto:support@neobytestudios.com" },
 ];
 
 export function Footer() {

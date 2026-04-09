@@ -17,7 +17,7 @@ export async function POST(req: Request) {
 
     await resend.emails.send({
       from: "NeoByte Studios <onboarding@resend.dev>",
-      to: "jetmir93@hotmail.it",
+      to: "contact@neobytestudios.com",
       replyTo: email,
       subject: `[NBS Contact] ${type} — ${name}`,
       html: `
