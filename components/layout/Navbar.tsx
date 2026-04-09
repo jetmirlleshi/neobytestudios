@@ -49,6 +49,13 @@ export function Navbar() {
 
   return (
     <>
+      {/* Skip to main content — accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:rounded-lg focus:bg-[#a78bfa] focus:px-4 focus:py-2 focus:text-white focus:outline-none"
+      >
+        Skip to main content
+      </a>
       <header
         className={[
           "fixed inset-x-0 top-0 z-50 transition-all duration-300",

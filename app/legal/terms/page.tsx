@@ -26,7 +26,7 @@ export default function TermsPage() {
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
             Terms of Service
           </h1>
-          <p className="mt-4 text-sm text-white/40">
+          <p className="mt-4 text-sm text-white/60">
             Last updated: {LAST_UPDATED}
           </p>
         </div>
@@ -159,7 +159,7 @@ export default function TermsPage() {
           </Section>
 
           {/* Footer note */}
-          <div className="mt-16 rounded-2xl border border-white/5 bg-white/[0.02] p-6 text-center text-sm text-white/40">
+          <div className="mt-16 rounded-2xl border border-white/5 bg-white/[0.02] p-6 text-center text-sm text-white/60">
             <p>
               These terms are provided for transparency. For specific legal
               advice, please consult a qualified attorney.
