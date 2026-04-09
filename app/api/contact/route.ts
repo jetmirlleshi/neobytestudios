@@ -15,9 +15,9 @@ export async function POST(req: Request) {
       );
     }
 
-    // 1. Email interna → a te
+    // 1. Email interna → a te (from = cliente, così rispondi diretto)
     await resend.emails.send({
-      from: "NeoByte Studios <noreply@neobytestudios.com>",
+      from: `${name} via NBS <noreply@neobytestudios.com>`,
       to: "contact@neobytestudios.com",
       replyTo: email,
       subject: `[NBS Contact] ${type} — ${name}`,
