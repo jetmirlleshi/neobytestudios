@@ -10,7 +10,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
  *
  * Layout:
  *  - Desktop: 3 horizontal dots connected by a gradient line.
- *    Active entry (2027) is larger with a pulsing glow.
+ *    Active entry (2026) is larger with a pulsing glow.
  *  - Mobile: vertical stack with the gradient line on the left.
  */
 

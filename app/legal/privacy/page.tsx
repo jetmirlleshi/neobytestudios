@@ -37,7 +37,7 @@ export default function PrivacyPage() {
           <Section title="1. Who We Are">
             <p>
               NeoByte Studios (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) is a creative studio
-              operated by Jetmir, based in Tirana, Albania. We create narrative,
+              operated by Jetmir. We create narrative,
               gaming, visual, and digital experiences amplified by artificial
               intelligence.
             </p>

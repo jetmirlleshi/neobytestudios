@@ -72,7 +72,7 @@ const PROJECTS: Project[] = [
     id: "p6",
     title: "Orbital Stream",
     division: "games",
-    year: "2027",
+    year: "2026",
     description:
       "Cloud-rendered microworlds deployed through an edge network of relay nodes.",
   },

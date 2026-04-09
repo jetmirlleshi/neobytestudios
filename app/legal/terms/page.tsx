@@ -135,9 +135,10 @@ export default function TermsPage() {
 
           <Section title="10. Governing Law">
             <p>
-              These Terms are governed by and construed in accordance with the
-              laws of Albania, without regard to conflict of law principles. Any
-              disputes shall be resolved in the courts of Tirana, Albania.
+              These Terms are governed by and construed in accordance with
+              applicable law. Any disputes shall be resolved through good-faith
+              negotiation or, if necessary, in the competent courts of the
+              applicable jurisdiction.
             </p>
           </Section>
 

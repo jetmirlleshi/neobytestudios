@@ -15,7 +15,7 @@ export const SITE = {
   motto: "Beyond The Void",
   founder: "Jetmir",
   founderTitle: "Architect",
-  location: "Tirana / UTC+1",
+  location: "UTC+1",
   email: "contact@neobytestudios.com",
 } as const;
 
@@ -176,14 +176,14 @@ export const DIVISIONS: Division[] = [
 
 export const TIMELINE: TimelineEntry[] = [
   {
-    year: "2026",
+    year: "2025",
     title: "The Awakening",
     description:
       "Merging narrative souls with NeoByteWriter v1.0. The first chapter of our cosmic anthology begins.",
     colorToken: "primary",
   },
   {
-    year: "2027",
+    year: "2026",
     title: "World-Weaving",
     description:
       "Breathing life into boundless organic worlds. Real-time atmospheric synthesis for deep sensory experiences.",
@@ -191,7 +191,7 @@ export const TIMELINE: TimelineEntry[] = [
     active: true,
   },
   {
-    year: "2028+",
+    year: "2027+",
     title: "Universal Bloom",
     description:
       "The birth of a complete cinematic ecosystem. Seamless neural narratives spanning the entire digital void.",
