@@ -33,11 +33,31 @@ const labelClass =
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("sending");
-    // Placeholder: replace with real /api/contact POST when backend lands.
-    setTimeout(() => setStatus("sent"), 900);
+
+    const form = e.currentTarget;
+    const data = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      division: (form.elements.namedItem("division") as HTMLSelectElement).value,
+      type: (form.elements.namedItem("type") as HTMLSelectElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("send failed");
+      setStatus("sent");
+    } catch {
+      setStatus("idle");
+      alert("Transmission failed. Please try again or email us directly.");
+    }
   }
 
   return (

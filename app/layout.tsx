@@ -35,12 +35,21 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Jetmir" }],
   creator: "Jetmir",
+  metadataBase: new URL("https://neobytestudios.vercel.app"),
   openGraph: {
     title: "NEOBYTE STUDIOS — Where AI Unlocks Imagination",
     description:
       "A monoauthor creative studio amplified by AI. Beyond The Void.",
     type: "website",
     locale: "en_US",
+    images: [{ url: "/og", width: 1200, height: 630, alt: "NEOBYTE STUDIOS" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NEOBYTE STUDIOS — Where AI Unlocks Imagination",
+    description:
+      "A monoauthor creative studio amplified by AI. Beyond The Void.",
+    images: ["/og"],
   },
 };
 
