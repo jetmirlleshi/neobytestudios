@@ -24,14 +24,13 @@ export function Philosophy() {
           transition={{ duration: 1, ease: "easeOut" }}
           className="relative mx-auto aspect-square w-full max-w-md"
         >
-          {/* Pink glow ring behind */}
+          {/* Pink glow ring behind — subtle pulse */}
           <div
             aria-hidden
-            className="absolute inset-0 rounded-full"
+            className="absolute inset-0 rounded-full animate-glow-pulse"
             style={{
               background:
                 "radial-gradient(circle, rgba(236, 72, 153, 0.45) 0%, rgba(192, 132, 252, 0.25) 40%, transparent 70%)",
-              filter: "blur(60px)",
             }}
           />
           {/* Inner orb */}
@@ -47,10 +46,10 @@ export function Philosophy() {
               The Architect
             </span>
           </div>
-          {/* Orbit ring */}
+          {/* Orbit ring — slow rotation */}
           <div
             aria-hidden
-            className="absolute inset-[-8%] rounded-full border border-dashed border-white/10"
+            className="absolute inset-[-8%] rounded-full border border-dashed border-white/10 animate-orbit-spin"
           />
         </motion.div>
 
@@ -78,18 +77,28 @@ export function Philosophy() {
           </h2>
 
           <div className="flex flex-col gap-6 font-body text-base text-on-surface-variant md:text-lg">
-            <p>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+            >
               At {SITE.name}, artificial intelligence is not a shortcut; it is
               a lens. A prism through which one creator&apos;s imagination is
               refracted into infinite spectra of narrative, design, and
               interactive experience.
-            </p>
-            <p>
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
+            >
               Every pixel, every word, every frame passes through a human
               sensibility. The AI amplifies; the auteur directs. The result is
               a body of work that feels both impossibly vast and deeply
               personal.
-            </p>
+            </motion.p>
           </div>
 
           <div className="mt-4 flex items-center gap-4 border-t border-outline-variant/40 pt-6">

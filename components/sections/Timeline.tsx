@@ -40,14 +40,14 @@ export function Timeline() {
 
         {/* ===== Desktop (md+): horizontal ===== */}
         <div className="relative mt-24 hidden md:block">
-          {/* Gradient connector line */}
+          {/* Gradient connector line with flow animation */}
           <div
             aria-hidden
-            className="absolute left-[8%] right-[8%] top-1/2 h-px -translate-y-1/2"
+            className="absolute left-[8%] right-[8%] top-1/2 h-px -translate-y-1/2 animate-line-flow"
             style={{
               background:
-                "linear-gradient(to right, #c084fc 0%, #60a5fa 50%, #65ffc8 100%)",
-              opacity: 0.4,
+                "linear-gradient(to right, #c084fc 0%, #60a5fa 25%, #65ffc8 50%, #60a5fa 75%, #c084fc 100%)",
+              opacity: 0.45,
             }}
           />
 
@@ -72,7 +72,7 @@ export function Timeline() {
                     <div
                       className={[
                         "relative flex items-center justify-center rounded-full border transition-all duration-500",
-                        active ? "h-28 w-28" : "h-20 w-20",
+                        active ? "h-28 w-28" : "h-20 w-20 hover:scale-110 cursor-pointer",
                       ].join(" ")}
                       style={{
                         background: "rgba(255, 255, 255, 0.04)",
@@ -129,11 +129,11 @@ export function Timeline() {
         <div className="relative mt-16 md:hidden">
           <div
             aria-hidden
-            className="absolute bottom-4 left-8 top-4 w-px"
+            className="absolute bottom-4 left-8 top-4 w-px animate-line-flow"
             style={{
               background:
-                "linear-gradient(to bottom, #c084fc 0%, #60a5fa 50%, #65ffc8 100%)",
-              opacity: 0.4,
+                "linear-gradient(to bottom, #c084fc 0%, #60a5fa 25%, #65ffc8 50%, #60a5fa 75%, #c084fc 100%)",
+              opacity: 0.45,
             }}
           />
           <div className="flex flex-col gap-12">

@@ -50,16 +50,16 @@ function DivisionCard({
         <GlassCard
           className={[
             "relative h-full overflow-hidden p-8 transition-all duration-500",
-            "hover:border-white/20",
+            "hover:border-white/20 hover:scale-[1.02] hover:-translate-y-1",
             isBanner ? "md:p-12" : "",
           ].join(" ")}
         >
           {/* Colored glow that intensifies on hover */}
           <div
             aria-hidden
-            className="pointer-events-none absolute -inset-[1px] rounded-[inherit] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            className="pointer-events-none absolute -inset-[1px] rounded-[inherit] opacity-0 transition-opacity duration-700 ease-out group-hover:opacity-100"
             style={{
-              background: `radial-gradient(circle at 30% 20%, ${color}22 0%, transparent 60%)`,
+              background: `radial-gradient(circle at 30% 20%, ${color}30 0%, ${color}10 40%, transparent 70%)`,
             }}
           />
 
@@ -75,7 +75,7 @@ function DivisionCard({
             <div className="flex-1">
               <div className="flex items-center gap-3">
                 <div
-                  className="inline-flex h-12 w-12 items-center justify-center rounded-xl"
+                  className="inline-flex h-12 w-12 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110"
                   style={{
                     background: `${color}1F`,
                     border: `1px solid ${color}40`,

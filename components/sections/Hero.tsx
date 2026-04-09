@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { CosmicOrbs } from "@/components/ui/CosmicOrbs";
@@ -12,12 +13,24 @@ import { Icon } from "@/components/ui/Icon";
  * - Pulsing "The Cosmic Auteur" badge
  * - Display XL title with "AI" in cosmic gradient italic
  * - Narrative subtitle
- * - Primary + secondary CTAs
- * - Soft bouncing arrow scroll hint
+ * - Primary + secondary CTAs with staggered entrance
+ * - Soft bouncing arrow scroll hint that fades out on scroll
  */
 export function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Scroll hint fades out as user scrolls past first 20% of section
+  const scrollHintOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+
   return (
-    <section className="relative isolate flex min-h-screen items-center overflow-hidden px-6 pt-28 pb-20 md:px-12 md:pt-32">
+    <section
+      ref={sectionRef}
+      className="relative isolate flex min-h-screen items-center overflow-hidden px-6 pt-28 pb-20 md:px-12 md:pt-32"
+    >
       <CosmicOrbs preset="hero" />
 
       {/* subtle tech grid at very low opacity */}
@@ -31,6 +44,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
+          className="animate-badge-pulse"
         >
           <Badge color="primary">The Cosmic Auteur</Badge>
         </motion.div>
@@ -60,33 +74,42 @@ export function Hero() {
           wonder.
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
-          className="flex flex-wrap items-center gap-4"
-        >
-          <Button
-            href="/divisions"
-            variant="primary"
-            size="lg"
-            iconRight="arrow_forward"
+        {/* Staggered CTA buttons */}
+        <div className="flex flex-wrap items-center gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
           >
-            Explore The Universe
-          </Button>
-          <Button href="/portfolio" variant="secondary" size="lg">
-            View Portfolio
-          </Button>
-        </motion.div>
+            <Button
+              href="/divisions"
+              variant="primary"
+              size="lg"
+              iconRight="arrow_forward"
+            >
+              Explore The Universe
+            </Button>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.55 }}
+          >
+            <Button href="/portfolio" variant="secondary" size="lg">
+              View Portfolio
+            </Button>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Scroll hint */}
+      {/* Scroll hint — fades out as user scrolls */}
       <motion.a
         href="#divisions"
         aria-label="Scroll to divisions"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
+        style={{ opacity: scrollHintOpacity }}
         className="absolute inset-x-0 bottom-10 mx-auto flex w-fit flex-col items-center gap-2 text-on-surface-variant hover:text-primary"
       >
         <span className="font-headline text-[10px] uppercase tracking-[0.4em]">

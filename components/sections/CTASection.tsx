@@ -14,18 +14,28 @@ export function CTASection() {
     <section className="relative isolate overflow-hidden bg-surface-container-lowest px-6 py-32 md:px-12 md:py-48">
       <CosmicOrbs preset="cta" />
 
-      {/* fine starfield: tiny dots via radial-gradient */}
+      {/* fine starfield: tiny dots with twinkle animation */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-0 opacity-50"
+        className="pointer-events-none absolute inset-0 z-0 animate-twinkle"
         style={{
           backgroundImage:
             "radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.6), transparent)," +
             "radial-gradient(1px 1px at 80% 60%, rgba(255,255,255,0.5), transparent)," +
-            "radial-gradient(1.5px 1.5px at 50% 20%, rgba(255,255,255,0.4), transparent)," +
-            "radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.5), transparent)," +
-            "radial-gradient(1.5px 1.5px at 90% 10%, rgba(255,255,255,0.4), transparent)",
+            "radial-gradient(1.5px 1.5px at 50% 20%, rgba(255,255,255,0.4), transparent)",
           backgroundSize: "640px 480px",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0 animate-twinkle"
+        style={{
+          backgroundImage:
+            "radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.5), transparent)," +
+            "radial-gradient(1.5px 1.5px at 90% 10%, rgba(255,255,255,0.4), transparent)," +
+            "radial-gradient(1px 1px at 65% 45%, rgba(255,255,255,0.5), transparent)",
+          backgroundSize: "640px 480px",
+          animationDelay: "2s",
         }}
       />
 

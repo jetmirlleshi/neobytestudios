@@ -170,6 +170,57 @@ body {
   animation: bounce-soft 2.4s ease-in-out infinite;
 }
 
+/* Badge subtle pulse */
+@keyframes badge-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-badge-pulse {
+  animation: badge-pulse 3s ease-in-out infinite;
+}
+
+/* Orbit ring slow rotation */
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-orbit-spin {
+  animation: orbit-spin 25s linear infinite;
+}
+
+/* Starfield twinkle */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+.animate-twinkle {
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+/* Timeline gradient line flow */
+@keyframes line-flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.animate-line-flow {
+  background-size: 200% 100%;
+  animation: line-flow 6s linear infinite;
+}
+
+/* Subtle glow pulse for Philosophy orb */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.55; filter: blur(60px); }
+  50% { opacity: 0.75; filter: blur(70px); }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
 /* ==========================================================================
    Scrollbar (subtle, on-brand)
    ========================================================================== */
