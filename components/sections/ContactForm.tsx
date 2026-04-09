@@ -25,7 +25,7 @@ const labelClass =
   "font-headline text-[10px] font-semibold uppercase tracking-[0.3em] text-on-surface-variant";
 
 export function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -49,8 +49,7 @@ export function ContactForm() {
       if (!res.ok) throw new Error("send failed");
       setStatus("sent");
     } catch {
-      setStatus("idle");
-      alert("Transmission failed. Please try again or email us directly.");
+      setStatus("error");
     }
   }
 
@@ -58,7 +57,7 @@ export function ContactForm() {
     <section className="relative px-6 pb-24 md:px-12 md:pb-32">
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.5fr_1fr]">
         {/* Form panel */}
-        <GlassCard variant="panel" radius="3xl" className="p-8 md:p-12">
+        <GlassCard variant="panel" radius="3xl" className="p-8 md:p-12" aria-live="polite">
           {status === "sent" ? (
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -179,6 +178,12 @@ export function ContactForm() {
                   className={`${inputClass} resize-none`}
                 />
               </div>
+
+              {status === "error" && (
+                <p role="alert" className="font-body text-sm text-red-400">
+                  Transmission failed. Please try again or email us directly.
+                </p>
+              )}
 
               <div className="pt-2">
                 <Button
