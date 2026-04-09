@@ -4,6 +4,7 @@ import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
 const config = [
   ...nextCoreWebVitals,
   {
+    files: ["**/layout.tsx"],
     rules: {
       // App Router uses layout.tsx, not pages/_document.js
       "@next/next/no-page-custom-font": "off",

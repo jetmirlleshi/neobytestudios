@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { NAV_LINKS, SITE } from "@/lib/constants";
@@ -28,7 +28,7 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const closeMenu = useCallback(() => setMenuOpen(false), []);
+  const closeMenu = () => setMenuOpen(false);
 
   // Prevent body scroll while mobile menu is open.
   useEffect(() => {
