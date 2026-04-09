@@ -9,14 +9,14 @@ import "./globals.css";
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-headline",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "600", "700"],
   display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400"],
   display: "swap",
 });
 
