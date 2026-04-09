@@ -123,9 +123,16 @@ export function Button(props: ButtonProps) {
   const classes = buildClassName(variant, size, className);
 
   if ("href" in props && props.href !== undefined) {
-    const { href, variant: _v, size: _s, className: _c, children: _ch,
-      iconLeft: _il, iconRight: _ir, ...rest } = props;
-    void _v; void _s; void _c; void _ch; void _il; void _ir;
+    const {
+      href,
+      variant: _1,
+      size: _2,
+      className: _3,
+      children: _4,
+      iconLeft: _5,
+      iconRight: _6,
+      ...rest
+    } = props;
     const isInternal = href.startsWith("/") || href.startsWith("#");
     if (isInternal) {
       return (
@@ -151,9 +158,15 @@ export function Button(props: ButtonProps) {
     );
   }
 
-  const { variant: _v, size: _s, className: _c, children: _ch,
-    iconLeft: _il, iconRight: _ir, ...rest } = props;
-  void _v; void _s; void _c; void _ch; void _il; void _ir;
+  const {
+    variant: _1,
+    size: _2,
+    className: _3,
+    children: _4,
+    iconLeft: _5,
+    iconRight: _6,
+    ...rest
+  } = props;
   return (
     <button className={classes} {...rest}>
       <Content iconLeft={iconLeft} iconRight={iconRight}>

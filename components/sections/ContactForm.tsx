@@ -7,13 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Icon } from "@/components/ui/Icon";
 
-/**
- * Contact page — form + side info.
- *
- * Client-side only: no backend yet. On submit we simulate a successful
- * transmission and show a confirmation state. When an API route lands,
- * swap the fake timeout with the real fetch.
- */
+/** Contact page — form + side info. Submits to /api/contact (Resend). */
 
 const PROJECT_TYPES = [
   "Narrative / Script",
