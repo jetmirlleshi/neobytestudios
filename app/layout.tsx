@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { JsonLd } from "@/components/JsonLd";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
     title: "NEOBYTE STUDIOS — Where AI Unlocks Imagination",
     description:
       "A monoauthor creative studio amplified by AI. Beyond The Void.",
-    images: ["/og"],
+    images: [{ url: "/og", width: 1200, height: 630, alt: "NEOBYTE STUDIOS" }],
   },
 };
 
@@ -75,6 +76,7 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
         />
+        <JsonLd />
       </head>
       <body className="min-h-full flex flex-col bg-background text-on-background font-body">
         <Navbar />
