@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { NAV_LINKS, SITE } from "@/lib/constants";
@@ -28,10 +28,7 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on route change.
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   // Prevent body scroll while mobile menu is open.
   useEffect(() => {
@@ -154,6 +151,7 @@ export function Navbar() {
                 >
                   <Link
                     href={link.href}
+                    onClick={closeMenu}
                     className="font-headline text-3xl font-bold uppercase tracking-[0.2em] text-on-background hover:text-primary"
                   >
                     {link.label}
@@ -167,7 +165,7 @@ export function Navbar() {
                 }}
                 className="mt-6"
               >
-                <Button href="/contact" variant="primary">
+                <Button href="/contact" variant="primary" onClick={closeMenu}>
                   Inquire
                 </Button>
               </motion.li>
