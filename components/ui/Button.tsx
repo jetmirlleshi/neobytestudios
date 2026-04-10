@@ -65,9 +65,12 @@ const VARIANT_CLASSES: Record<Variant, string> = {
     "hover:after:w-full",
 };
 
+const FOCUS =
+  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
+
 const BASE =
   "inline-flex items-center justify-center gap-2 font-headline font-bold " +
-  "uppercase tracking-[0.25em] select-none cursor-pointer";
+  `uppercase tracking-[0.25em] select-none cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${FOCUS}`;
 
 function buildClassName(
   variant: Variant,

@@ -64,16 +64,23 @@ export function Footer() {
               Legal
             </h3>
             <ul className="mt-6 flex flex-col gap-4">
-              {LEGAL.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="font-headline text-sm uppercase tracking-[0.2em] text-on-background transition-colors hover:text-primary"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              {LEGAL.map((link) => {
+                const linkClass =
+                  "font-headline text-sm uppercase tracking-[0.2em] text-on-background transition-colors hover:text-primary";
+                return (
+                  <li key={link.href}>
+                    {link.href.startsWith("mailto:") ? (
+                      <a href={link.href} className={linkClass}>
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link href={link.href} className={linkClass}>
+                        {link.label}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>

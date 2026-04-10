@@ -71,6 +71,8 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} h-full antialiased`}
     >
       <head>
+        <meta name="theme-color" content="#0a0a14" />
+        <link rel="apple-touch-icon" href="/icon-192x192.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
