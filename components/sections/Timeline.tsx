@@ -64,7 +64,7 @@ export function Timeline() {
                     <div
                       className={[
                         "relative flex items-center justify-center rounded-full border transition-all duration-500",
-                        active ? "h-28 w-28" : "h-20 w-20 hover:scale-110 cursor-pointer",
+                        active ? "h-28 w-28" : "h-20 w-20",
                       ].join(" ")}
                       style={{
                         background: "rgba(255, 255, 255, 0.04)",
