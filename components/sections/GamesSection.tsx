@@ -3,9 +3,13 @@
 import { motion } from "framer-motion";
 import { getDivision } from "@/lib/constants";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { Icon } from "@/components/ui/Icon";
+import {
+  DivisionBackgroundTint,
+  DivisionTitle,
+  DivisionFeatureIcon,
+  DivisionCTA,
+} from "./DivisionSectionParts";
 
 /**
  * /divisions overview — NeoByteGames block.
@@ -19,14 +23,7 @@ export function GamesSection() {
       id="games"
       className="relative overflow-hidden px-6 py-24 md:px-12 md:py-32"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 30%, rgba(101,255,200,0.10) 0%, rgba(10,10,16,0) 65%)",
-        }}
-      />
+      <DivisionBackgroundTint hex={d.hex} position="50% 30%" />
 
       <div className="relative mx-auto flex max-w-7xl flex-col items-center">
         <motion.div
@@ -38,12 +35,9 @@ export function GamesSection() {
         >
           <Badge color="tertiary">{d.statusLabel}</Badge>
 
-          <h2 className="mt-8 font-headline text-5xl font-bold leading-[0.95] tracking-tighter text-on-background md:text-6xl lg:text-7xl">
-            NEOBYTE{" "}
-            <span className="font-light italic" style={{ color: d.hex }}>
-              GAMES
-            </span>
-          </h2>
+          <div className="mt-8">
+            <DivisionTitle shortName="GAMES" hex={d.hex} />
+          </div>
 
           <p className="mt-6 max-w-2xl font-body text-lg text-on-surface-variant">
             {d.description}
@@ -67,16 +61,12 @@ export function GamesSection() {
                 radius="2xl"
                 className="flex h-full flex-col gap-5 p-7 transition-transform duration-500 hover:-translate-y-1"
               >
-                <div
-                  className="inline-flex h-14 w-14 items-center justify-center rounded-xl border"
-                  style={{
-                    borderColor: `${d.hex}55`,
-                    background: `${d.hex}11`,
-                    color: d.hex,
-                  }}
-                >
-                  <Icon name={f.icon ?? d.icon} size={28} />
-                </div>
+                <DivisionFeatureIcon
+                  hex={d.hex}
+                  iconName={f.icon ?? d.icon}
+                  size={28}
+                  className="h-14 w-14 rounded-xl"
+                />
                 <div className="flex-1">
                   <h3 className="font-headline text-xl font-semibold text-on-background">
                     {f.title}
@@ -99,14 +89,7 @@ export function GamesSection() {
         </div>
 
         <div className="mt-14">
-          <Button
-            href="/divisions/games"
-            variant="secondary"
-            size="md"
-            iconRight="arrow_forward"
-          >
-            Enter The Arena
-          </Button>
+          <DivisionCTA slug="games" label="Enter The Arena" variant="secondary" />
         </div>
       </div>
     </section>

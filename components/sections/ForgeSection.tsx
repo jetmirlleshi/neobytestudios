@@ -3,9 +3,14 @@
 import { motion } from "framer-motion";
 import { getDivision } from "@/lib/constants";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Icon } from "@/components/ui/Icon";
+import {
+  DivisionBackgroundTint,
+  DivisionTitle,
+  DivisionFeatureIcon,
+  DivisionCTA,
+} from "./DivisionSectionParts";
 
 /**
  * /divisions overview — NeoByteForge block.
@@ -27,14 +32,7 @@ export function ForgeSection() {
       id="forge"
       className="relative overflow-hidden bg-surface-container-lowest px-6 py-24 md:px-12 md:py-32"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(circle at 75% 50%, rgba(96,165,250,0.10) 0%, rgba(10,10,16,0) 60%)",
-        }}
-      />
+      <DivisionBackgroundTint hex={d.hex} position="75% 50%" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-2">
         {/* Left: offset 2x2 icon grid */}
@@ -54,16 +52,12 @@ export function ForgeSection() {
                 i % 2 === 1 ? "mt-10" : "",
               ].join(" ")}
             >
-              <div
-                className="inline-flex h-12 w-12 items-center justify-center rounded-xl border"
-                style={{
-                  borderColor: `${d.hex}55`,
-                  background: `${d.hex}11`,
-                  color: d.hex,
-                }}
-              >
-                <Icon name={item.icon} size={24} />
-              </div>
+              <DivisionFeatureIcon
+                hex={d.hex}
+                iconName={item.icon}
+                size={24}
+                className="h-12 w-12 rounded-xl"
+              />
               <span className="font-headline text-xs font-semibold uppercase tracking-[0.25em] text-on-surface-variant">
                 {item.label}
               </span>
@@ -81,12 +75,7 @@ export function ForgeSection() {
         >
           <Badge color="secondary">{d.statusLabel}</Badge>
 
-          <h2 className="font-headline text-5xl font-bold leading-[0.95] tracking-tighter text-on-background md:text-6xl lg:text-7xl">
-            NEOBYTE{" "}
-            <span className="font-light italic" style={{ color: d.hex }}>
-              FORGE
-            </span>
-          </h2>
+          <DivisionTitle shortName="FORGE" hex={d.hex} />
 
           <p className="max-w-xl font-body text-lg text-on-surface-variant">
             {d.description}
@@ -118,14 +107,7 @@ export function ForgeSection() {
           </ul>
 
           <div className="pt-2">
-            <Button
-              href="/divisions/forge"
-              variant="secondary"
-              size="md"
-              iconRight="arrow_forward"
-            >
-              Technical Specs
-            </Button>
+            <DivisionCTA slug="forge" label="Technical Specs" variant="secondary" />
           </div>
         </motion.div>
       </div>

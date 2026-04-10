@@ -3,9 +3,14 @@
 import { motion } from "framer-motion";
 import { getDivision } from "@/lib/constants";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Icon } from "@/components/ui/Icon";
+import {
+  DivisionBackgroundTint,
+  DivisionTitle,
+  DivisionFeatureIcon,
+  DivisionCTA,
+} from "./DivisionSectionParts";
 
 /**
  * /divisions overview — NeoByteWriter block.
@@ -19,15 +24,7 @@ export function WriterSection() {
       id="writer"
       className="relative overflow-hidden px-6 py-24 md:px-12 md:py-32"
     >
-      {/* Subtle purple radial tint */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(circle at 25% 50%, rgba(192,132,252,0.10) 0%, rgba(10,10,16,0) 60%)",
-        }}
-      />
+      <DivisionBackgroundTint hex={d.hex} position="25% 50%" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-2">
         <motion.div
@@ -39,15 +36,7 @@ export function WriterSection() {
         >
           <Badge color="primary">{d.statusLabel}</Badge>
 
-          <h2 className="font-headline text-5xl font-bold leading-[0.95] tracking-tighter text-on-background md:text-6xl lg:text-7xl">
-            NEOBYTE{" "}
-            <span
-              className="font-light italic"
-              style={{ color: d.hex }}
-            >
-              WRITER
-            </span>
-          </h2>
+          <DivisionTitle shortName="WRITER" hex={d.hex} />
 
           <p className="max-w-xl font-body text-lg text-on-surface-variant">
             {d.description}
@@ -56,16 +45,12 @@ export function WriterSection() {
           <div className="grid gap-5 sm:grid-cols-2">
             {d.features.map((f) => (
               <GlassCard key={f.title} radius="2xl" className="p-6">
-                <div
-                  className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg border"
-                  style={{
-                    borderColor: `${d.hex}55`,
-                    background: `${d.hex}11`,
-                    color: d.hex,
-                  }}
-                >
-                  <Icon name={f.icon ?? d.icon} size={20} />
-                </div>
+                <DivisionFeatureIcon
+                  hex={d.hex}
+                  iconName={f.icon ?? d.icon}
+                  size={20}
+                  className="mb-4 h-10 w-10 rounded-lg"
+                />
                 <h3 className="font-headline text-lg font-semibold text-on-background">
                   {f.title}
                 </h3>
@@ -77,14 +62,7 @@ export function WriterSection() {
           </div>
 
           <div className="pt-2">
-            <Button
-              href="/divisions/writer"
-              variant="primary"
-              size="md"
-              iconRight="arrow_forward"
-            >
-              Explore Narrative
-            </Button>
+            <DivisionCTA slug="writer" label="Explore Narrative" variant="primary" />
           </div>
         </motion.div>
 
@@ -120,7 +98,6 @@ export function WriterSection() {
               fill
               style={{ color: d.hex }}
             />
-            {/* Rotating dashed orbit ring */}
             <span
               aria-hidden
               className="absolute inset-4 rounded-full border border-dashed"
