@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/JsonLd";
+import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 import { SITE } from "@/lib/constants";
 import "./globals.css";
 
@@ -82,6 +83,7 @@ export default function RootLayout({
         <Navbar />
         <main id="main-content" className="flex-1">{children}</main>
         <Footer />
+        <ServiceWorkerRegister />
       </body>
     </html>
   );
