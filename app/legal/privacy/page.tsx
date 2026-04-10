@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LegalSection as Section, LegalPageHeader } from "@/components/ui/LegalSection";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — NeoByte Studios",
@@ -18,19 +19,7 @@ export default function PrivacyPage() {
       </div>
 
       <div className="mx-auto max-w-3xl px-6">
-        {/* Header */}
-        <div className="mb-16 text-center">
-          <p className="mb-3 text-xs font-semibold tracking-[0.3em] uppercase text-[#a78bfa]">
-            Legal Protocol
-          </p>
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Privacy Policy
-          </h1>
-          {/* h1 present for SEO and a11y */}
-          <p className="mt-4 text-sm text-white/60">
-            Last updated: {LAST_UPDATED}
-          </p>
-        </div>
+        <LegalPageHeader title="Privacy Policy" lastUpdated={LAST_UPDATED} />
 
         {/* Content */}
         <div className="space-y-12 text-[15px] leading-relaxed text-white/70">
@@ -162,22 +151,5 @@ export default function PrivacyPage() {
         </div>
       </div>
     </main>
-  );
-}
-
-function Section({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section>
-      <h2 className="mb-4 text-xl font-semibold tracking-tight text-white/90">
-        {title}
-      </h2>
-      <div className="space-y-3">{children}</div>
-    </section>
   );
 }
