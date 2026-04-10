@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import { LazyCTASection as CTASection } from "@/components/sections/lazy";
 
 const PortfolioGrid = dynamic(() =>
   import("@/components/sections/PortfolioGrid").then((m) => m.PortfolioGrid),
-);
-const CTASection = dynamic(() =>
-  import("@/components/sections/CTASection").then((m) => m.CTASection),
 );
 
 export const metadata: Metadata = {

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { DivisionsHeader } from "@/components/sections/DivisionsHeader";
+import { LazyCTASection as CTASection } from "@/components/sections/lazy";
 
 const WriterSection = dynamic(() =>
   import("@/components/sections/WriterSection").then((m) => m.WriterSection),
@@ -13,9 +14,6 @@ const GamesSection = dynamic(() =>
 );
 const VisionSection = dynamic(() =>
   import("@/components/sections/VisionSection").then((m) => m.VisionSection),
-);
-const CTASection = dynamic(() =>
-  import("@/components/sections/CTASection").then((m) => m.CTASection),
 );
 
 export const metadata: Metadata = {
