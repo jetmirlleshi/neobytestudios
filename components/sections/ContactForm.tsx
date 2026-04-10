@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type FocusEvent } from "react";
 import { motion } from "framer-motion";
 import { DIVISIONS, SITE } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
@@ -18,27 +18,70 @@ const PROJECT_TYPES = [
   "Other",
 ];
 
-const inputClass =
-  "w-full rounded-xl border border-outline-variant bg-surface-container-lowest/60 px-4 py-3 font-body text-sm text-on-background placeholder:text-on-surface-variant/60 transition-colors duration-300 focus:border-primary/70 focus:outline-none focus:ring-2 focus:ring-primary/30";
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+type FieldErrors = Partial<Record<"name" | "email" | "message", string>>;
+
+function validate(name: string, value: string): string | undefined {
+  if (name === "name" && !value.trim()) return "Name is required.";
+  if (name === "email") {
+    if (!value.trim()) return "Email is required.";
+    if (!EMAIL_RE.test(value)) return "Enter a valid email address.";
+  }
+  if (name === "message" && !value.trim()) return "Message is required.";
+  return undefined;
+}
+
+const baseInputClass =
+  "w-full rounded-xl border bg-surface-container-lowest/60 px-4 py-3 font-body text-sm text-on-background placeholder:text-on-surface-variant/60 transition-colors duration-300 focus:outline-none focus:ring-2";
+
+function inputClass(hasError: boolean) {
+  return `${baseInputClass} ${hasError ? "border-red-400/70 focus:border-red-400 focus:ring-red-400/30" : "border-outline-variant focus:border-primary/70 focus:ring-primary/30"}`;
+}
 
 const labelClass =
   "font-headline text-[10px] font-semibold uppercase tracking-[0.3em] text-on-surface-variant";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [serverError, setServerError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+  const [touched, setTouched] = useState<Set<string>>(new Set());
+
+  function handleBlur(e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    const { name, value } = e.currentTarget;
+    setTouched((prev) => new Set(prev).add(name));
+    const error = validate(name, value);
+    setFieldErrors((prev) => ({ ...prev, [name]: error }));
+  }
+
+  function fieldError(name: keyof FieldErrors) {
+    return touched.has(name) ? fieldErrors[name] : undefined;
+  }
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("sending");
+    setServerError("");
 
-    const form = e.currentTarget;
+    const fd = new FormData(e.currentTarget);
     const data = {
-      name: (form.elements.namedItem("name") as HTMLInputElement).value,
-      email: (form.elements.namedItem("email") as HTMLInputElement).value,
-      division: (form.elements.namedItem("division") as HTMLSelectElement).value,
-      type: (form.elements.namedItem("type") as HTMLSelectElement).value,
-      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+      name: fd.get("name") as string,
+      email: fd.get("email") as string,
+      division: fd.get("division") as string,
+      type: fd.get("type") as string,
+      message: fd.get("message") as string,
     };
+
+    // Validate all fields before submit
+    const errors: FieldErrors = {};
+    for (const key of ["name", "email", "message"] as const) {
+      errors[key] = validate(key, data[key]);
+    }
+    setFieldErrors(errors);
+    setTouched(new Set(["name", "email", "message"]));
+    if (Object.values(errors).some(Boolean)) return;
+
+    setStatus("sending");
 
     try {
       const res = await fetch("/api/contact", {
@@ -46,9 +89,15 @@ export function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      if (!res.ok) throw new Error("send failed");
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        throw new Error(body?.error ?? "send failed");
+      }
       setStatus("sent");
-    } catch {
+    } catch (err) {
+      setServerError(
+        err instanceof Error ? err.message : "Transmission failed.",
+      );
       setStatus("error");
     }
   }
@@ -101,8 +150,16 @@ export function ContactForm() {
                     type="text"
                     required
                     placeholder="Your name"
-                    className={inputClass}
+                    aria-invalid={!!fieldError("name")}
+                    aria-describedby={fieldError("name") ? "name-error" : undefined}
+                    onBlur={handleBlur}
+                    className={inputClass(!!fieldError("name"))}
                   />
+                  {fieldError("name") && (
+                    <p id="name-error" className="text-xs text-red-400">
+                      {fieldError("name")}
+                    </p>
+                  )}
                 </div>
                 <div className="flex flex-col gap-2">
                   <label htmlFor="email" className={labelClass}>
@@ -114,8 +171,16 @@ export function ContactForm() {
                     type="email"
                     required
                     placeholder="you@signal.net"
-                    className={inputClass}
+                    aria-invalid={!!fieldError("email")}
+                    aria-describedby={fieldError("email") ? "email-error" : undefined}
+                    onBlur={handleBlur}
+                    className={inputClass(!!fieldError("email"))}
                   />
+                  {fieldError("email") && (
+                    <p id="email-error" className="text-xs text-red-400">
+                      {fieldError("email")}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -175,13 +240,21 @@ export function ContactForm() {
                   required
                   rows={6}
                   placeholder="Tell us about the world you want to build."
-                  className={`${inputClass} resize-none`}
+                  aria-invalid={!!fieldError("message")}
+                  aria-describedby={fieldError("message") ? "message-error" : undefined}
+                  onBlur={handleBlur}
+                  className={`${inputClass(!!fieldError("message"))} resize-none`}
                 />
+                {fieldError("message") && (
+                  <p id="message-error" className="text-xs text-red-400">
+                    {fieldError("message")}
+                  </p>
+                )}
               </div>
 
               {status === "error" && (
                 <p role="alert" className="font-body text-sm text-red-400">
-                  Transmission failed. Please try again or email us directly.
+                  {serverError || "Transmission failed. Please try again or email us directly."}
                 </p>
               )}
 
