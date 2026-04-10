@@ -3,6 +3,7 @@
 
 import type {
   Division,
+  DivisionColorToken,
   EvolutionStep,
   NavLink,
   TimelineEntry,
@@ -230,6 +231,14 @@ export const STUDIO_EVOLUTION: EvolutionStep[] = [
     icon: "shutter_speed",
   },
 ];
+
+/** Color token → hex lookup. Single source of truth. */
+export const HEX_BY_COLOR_TOKEN: Record<DivisionColorToken, string> = {
+  primary: "#c084fc",
+  secondary: "#60a5fa",
+  tertiary: "#65ffc8",
+  "accent-yellow": "#fbbf24",
+};
 
 /** Helper: lookup a Division by slug. Throws at build time if invalid. */
 export function getDivision(slug: string): Division | undefined {

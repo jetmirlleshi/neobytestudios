@@ -1,31 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { STUDIO_EVOLUTION } from "@/lib/constants";
-import type { DivisionColorToken } from "@/lib/types";
+import { STUDIO_EVOLUTION, HEX_BY_COLOR_TOKEN } from "@/lib/constants";
 import { Icon } from "@/components/ui/Icon";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-
-/**
- * About page "Studio Evolution" section.
- *
- * Three-orbit grid that narrates the studio's trajectory.
- * Desktop: 3 columns separated by hairlines (1px gap via bg-outline).
- * Mobile: stacked cards.
- *
- * Each card carries:
- *  - ID orbit label (e.g. ORBIT_01)
- *  - Icon inside a glowing circle
- *  - Title + description
- *  - Colored status bar with pulsing dot
- */
-
-const HEX: Record<DivisionColorToken, string> = {
-  primary: "#c084fc",
-  secondary: "#60a5fa",
-  tertiary: "#65ffc8",
-  "accent-yellow": "#fbbf24",
-};
 
 export function StudioEvolution() {
   return (
@@ -46,7 +24,7 @@ export function StudioEvolution() {
 
         <div className="mt-20 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-outline-variant bg-outline-variant md:grid-cols-3">
           {STUDIO_EVOLUTION.map((step, i) => {
-            const hex = HEX[step.colorToken];
+            const hex = HEX_BY_COLOR_TOKEN[step.colorToken];
             return (
               <motion.article
                 key={step.id}

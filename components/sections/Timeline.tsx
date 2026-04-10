@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { TIMELINE } from "@/lib/constants";
-import type { DivisionColorToken } from "@/lib/types";
+import { TIMELINE, HEX_BY_COLOR_TOKEN } from "@/lib/constants";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
 /**
@@ -13,13 +12,6 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
  *    Active entry (2026 — current year) is larger with a pulsing glow.
  *  - Mobile: vertical stack with the gradient line on the left.
  */
-
-const HEX_BY_TOKEN: Record<DivisionColorToken, string> = {
-  primary: "#c084fc",
-  secondary: "#60a5fa",
-  tertiary: "#65ffc8",
-  "accent-yellow": "#fbbf24",
-};
 
 export function Timeline() {
   return (
@@ -53,7 +45,7 @@ export function Timeline() {
 
           <div className="relative grid grid-cols-3 gap-8">
             {TIMELINE.map((entry, i) => {
-              const hex = HEX_BY_TOKEN[entry.colorToken];
+              const hex = HEX_BY_COLOR_TOKEN[entry.colorToken];
               const active = entry.active;
               return (
                 <motion.div
@@ -138,7 +130,7 @@ export function Timeline() {
           />
           <div className="flex flex-col gap-12">
             {TIMELINE.map((entry, i) => {
-              const hex = HEX_BY_TOKEN[entry.colorToken];
+              const hex = HEX_BY_COLOR_TOKEN[entry.colorToken];
               const active = entry.active;
               return (
                 <motion.div
