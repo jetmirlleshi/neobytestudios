@@ -25,7 +25,7 @@ export function VisionSection() {
       className="relative isolate overflow-hidden bg-surface-container-lowest px-6 py-24 md:px-12 md:py-32"
     >
       <CosmicOrbs preset="subtle" />
-      <DivisionBackgroundTint hex={d.hex} position="50% 50%" opacity={0.15} />
+      <DivisionBackgroundTint hex={d.hex} position="50% 50%" opacity={0.045} />
 
       <motion.div
         initial={{ opacity: 0, y: 40 }}
