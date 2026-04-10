@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { AboutHero } from "@/components/sections/AboutHero";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { LazyCTASection as CTASection } from "@/components/sections/lazy";
 
 const QuoteProtocol = dynamic(() =>
@@ -28,6 +29,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "About" }]} />
       <AboutHero />
       <QuoteProtocol />
       <StudioEvolution />

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { DivisionsHeader } from "@/components/sections/DivisionsHeader";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { LazyCTASection as CTASection } from "@/components/sections/lazy";
 
 const WriterSection = dynamic(() =>
@@ -32,6 +33,7 @@ export const metadata: Metadata = {
 export default function DivisionsPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Divisions" }]} />
       <DivisionsHeader />
       <WriterSection />
       <ForgeSection />

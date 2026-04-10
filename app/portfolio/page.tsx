@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { LazyCTASection as CTASection } from "@/components/sections/lazy";
 
 const PortfolioGrid = dynamic(() =>
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
 export default function PortfolioPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Portfolio" }]} />
       <section className="relative isolate px-6 pt-36 pb-12 md:px-12 md:pt-44 md:pb-16">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           <div className="flex items-center gap-4">

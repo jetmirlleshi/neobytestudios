@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { DIVISIONS, getDivision } from "@/lib/constants";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { ServiceJsonLd } from "@/components/ServiceJsonLd";
 import { DivisionDetail } from "@/components/sections/DivisionDetail";
 
 // Statically generate all 4 slugs at build time.
@@ -37,5 +39,17 @@ export default async function DivisionPage({ params }: PageProps) {
   const { slug } = await params;
   const d = getDivision(slug);
   if (!d) notFound();
-  return <DivisionDetail division={d} />;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Divisions", href: "/divisions" },
+          { name: d.name },
+        ]}
+      />
+      <ServiceJsonLd division={d} />
+      <DivisionDetail division={d} />
+    </>
+  );
 }
