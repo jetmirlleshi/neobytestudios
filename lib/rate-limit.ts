@@ -8,7 +8,15 @@ const hits = new Map<string, number[]>();
 const WINDOW_MS = 60_000; // 1 minute
 const MAX_REQUESTS = 5; // per window
 
-export function rateLimit(ip: string): { ok: boolean; remaining: number } {
+// Evict stale IPs every minute to prevent unbounded Map growth.
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, ts] of hits) {
+    if (ts.every((t) => now - t >= WINDOW_MS)) hits.delete(ip);
+  }
+}, WINDOW_MS).unref();
+
+export function rateLimit(ip: string): { ok: boolean } {
   const now = Date.now();
   const timestamps = hits.get(ip) ?? [];
 
@@ -17,6 +25,5 @@ export function rateLimit(ip: string): { ok: boolean; remaining: number } {
   recent.push(now);
   hits.set(ip, recent);
 
-  const remaining = Math.max(0, MAX_REQUESTS - recent.length);
-  return { ok: recent.length <= MAX_REQUESTS, remaining };
+  return { ok: recent.length <= MAX_REQUESTS };
 }

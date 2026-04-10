@@ -20,7 +20,7 @@ export async function POST(req: Request) {
   try {
     const ip =
       req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-    const { ok, remaining } = rateLimit(ip);
+    const { ok } = rateLimit(ip);
     if (!ok) {
       return NextResponse.json(
         { error: "Too many requests. Try again in a minute." },
@@ -55,10 +55,8 @@ export async function POST(req: Request) {
     const safeType = escapeHtml(String(type ?? ""));
     const safeMessage = escapeHtml(String(message));
 
-    void remaining;
-
     // 1. Email interna → a te (from = cliente, così rispondi diretto)
-    await resend.emails.send({
+    const internalEmail = resend.emails.send({
       from: `${safeName} via NBS <noreply@neobytestudios.com>`,
       to: "contact@neobytestudios.com",
       replyTo: email,
@@ -80,7 +78,7 @@ export async function POST(req: Request) {
     });
 
     // 2. Email di conferma → al cliente
-    await resend.emails.send({
+    const confirmationEmail = resend.emails.send({
       from: "NeoByte Studios <noreply@neobytestudios.com>",
       to: email,
       subject: "Transmission Received — NeoByte Studios",
@@ -112,6 +110,8 @@ export async function POST(req: Request) {
         </div>
       `,
     });
+
+    await Promise.all([internalEmail, confirmationEmail]);
 
     return NextResponse.json({ ok: true });
   } catch (err) {

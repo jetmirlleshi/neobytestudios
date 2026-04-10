@@ -10,10 +10,12 @@ const securityHeaders = {
     "camera=(), microphone=(), geolocation=(), interest-cohort=()",
 } as const;
 
-export function proxy(request: NextRequest) {
+const headerEntries = Object.entries(securityHeaders);
+
+export function proxy(_request: NextRequest) {
   const response = NextResponse.next();
 
-  for (const [key, value] of Object.entries(securityHeaders)) {
+  for (const [key, value] of headerEntries) {
     response.headers.set(key, value);
   }
 
