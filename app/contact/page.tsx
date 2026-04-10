@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { ContactForm } from "@/components/sections/ContactForm";
+import dynamic from "next/dynamic";
+
+const ContactForm = dynamic(() =>
+  import("@/components/sections/ContactForm").then((m) => m.ContactForm),
+);
 
 export const metadata: Metadata = {
   title: "Contact — Open A Channel",

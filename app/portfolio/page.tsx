@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
-import { PortfolioGrid } from "@/components/sections/PortfolioGrid";
-import { CTASection } from "@/components/sections/CTASection";
+import dynamic from "next/dynamic";
+
+const PortfolioGrid = dynamic(() =>
+  import("@/components/sections/PortfolioGrid").then((m) => m.PortfolioGrid),
+);
+const CTASection = dynamic(() =>
+  import("@/components/sections/CTASection").then((m) => m.CTASection),
+);
 
 export const metadata: Metadata = {
   title: "Portfolio — The Archive",

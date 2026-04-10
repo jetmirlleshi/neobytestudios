@@ -1,8 +1,18 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { AboutHero } from "@/components/sections/AboutHero";
-import { QuoteProtocol } from "@/components/sections/QuoteProtocol";
-import { StudioEvolution } from "@/components/sections/StudioEvolution";
-import { CTASection } from "@/components/sections/CTASection";
+
+const QuoteProtocol = dynamic(() =>
+  import("@/components/sections/QuoteProtocol").then((m) => m.QuoteProtocol),
+);
+const StudioEvolution = dynamic(() =>
+  import("@/components/sections/StudioEvolution").then(
+    (m) => m.StudioEvolution,
+  ),
+);
+const CTASection = dynamic(() =>
+  import("@/components/sections/CTASection").then((m) => m.CTASection),
+);
 
 export const metadata: Metadata = {
   title: "About — The Origin Sequence",

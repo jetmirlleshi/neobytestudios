@@ -1,8 +1,18 @@
-import { CTASection } from "@/components/sections/CTASection";
-import { DivisionsGrid } from "@/components/sections/DivisionsGrid";
+import dynamic from "next/dynamic";
 import { Hero } from "@/components/sections/Hero";
-import { Philosophy } from "@/components/sections/Philosophy";
-import { Timeline } from "@/components/sections/Timeline";
+
+const DivisionsGrid = dynamic(() =>
+  import("@/components/sections/DivisionsGrid").then((m) => m.DivisionsGrid),
+);
+const Philosophy = dynamic(() =>
+  import("@/components/sections/Philosophy").then((m) => m.Philosophy),
+);
+const Timeline = dynamic(() =>
+  import("@/components/sections/Timeline").then((m) => m.Timeline),
+);
+const CTASection = dynamic(() =>
+  import("@/components/sections/CTASection").then((m) => m.CTASection),
+);
 
 export default function Home() {
   return (
