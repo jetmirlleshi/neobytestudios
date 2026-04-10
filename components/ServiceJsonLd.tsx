@@ -16,6 +16,11 @@ export function ServiceJsonLd({ division }: { division: Division }) {
       url: BASE_URL,
     },
     serviceType: division.statusLabel,
+    areaServed: "Worldwide",
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceUrl: `${BASE_URL}/contact`,
+    },
   };
   return (
     <script

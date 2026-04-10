@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { DIVISIONS } from "@/lib/constants";
 import type { DivisionSlug } from "@/lib/types";
@@ -205,11 +206,23 @@ export function PortfolioGrid() {
           </AnimatePresence>
         </div>
 
-        {visible.length === 0 ? (
-          <p className="mt-16 text-center font-body text-on-surface-variant">
-            No artifacts in this orbit yet.
-          </p>
-        ) : null}
+        {visible.length === 0 && (
+          <div className="mx-auto mt-16 flex max-w-md flex-col items-center gap-4 rounded-2xl border border-outline-variant/40 bg-surface-container-lowest/50 p-10 text-center">
+            <p className="font-headline text-lg font-semibold text-on-background">
+              No artifacts in this orbit yet.
+            </p>
+            <p className="font-body text-sm text-on-surface-variant">
+              The studio is young — new vessels are entering production. Check
+              back soon or explore the divisions to see what&rsquo;s coming.
+            </p>
+            <Link
+              href="/divisions"
+              className="mt-2 inline-flex items-center gap-2 rounded-full bg-primary/10 px-6 py-2 font-headline text-xs font-semibold uppercase tracking-[0.2em] text-primary transition-colors hover:bg-primary/20"
+            >
+              Explore Divisions
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

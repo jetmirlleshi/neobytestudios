@@ -45,7 +45,7 @@ function DivisionCard({
     >
       <Link
         href={`/divisions/${division.slug}`}
-        className="group relative block h-full"
+        className="group relative block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         aria-label={`Explore ${division.name}`}
       >
         <GlassCard

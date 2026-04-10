@@ -32,17 +32,12 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
     "**/*.mts",
-    "/tmp/neobyte-next-3/types/**/*.ts",
-    "/tmp/neobyte-next-3/dev/types/**/*.ts",
-    "/tmp/neobyte-next-phase567/types/**/*.ts",
-    "/tmp/neobyte-next-phase567/dev/types/**/*.ts",
-    "/tmp/neobyte-next-dev/types/**/*.ts",
-    "/tmp/neobyte-next-dev/dev/types/**/*.ts"
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "tmp"
   ]
 }

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     "Terms and conditions for using the NeoByte Studios website and services.",
   alternates: { canonical: "https://neobytestudios.com/legal/terms" },
+  robots: { index: false, follow: true },
 };
 
 const LAST_UPDATED = "April 9, 2026";

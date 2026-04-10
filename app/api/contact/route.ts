@@ -111,7 +111,11 @@ export async function POST(req: Request) {
       `,
     });
 
-    await Promise.all([internalEmail, confirmationEmail]);
+    const results = await Promise.allSettled([internalEmail, confirmationEmail]);
+    const failed = results.filter((r) => r.status === "rejected");
+    if (failed.length === results.length) {
+      throw new Error("Both emails failed to send");
+    }
 
     return NextResponse.json({ ok: true });
   } catch (err) {

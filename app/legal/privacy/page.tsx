@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     "How NeoByte Studios collects, uses, and protects your personal data.",
   alternates: { canonical: "https://neobytestudios.com/legal/privacy" },
+  robots: { index: false, follow: true },
 };
 
 const LAST_UPDATED = "April 9, 2026";
