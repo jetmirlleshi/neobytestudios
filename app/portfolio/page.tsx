@@ -6,6 +6,13 @@ export const metadata: Metadata = {
   title: "Portfolio — The Archive",
   description:
     "Signature artifacts from the NeoByteStudios orbit. Narratives, engines, games and visual systems shipped by Jetmir with AI amplification.",
+  alternates: { canonical: "https://neobytestudios.com/portfolio" },
+  openGraph: {
+    title: "Portfolio — The Archive",
+    description:
+      "Signature artifacts from the NeoByteStudios orbit.",
+    url: "https://neobytestudios.com/portfolio",
+  },
 };
 
 export default function PortfolioPage() {

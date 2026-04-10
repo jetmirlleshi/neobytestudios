@@ -20,9 +20,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const d = getDivision(slug);
   if (!d) return { title: "Division not found" };
+  const url = `https://neobytestudios.com/divisions/${slug}`;
   return {
     title: `${d.name} — ${d.statusLabel}`,
     description: d.description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${d.name} — ${d.statusLabel}`,
+      description: d.description,
+      url,
+    },
   };
 }
 

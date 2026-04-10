@@ -10,6 +10,13 @@ export const metadata: Metadata = {
   title: "Divisions — The Four Pillars",
   description:
     "Writer, Forge, Games, Vision. Four specialized cores of NeoByteStudios, each an autonomous engine for a different slice of the creative universe.",
+  alternates: { canonical: "https://neobytestudios.com/divisions" },
+  openGraph: {
+    title: "Divisions — The Four Pillars",
+    description:
+      "Writer, Forge, Games, Vision. Four specialized cores of NeoByteStudios.",
+    url: "https://neobytestudios.com/divisions",
+  },
 };
 
 export default function DivisionsPage() {

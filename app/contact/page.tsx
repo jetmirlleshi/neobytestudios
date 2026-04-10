@@ -5,6 +5,12 @@ export const metadata: Metadata = {
   title: "Contact — Open A Channel",
   description:
     "Open a transmission channel with NeoByteStudios. Briefs, partnerships, or just a signal into the void — all welcome.",
+  alternates: { canonical: "https://neobytestudios.com/contact" },
+  openGraph: {
+    title: "Contact — Open A Channel",
+    description: "Open a transmission channel with NeoByteStudios.",
+    url: "https://neobytestudios.com/contact",
+  },
 };
 
 export default function ContactPage() {

@@ -8,6 +8,13 @@ export const metadata: Metadata = {
   title: "About — The Origin Sequence",
   description:
     "The story of NeoByteStudios. Founded by Jetmir to bridge the void between imagination and execution through AI-amplified craftsmanship.",
+  alternates: { canonical: "https://neobytestudios.com/about" },
+  openGraph: {
+    title: "About — The Origin Sequence",
+    description:
+      "The story of NeoByteStudios. Founded by Jetmir to bridge the void between imagination and execution through AI-amplified craftsmanship.",
+    url: "https://neobytestudios.com/about",
+  },
 };
 
 export default function AboutPage() {
