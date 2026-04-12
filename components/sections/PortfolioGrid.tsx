@@ -118,9 +118,10 @@ export function PortfolioGrid() {
                 key={f.key}
                 type="button"
                 aria-pressed={active}
+                aria-label={`Filter by ${f.label}`}
                 onClick={() => setFilter(f.key)}
                 className={[
-                  "rounded-full border px-5 py-2 font-headline text-[11px] font-semibold uppercase tracking-[0.3em] transition-all duration-300",
+                  "rounded-full border px-5 py-2.5 font-headline text-[11px] font-semibold uppercase tracking-[0.3em] transition-all duration-300",
                   active
                     ? "border-primary/60 bg-primary/15 text-primary"
                     : "border-outline-variant text-on-surface-variant hover:border-outline hover:text-on-background",

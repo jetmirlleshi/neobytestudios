@@ -77,8 +77,15 @@ export function ForgeSection() {
           </p>
 
           <ul className="flex flex-col gap-4">
-            {d.features.map((f) => (
-              <li key={f.title} className="flex items-start gap-4">
+            {d.features.map((f, i) => (
+              <motion.li
+                key={f.title}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
+                className="flex items-start gap-4"
+              >
                 <span
                   className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border"
                   style={{
@@ -97,7 +104,7 @@ export function ForgeSection() {
                     {f.description}
                   </p>
                 </div>
-              </li>
+              </motion.li>
             ))}
           </ul>
 

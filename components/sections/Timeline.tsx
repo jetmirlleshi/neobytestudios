@@ -18,7 +18,7 @@ export function Timeline() {
     <section id="universe" className="relative px-6 py-24 md:px-12 md:py-32">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
-          label="Timeline"
+          label="The Timeline"
           title={
             <>
               The{" "}
