@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const STORAGE_KEY = "cookie-consent";
 
@@ -25,5 +26,10 @@ function getServerSnapshot(): boolean {
 export function AnalyticsProvider() {
   const enabled = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   if (!enabled) return null;
-  return <Analytics />;
+  return (
+    <>
+      <Analytics />
+      <SpeedInsights />
+    </>
+  );
 }
