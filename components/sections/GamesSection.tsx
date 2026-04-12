@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { getDivision } from "@/lib/constants";
 import { Badge } from "@/components/ui/Badge";
@@ -42,6 +43,29 @@ export function GamesSection() {
           <p className="mt-6 max-w-2xl font-body text-lg text-on-surface-variant">
             {d.description}
           </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+          className="relative mt-14 w-full max-w-3xl overflow-hidden rounded-3xl"
+        >
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-10 rounded-3xl"
+            style={{
+              boxShadow: `inset 0 0 60px ${d.hex}22, 0 0 80px ${d.hex}33`,
+            }}
+          />
+          <Image
+            src="/images/games-hero.webp"
+            alt="NeoByteGames — portal to infinite gaming worlds"
+            width={1200}
+            height={675}
+            className="h-auto w-full rounded-3xl"
+          />
         </motion.div>
 
         <div className="mt-16 grid w-full gap-6 md:grid-cols-3">

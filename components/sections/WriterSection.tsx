@@ -1,10 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { getDivision } from "@/lib/constants";
 import { Badge } from "@/components/ui/Badge";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { Icon } from "@/components/ui/Icon";
 import {
   DivisionBackgroundTint,
   DivisionTitle,
@@ -66,47 +66,29 @@ export function WriterSection() {
           </div>
         </motion.div>
 
-        {/* Right: cosmic portrait orb */}
+        {/* Right: hero image */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-          className="relative mx-auto aspect-square w-full max-w-md"
+          className="relative mx-auto w-full max-w-lg overflow-hidden rounded-3xl"
         >
           <div
             aria-hidden
-            className="absolute inset-0 rounded-full"
+            className="pointer-events-none absolute inset-0 z-10 rounded-3xl"
             style={{
-              background:
-                "radial-gradient(circle at 50% 50%, rgba(192,132,252,0.45) 0%, rgba(192,132,252,0.15) 40%, transparent 70%)",
-              filter: "blur(30px)",
-            }}
-          />
-          <div
-            className="relative flex h-full w-full items-center justify-center rounded-full border"
-            style={{
-              background: "rgba(255,255,255,0.03)",
-              backdropFilter: "blur(20px)",
-              borderColor: `${d.hex}44`,
               boxShadow: `inset 0 0 60px ${d.hex}22, 0 0 80px ${d.hex}33`,
             }}
-          >
-            <Icon
-              name={d.icon}
-              size={96}
-              fill
-              style={{ color: d.hex }}
-            />
-            <span
-              aria-hidden
-              className="absolute inset-4 rounded-full border border-dashed"
-              style={{
-                borderColor: `${d.hex}33`,
-                animation: "spin 40s linear infinite",
-              }}
-            />
-          </div>
+          />
+          <Image
+            src="/images/writer-hero.webp"
+            alt="NeoByteWriter — cosmic pen writing stories in the void"
+            width={1200}
+            height={675}
+            className="h-auto w-full rounded-3xl"
+            priority={false}
+          />
         </motion.div>
       </div>
     </section>

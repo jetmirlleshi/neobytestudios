@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { SITE } from "@/lib/constants";
 
@@ -16,40 +17,28 @@ export function Philosophy() {
   return (
     <section className="relative px-6 py-24 md:px-12 md:py-32">
       <div className="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)]">
-        {/* ===== Left: portrait orb ===== */}
+        {/* ===== Left: founder portrait ===== */}
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="relative mx-auto aspect-square w-full max-w-md"
+          className="relative mx-auto w-full max-w-md overflow-hidden rounded-3xl"
         >
-          {/* Pink glow ring behind — subtle pulse */}
           <div
             aria-hidden
-            className="absolute inset-0 rounded-full animate-glow-pulse"
+            className="pointer-events-none absolute inset-0 z-10 rounded-3xl"
             style={{
-              background:
-                "radial-gradient(circle, rgba(236, 72, 153, 0.45) 0%, rgba(192, 132, 252, 0.25) 40%, transparent 70%)",
+              boxShadow:
+                "inset 0 0 80px rgba(192,132,252,0.25), 0 0 100px rgba(192,132,252,0.15)",
             }}
           />
-          {/* Inner orb */}
-          <div
-            className="relative flex h-full w-full items-center justify-center rounded-full border border-white/10"
-            style={{
-              background:
-                "radial-gradient(circle at 30% 30%, rgba(192, 132, 252, 0.35) 0%, rgba(10, 10, 16, 0.9) 60%)",
-              boxShadow: "inset 0 2px 20px rgba(255, 255, 255, 0.08)",
-            }}
-          >
-            <span className="font-headline text-[10px] font-semibold uppercase tracking-[0.5em] text-on-surface-variant">
-              The Architect
-            </span>
-          </div>
-          {/* Orbit ring — slow rotation */}
-          <div
-            aria-hidden
-            className="absolute inset-[-8%] rounded-full border border-dashed border-white/10 animate-orbit-spin"
+          <Image
+            src="/images/founder.webp"
+            alt="The Architect — cosmic silhouette of the NeoByte founder"
+            width={800}
+            height={1067}
+            className="h-auto w-full rounded-3xl"
           />
         </motion.div>
 

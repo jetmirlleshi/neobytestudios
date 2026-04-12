@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { getDivision } from "@/lib/constants";
 import { Badge } from "@/components/ui/Badge";
@@ -46,6 +47,23 @@ export function VisionSection() {
           <blockquote className="max-w-2xl font-headline text-xl font-light italic leading-snug text-on-surface-variant md:text-2xl">
             &ldquo;{d.tagline}&rdquo;
           </blockquote>
+
+          <div className="relative w-full max-w-2xl overflow-hidden rounded-2xl">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 z-10 rounded-2xl"
+              style={{
+                boxShadow: `inset 0 0 60px ${d.hex}22, 0 0 80px ${d.hex}33`,
+              }}
+            />
+            <Image
+              src="/images/vision-hero.webp"
+              alt="NeoByteVision — cosmic film reel spiraling through space"
+              width={1200}
+              height={675}
+              className="h-auto w-full rounded-2xl"
+            />
+          </div>
 
           <div className="grid w-full gap-5 md:grid-cols-2">
             {d.features.map((f) => (
