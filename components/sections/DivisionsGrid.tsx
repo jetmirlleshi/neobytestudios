@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Division } from "@/lib/types";
@@ -7,6 +8,13 @@ import { DIVISIONS } from "@/lib/constants";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Icon } from "@/components/ui/Icon";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+
+const HERO_IMAGES: Record<string, string> = {
+  writer: "/images/writer-hero.webp",
+  forge: "/images/forge-hero.webp",
+  games: "/images/games-hero.webp",
+  vision: "/images/vision-hero.webp",
+};
 
 /**
  * Homepage Divisions Grid.
@@ -55,6 +63,26 @@ function DivisionCard({
             isBanner ? "md:p-12" : "",
           ].join(" ")}
         >
+          {/* Background hero image */}
+          {HERO_IMAGES[division.slug] && (
+            <Image
+              src={HERO_IMAGES[division.slug]}
+              alt=""
+              fill
+              sizes={isBanner ? "100vw" : isTall ? "50vw" : "25vw"}
+              className="pointer-events-none object-cover opacity-20 transition-opacity duration-700 group-hover:opacity-35"
+            />
+          )}
+
+          {/* Gradient overlay for text readability */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 rounded-[inherit]"
+            style={{
+              background: `linear-gradient(to top, rgba(10,10,16,0.95) 0%, rgba(10,10,16,0.6) 50%, rgba(10,10,16,0.3) 100%)`,
+            }}
+          />
+
           {/* Colored glow that intensifies on hover */}
           <div
             aria-hidden
