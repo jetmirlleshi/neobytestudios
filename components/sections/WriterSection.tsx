@@ -62,7 +62,7 @@ export function WriterSection() {
           </div>
 
           <div className="pt-2">
-            <DivisionCTA slug="writer" label="Explore Narrative" variant="primary" />
+            <DivisionCTA slug="writer" label="Explore Narrative" variant="secondary" hex={d.hex} />
           </div>
         </motion.div>
 
