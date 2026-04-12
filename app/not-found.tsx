@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Button } from "@/components/ui/Button";
 
 export const metadata = {
   title: "404 — Signal Not Found",
@@ -20,12 +20,11 @@ export default function NotFound() {
         The coordinates you entered don&rsquo;t match any known location in the
         NeoByte universe.
       </p>
-      <Link
-        href="/"
-        className="mt-10 inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 font-headline text-sm font-semibold text-on-primary transition-opacity hover:opacity-90"
-      >
-        Return to Base
-      </Link>
+      <div className="mt-10">
+        <Button href="/" variant="primary" size="md" iconRight="home">
+          Return to Base
+        </Button>
+      </div>
     </section>
   );
 }

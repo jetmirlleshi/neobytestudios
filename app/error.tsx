@@ -1,11 +1,19 @@
 "use client";
 
+import { useEffect } from "react";
+import { Button } from "@/components/ui/Button";
+
 export default function ErrorPage({
+  error,
   reset,
 }: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  useEffect(() => {
+    console.error("Unhandled error:", error);
+  }, [error]);
+
   return (
     <section className="flex min-h-[60vh] flex-col items-center justify-center px-6 text-center">
       <p className="font-headline text-[10px] font-semibold uppercase tracking-[0.5em] text-tertiary">
@@ -21,12 +29,11 @@ export default function ErrorPage({
         An unexpected glitch disrupted the signal. Try again — if the issue
         persists, reach out to us.
       </p>
-      <button
-        onClick={reset}
-        className="mt-10 inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 font-headline text-sm font-semibold text-on-primary transition-opacity hover:opacity-90"
-      >
-        Try Again
-      </button>
+      <div className="mt-10">
+        <Button variant="primary" size="md" iconRight="refresh" onClick={reset}>
+          Try Again
+        </Button>
+      </div>
     </section>
   );
 }

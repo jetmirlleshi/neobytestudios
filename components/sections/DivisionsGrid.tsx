@@ -58,7 +58,7 @@ function DivisionCard({
       >
         <GlassCard
           className={[
-            "relative h-full overflow-hidden p-8 transition-all duration-500",
+            "relative h-full overflow-hidden p-8 transition-all duration-300",
             "hover:border-white/20 hover:scale-[1.02] hover:-translate-y-1",
             isBanner ? "md:p-12" : "",
           ].join(" ")}
@@ -70,7 +70,7 @@ function DivisionCard({
               alt=""
               fill
               sizes={isBanner ? "100vw" : isTall ? "50vw" : "25vw"}
-              className="pointer-events-none object-cover opacity-[0.5] blur-[2px] transition-all duration-700 group-hover:opacity-[0.7] group-hover:blur-[0px]"
+              className="pointer-events-none object-cover opacity-[0.5] blur-[2px] transition-all duration-300 group-hover:opacity-[0.7] group-hover:blur-[0px]"
             />
           )}
 
@@ -86,7 +86,7 @@ function DivisionCard({
           {/* Colored glow that intensifies on hover */}
           <div
             aria-hidden
-            className="pointer-events-none absolute -inset-[1px] rounded-[inherit] opacity-0 transition-opacity duration-700 ease-out group-hover:opacity-100"
+            className="pointer-events-none absolute -inset-[1px] rounded-[inherit] opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
             style={{
               background: `radial-gradient(circle at 30% 20%, ${color}30 0%, ${color}10 40%, transparent 70%)`,
             }}
