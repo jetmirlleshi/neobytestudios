@@ -1,11 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { getDivision } from "@/lib/constants";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
-import { GlassCard } from "@/components/ui/GlassCard";
 import { Icon } from "@/components/ui/Icon";
+import {
+  DivisionBackgroundTint,
+  DivisionTitle,
+  DivisionCTA,
+} from "./DivisionSectionParts";
 
 /**
  * /divisions overview — NeoByteForge block.
@@ -27,48 +31,33 @@ export function ForgeSection() {
       id="forge"
       className="relative overflow-hidden bg-surface-container-lowest px-6 py-24 md:px-12 md:py-32"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(circle at 75% 50%, rgba(96,165,250,0.10) 0%, rgba(10,10,16,0) 60%)",
-        }}
-      />
+      <DivisionBackgroundTint hex={d.hex} position="75% 50%" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-2">
-        {/* Left: offset 2x2 icon grid */}
+        {/* Left: hero image */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="order-2 grid grid-cols-2 gap-5 lg:order-1"
+          className="order-2 overflow-hidden rounded-3xl lg:order-1"
         >
-          {OFFSET_ICONS.map((item, i) => (
-            <GlassCard
-              key={item.label}
-              radius="2xl"
-              className={[
-                "flex aspect-square flex-col items-start justify-between p-6 transition-transform duration-500 hover:-translate-y-1",
-                i % 2 === 1 ? "mt-10" : "",
-              ].join(" ")}
-            >
-              <div
-                className="inline-flex h-12 w-12 items-center justify-center rounded-xl border"
-                style={{
-                  borderColor: `${d.hex}55`,
-                  background: `${d.hex}11`,
-                  color: d.hex,
-                }}
-              >
-                <Icon name={item.icon} size={24} />
-              </div>
-              <span className="font-headline text-xs font-semibold uppercase tracking-[0.25em] text-on-surface-variant">
-                {item.label}
-              </span>
-            </GlassCard>
-          ))}
+          <div className="relative">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 z-10 rounded-3xl"
+              style={{
+                boxShadow: `inset 0 0 60px ${d.hex}22, 0 0 80px ${d.hex}33`,
+              }}
+            />
+            <Image
+              src="/images/forge-hero.webp"
+              alt="NeoByteForge — energy orb of computational creation"
+              width={1200}
+              height={675}
+              className="h-auto w-full rounded-3xl"
+            />
+          </div>
         </motion.div>
 
         {/* Right: copy */}
@@ -81,12 +70,7 @@ export function ForgeSection() {
         >
           <Badge color="secondary">{d.statusLabel}</Badge>
 
-          <h2 className="font-headline text-5xl font-bold leading-[0.95] tracking-tighter text-on-background md:text-6xl lg:text-7xl">
-            NEOBYTE{" "}
-            <span className="font-light italic" style={{ color: d.hex }}>
-              FORGE
-            </span>
-          </h2>
+          <DivisionTitle shortName="FORGE" hex={d.hex} />
 
           <p className="max-w-xl font-body text-lg text-on-surface-variant">
             {d.description}
@@ -118,14 +102,7 @@ export function ForgeSection() {
           </ul>
 
           <div className="pt-2">
-            <Button
-              href="/divisions/forge"
-              variant="secondary"
-              size="md"
-              iconRight="arrow_forward"
-            >
-              Technical Specs
-            </Button>
+            <DivisionCTA slug="forge" label="Technical Specs" variant="secondary" />
           </div>
         </motion.div>
       </div>

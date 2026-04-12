@@ -1,18 +1,32 @@
 import type { Metadata } from "next";
-import { PortfolioGrid } from "@/components/sections/PortfolioGrid";
-import { CTASection } from "@/components/sections/CTASection";
+import dynamic from "next/dynamic";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { LazyCTASection as CTASection } from "@/components/sections/lazy";
+
+const PortfolioGrid = dynamic(() =>
+  import("@/components/sections/PortfolioGrid").then((m) => m.PortfolioGrid),
+);
 
 export const metadata: Metadata = {
   title: "Portfolio — The Archive",
   description:
     "Signature artifacts from the NeoByteStudios orbit. Narratives, engines, games and visual systems shipped by Jetmir with AI amplification.",
+  alternates: { canonical: "https://neobytestudios.com/portfolio" },
+  openGraph: {
+    title: "Portfolio — The Archive",
+    description:
+      "Signature artifacts from the NeoByteStudios orbit.",
+    url: "https://neobytestudios.com/portfolio",
+  },
 };
 
 export default function PortfolioPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Portfolio" }]} />
       <section className="relative isolate px-6 pt-36 pb-12 md:px-12 md:pt-44 md:pb-16">
-        <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+        <ScrollReveal className="mx-auto flex max-w-4xl flex-col items-center text-center">
           <div className="flex items-center gap-4">
             <span className="h-px w-16 bg-tertiary/60" aria-hidden />
             <span className="font-headline text-[10px] font-semibold uppercase tracking-[0.5em] text-tertiary">
@@ -30,7 +44,7 @@ export default function PortfolioPage() {
             A chronicle of vessels built at the edge of craft and computation.
             Each one a fragment of the NeoByte universe.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
       <PortfolioGrid />
       <CTASection />

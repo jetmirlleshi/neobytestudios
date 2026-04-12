@@ -1,17 +1,30 @@
 import type { Metadata } from "next";
-import { ContactForm } from "@/components/sections/ContactForm";
+import dynamic from "next/dynamic";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+
+const ContactForm = dynamic(() =>
+  import("@/components/sections/ContactForm").then((m) => m.ContactForm),
+);
 
 export const metadata: Metadata = {
   title: "Contact — Open A Channel",
   description:
     "Open a transmission channel with NeoByteStudios. Briefs, partnerships, or just a signal into the void — all welcome.",
+  alternates: { canonical: "https://neobytestudios.com/contact" },
+  openGraph: {
+    title: "Contact — Open A Channel",
+    description: "Open a transmission channel with NeoByteStudios.",
+    url: "https://neobytestudios.com/contact",
+  },
 };
 
 export default function ContactPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Contact" }]} />
       <section className="relative isolate px-6 pt-36 pb-12 md:px-12 md:pt-44 md:pb-16">
-        <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+        <ScrollReveal className="mx-auto flex max-w-4xl flex-col items-center text-center">
           <div className="flex items-center gap-4">
             <span className="h-px w-16 bg-tertiary/60" aria-hidden />
             <span className="font-headline text-[10px] font-semibold uppercase tracking-[0.5em] text-tertiary">
@@ -29,7 +42,7 @@ export default function ContactPage() {
             Briefs, partnerships, or pure curiosity. Every signal gets read —
             every serious one gets a reply.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
       <ContactForm />
     </>

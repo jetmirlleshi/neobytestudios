@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { DIVISIONS, getDivision } from "@/lib/constants";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { ServiceJsonLd } from "@/components/ServiceJsonLd";
 import { DivisionDetail } from "@/components/sections/DivisionDetail";
 
 // Statically generate all 4 slugs at build time.
@@ -20,9 +22,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const d = getDivision(slug);
   if (!d) return { title: "Division not found" };
+  const url = `https://neobytestudios.com/divisions/${slug}`;
   return {
     title: `${d.name} — ${d.statusLabel}`,
     description: d.description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${d.name} — ${d.statusLabel}`,
+      description: d.description,
+      url,
+    },
   };
 }
 
@@ -30,5 +39,17 @@ export default async function DivisionPage({ params }: PageProps) {
   const { slug } = await params;
   const d = getDivision(slug);
   if (!d) notFound();
-  return <DivisionDetail division={d} />;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Divisions", href: "/divisions" },
+          { name: d.name },
+        ]}
+      />
+      <ServiceJsonLd division={d} />
+      <DivisionDetail division={d} />
+    </>
+  );
 }

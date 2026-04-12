@@ -74,6 +74,17 @@ body {
   color: var(--color-on-primary);
 }
 
+/* Keyboard-only focus indicators — scoped to interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
 /* ==========================================================================
    Material Symbols
    ========================================================================== */

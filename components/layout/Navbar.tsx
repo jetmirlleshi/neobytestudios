@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { NAV_LINKS, SITE } from "@/lib/constants";
@@ -20,6 +20,8 @@ export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -28,16 +30,54 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on route change.
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
+  const closeMenu = () => setMenuOpen(false);
 
   // Prevent body scroll while mobile menu is open.
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  // Keyboard handling for mobile menu: Escape to close, Tab to trap focus.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+        hamburgerRef.current?.focus();
+        return;
+      }
+      if (e.key === "Tab" && overlayRef.current) {
+        const focusable = overlayRef.current.querySelectorAll<HTMLElement>(
+          "a[href], button:not([disabled])",
+        );
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        const insideOverlay = overlayRef.current.contains(document.activeElement);
+        if (!insideOverlay) {
+          e.preventDefault();
+          first.focus();
+        } else if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    // Move focus into the menu on open.
+    const timer = setTimeout(() => {
+      const firstLink = overlayRef.current?.querySelector<HTMLElement>("a[href]");
+      firstLink?.focus();
+    }, 350);
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      clearTimeout(timer);
     };
   }, [menuOpen]);
 
@@ -112,6 +152,7 @@ export function Navbar() {
 
           {/* Mobile hamburger */}
           <button
+            ref={hamburgerRef}
             type="button"
             className="md:hidden text-on-background"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -127,7 +168,11 @@ export function Navbar() {
       <AnimatePresence>
         {menuOpen ? (
           <motion.div
+            ref={overlayRef}
             key="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -154,6 +199,7 @@ export function Navbar() {
                 >
                   <Link
                     href={link.href}
+                    onClick={closeMenu}
                     className="font-headline text-3xl font-bold uppercase tracking-[0.2em] text-on-background hover:text-primary"
                   >
                     {link.label}
@@ -167,7 +213,7 @@ export function Navbar() {
                 }}
                 className="mt-6"
               >
-                <Button href="/contact" variant="primary">
+                <Button href="/contact" variant="primary" onClick={closeMenu}>
                   Inquire
                 </Button>
               </motion.li>
