@@ -63,23 +63,23 @@ function DivisionCard({
             isBanner ? "md:p-12" : "",
           ].join(" ")}
         >
-          {/* Background hero image */}
+          {/* Background hero image — soft blur for glossy feel */}
           {HERO_IMAGES[division.slug] && (
             <Image
               src={HERO_IMAGES[division.slug]}
               alt=""
               fill
               sizes={isBanner ? "100vw" : isTall ? "50vw" : "25vw"}
-              className="pointer-events-none object-cover opacity-[0.4] transition-opacity duration-700 group-hover:opacity-[0.65]"
+              className="pointer-events-none object-cover opacity-[0.5] blur-[2px] transition-all duration-700 group-hover:opacity-[0.7] group-hover:blur-[0px]"
             />
           )}
 
-          {/* Gradient overlay for text readability */}
+          {/* Smooth gradient overlay */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 rounded-[inherit]"
             style={{
-              background: `linear-gradient(to top, rgba(10,10,16,0.95) 0%, rgba(10,10,16,0.6) 50%, rgba(10,10,16,0.3) 100%)`,
+              background: `linear-gradient(160deg, rgba(10,10,16,0.3) 0%, rgba(10,10,16,0.5) 40%, rgba(10,10,16,0.85) 100%)`,
             }}
           />
 
