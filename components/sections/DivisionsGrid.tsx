@@ -149,7 +149,7 @@ function DivisionCard({
             </div>
 
             <div className="flex items-center gap-2 font-headline text-[11px] font-semibold uppercase tracking-[0.3em] text-on-background transition-transform duration-300 group-hover:translate-x-1">
-              <span style={{ color }}>Enter</span>
+              <span style={{ color }}>Explore</span>
               <Icon
                 name="arrow_forward"
                 size={16}
@@ -186,7 +186,7 @@ export function DivisionsGrid() {
               </span>
             </>
           }
-          subtitle="Each division carries its own color signature and specialty, unified under the same filosofia: the auteur directs, the AI amplifies."
+          subtitle="Each division carries its own color signature and specialty, unified under the same vision: one mind directs, the AI amplifies."
         />
 
         <motion.div

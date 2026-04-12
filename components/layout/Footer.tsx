@@ -9,9 +9,9 @@ import { SITE } from "@/lib/constants";
  */
 
 const RESOURCES = [
-  { label: "Archives", href: "/portfolio" },
-  { label: "Terminal", href: "/divisions" },
-  { label: "Network", href: "/about" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Divisions", href: "/divisions" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -95,7 +95,7 @@ export function Footer() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-tertiary opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-tertiary" />
               </span>
-              Status: Optimal
+              Status: Online
             </span>
             <span className="font-headline text-[10px] uppercase tracking-[0.3em] text-on-surface-variant">
               Local Time: {SITE.location}

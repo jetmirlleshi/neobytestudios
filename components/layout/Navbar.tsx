@@ -11,7 +11,7 @@ import { NAV_LINKS, SITE } from "@/lib/constants";
 /**
  * Fixed top navigation bar.
  * - Transparent at the top of the page, gains backdrop-blur once scrolled.
- * - Desktop: inline links + Inquire CTA.
+ * - Desktop: inline links + Open Channel CTA.
  * - Mobile: hamburger → animated fullscreen overlay.
  *
  * Must be mounted from app/layout.tsx so it persists across pages.
@@ -146,7 +146,7 @@ export function Navbar() {
 
           <div className="hidden md:block">
             <Button href="/contact" variant="secondary" size="sm">
-              Inquire
+              Open Channel
             </Button>
           </div>
 
@@ -214,7 +214,7 @@ export function Navbar() {
                 className="mt-6"
               >
                 <Button href="/contact" variant="primary" onClick={closeMenu}>
-                  Inquire
+                  Open Channel
                 </Button>
               </motion.li>
             </motion.ul>
