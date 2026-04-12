@@ -29,7 +29,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-20 md:px-12">
         <div className="grid gap-16 md:grid-cols-[2fr_1fr_1fr]">
           <div>
-            <Link href="/" className="inline-flex items-center gap-2">
+            <Link href="/" aria-label={`${SITE.name} — home`} className="inline-flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-primary" />
               <span className="font-headline text-sm font-bold uppercase tracking-[0.35em] text-primary">
                 {SITE.shortName}

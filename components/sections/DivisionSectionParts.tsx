@@ -90,7 +90,7 @@ export function DivisionCTA({
     return (
       <Link
         href={`/divisions/${slug}`}
-        className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 font-headline text-xs font-bold uppercase tracking-[0.25em] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+        className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 font-headline text-xs font-bold uppercase tracking-[0.25em] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         style={{
           background: `linear-gradient(to right, ${gradient[0]}, ${gradient[1]})`,
           color: slug === "vision" ? "#1a1a2e" : "#0a0a14",

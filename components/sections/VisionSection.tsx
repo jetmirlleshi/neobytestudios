@@ -66,9 +66,13 @@ export function VisionSection() {
           </div>
 
           <div className="grid w-full gap-5 md:grid-cols-2">
-            {d.features.map((f) => (
-              <div
+            {d.features.map((f, i) => (
+              <motion.div
                 key={f.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
                 className="flex flex-col items-start gap-3 rounded-2xl border border-outline-variant bg-surface-container-lowest/60 p-6 text-left"
               >
                 <DivisionFeatureIcon
@@ -83,7 +87,7 @@ export function VisionSection() {
                 <p className="font-body text-sm text-on-surface-variant">
                   {f.description}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
 

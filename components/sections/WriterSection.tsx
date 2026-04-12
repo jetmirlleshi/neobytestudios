@@ -43,21 +43,29 @@ export function WriterSection() {
           </p>
 
           <div className="grid gap-5 sm:grid-cols-2">
-            {d.features.map((f) => (
-              <GlassCard key={f.title} radius="2xl" className="p-6">
-                <DivisionFeatureIcon
-                  hex={d.hex}
-                  iconName={f.icon ?? d.icon}
-                  size={20}
-                  className="mb-4 h-10 w-10 rounded-lg"
-                />
-                <h3 className="font-headline text-lg font-semibold text-on-background">
-                  {f.title}
-                </h3>
-                <p className="mt-2 font-body text-sm text-on-surface-variant">
-                  {f.description}
-                </p>
-              </GlassCard>
+            {d.features.map((f, i) => (
+              <motion.div
+                key={f.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
+              >
+                <GlassCard radius="2xl" className="h-full p-6">
+                  <DivisionFeatureIcon
+                    hex={d.hex}
+                    iconName={f.icon ?? d.icon}
+                    size={20}
+                    className="mb-4 h-10 w-10 rounded-lg"
+                  />
+                  <h3 className="font-headline text-lg font-semibold text-on-background">
+                    {f.title}
+                  </h3>
+                  <p className="mt-2 font-body text-sm text-on-surface-variant">
+                    {f.description}
+                  </p>
+                </GlassCard>
+              </motion.div>
             ))}
           </div>
 

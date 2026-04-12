@@ -150,6 +150,7 @@ export function ContactForm() {
                     name="name"
                     type="text"
                     required
+                    aria-required="true"
                     placeholder="Your name"
                     aria-invalid={!!fieldError("name")}
                     aria-describedby={fieldError("name") ? "name-error" : undefined}
@@ -171,6 +172,7 @@ export function ContactForm() {
                     name="email"
                     type="email"
                     required
+                    aria-required="true"
                     placeholder="you@example.com"
                     aria-invalid={!!fieldError("email")}
                     aria-describedby={fieldError("email") ? "email-error" : undefined}
@@ -239,6 +241,7 @@ export function ContactForm() {
                   id="message"
                   name="message"
                   required
+                  aria-required="true"
                   rows={6}
                   placeholder="Tell us about the world you want to build."
                   aria-invalid={!!fieldError("message")}
@@ -266,6 +269,7 @@ export function ContactForm() {
                   size="lg"
                   iconRight={status === "sending" ? "sync" : "send"}
                   disabled={status === "sending"}
+                  aria-busy={status === "sending"}
                 >
                   {status === "sending" ? "Transmitting..." : "Transmit Signal"}
                 </Button>

@@ -43,6 +43,8 @@ export function CookieConsent() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
+          role="region"
+          aria-label="Cookie consent"
           className="fixed inset-x-0 bottom-0 z-50 border-t border-outline-variant/40 bg-surface-container-lowest/95 backdrop-blur-lg"
         >
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-6 py-5 sm:flex-row sm:justify-between">
