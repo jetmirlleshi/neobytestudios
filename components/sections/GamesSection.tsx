@@ -113,7 +113,7 @@ export function GamesSection() {
         </div>
 
         <div className="mt-14">
-          <DivisionCTA slug="games" label="Enter The Arena" variant="secondary" />
+          <DivisionCTA slug="games" label="Enter The Arena" variant="secondary" hex={d.hex} />
         </div>
       </div>
     </section>

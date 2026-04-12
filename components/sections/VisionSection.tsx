@@ -87,7 +87,7 @@ export function VisionSection() {
             ))}
           </div>
 
-          <DivisionCTA slug="vision" label="Enter The Core" variant="secondary" />
+          <DivisionCTA slug="vision" label="Enter The Core" variant="secondary" hex={d.hex} />
         </GlassCard>
       </motion.div>
     </section>
