@@ -24,12 +24,12 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 type FieldErrors = Partial<Record<"name" | "email" | "message", string>>;
 
 function validate(name: string, value: string): string | undefined {
-  if (name === "name" && !value.trim()) return "Name is required.";
+  if (name === "name" && !value.trim()) return "Identify the transmission source.";
   if (name === "email") {
-    if (!value.trim()) return "Email is required.";
-    if (!EMAIL_RE.test(value)) return "Enter a valid email address.";
+    if (!value.trim()) return "Transmission coordinates required.";
+    if (!EMAIL_RE.test(value)) return "Enter valid transmission coordinates.";
   }
-  if (name === "message" && !value.trim()) return "Message is required.";
+  if (name === "message" && !value.trim()) return "A message is required to decode your intent.";
   return undefined;
 }
 
@@ -151,7 +151,7 @@ export function ContactForm() {
                     type="text"
                     required
                     aria-required="true"
-                    placeholder="Your name"
+                    placeholder="Your callsign"
                     aria-invalid={!!fieldError("name")}
                     aria-describedby={fieldError("name") ? "name-error" : undefined}
                     onBlur={handleBlur}
@@ -173,7 +173,7 @@ export function ContactForm() {
                     type="email"
                     required
                     aria-required="true"
-                    placeholder="you@example.com"
+                    placeholder="your@coordinates.net"
                     aria-invalid={!!fieldError("email")}
                     aria-describedby={fieldError("email") ? "email-error" : undefined}
                     onBlur={handleBlur}

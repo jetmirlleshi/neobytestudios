@@ -10,7 +10,7 @@ export function StudioEvolution() {
     <section className="relative px-6 py-24 md:px-12 md:py-32">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
-          label="Studio Evolution"
+          label="The Evolution"
           title={
             <>
               Three Orbits of{" "}
