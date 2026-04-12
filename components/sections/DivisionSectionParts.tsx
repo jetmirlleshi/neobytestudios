@@ -63,7 +63,19 @@ export function DivisionFeatureIcon({
   );
 }
 
-/** CTA button linking to /divisions/<slug>. Gradient filled like homepage CTA. */
+/**
+ * Gradient pairs per division — from → to.
+ * Writer: violet → pink | Forge: blue → cyan
+ * Games: mint → teal  | Vision: gold → amber
+ */
+const CTA_GRADIENTS: Record<string, [string, string]> = {
+  writer: ["#c084fc", "#e879f9"],
+  forge: ["#60a5fa", "#38bdf8"],
+  games: ["#65ffc8", "#2dd4bf"],
+  vision: ["#fbbf24", "#f59e0b"],
+};
+
+/** CTA button linking to /divisions/<slug>. Gradient filled with division colors. */
 export function DivisionCTA({
   slug,
   label,
@@ -73,6 +85,29 @@ export function DivisionCTA({
   variant?: "primary" | "secondary";
   hex?: string;
 }) {
+  const gradient = CTA_GRADIENTS[slug];
+  if (gradient) {
+    return (
+      <Link
+        href={`/divisions/${slug}`}
+        className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 font-headline text-xs font-bold uppercase tracking-[0.25em] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+        style={{
+          background: `linear-gradient(to right, ${gradient[0]}, ${gradient[1]})`,
+          color: slug === "vision" ? "#1a1a2e" : "#0a0a14",
+          boxShadow: `0 0 20px ${gradient[0]}44`,
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.boxShadow = `0 0 40px ${gradient[0]}66`;
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.boxShadow = `0 0 20px ${gradient[0]}44`;
+        }}
+      >
+        {label}
+        <Icon name="arrow_forward" size={16} />
+      </Link>
+    );
+  }
   return (
     <Button href={`/divisions/${slug}`} variant="primary" size="md" iconRight="arrow_forward">
       {label}
