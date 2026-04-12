@@ -63,23 +63,23 @@ function DivisionCard({
             isBanner ? "md:p-12" : "",
           ].join(" ")}
         >
-          {/* Background hero image */}
+          {/* Background hero image — soft blur for glossy feel */}
           {HERO_IMAGES[division.slug] && (
             <Image
               src={HERO_IMAGES[division.slug]}
               alt=""
               fill
               sizes={isBanner ? "100vw" : isTall ? "50vw" : "25vw"}
-              className="pointer-events-none object-cover opacity-20 transition-opacity duration-700 group-hover:opacity-35"
+              className="pointer-events-none object-cover opacity-[0.5] blur-[2px] transition-all duration-700 group-hover:opacity-[0.7] group-hover:blur-[0px]"
             />
           )}
 
-          {/* Gradient overlay for text readability */}
+          {/* Smooth gradient overlay */}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 rounded-[inherit]"
             style={{
-              background: `linear-gradient(to top, rgba(10,10,16,0.95) 0%, rgba(10,10,16,0.6) 50%, rgba(10,10,16,0.3) 100%)`,
+              background: `linear-gradient(160deg, rgba(10,10,16,0.3) 0%, rgba(10,10,16,0.5) 40%, rgba(10,10,16,0.85) 100%)`,
             }}
           />
 
@@ -149,7 +149,7 @@ function DivisionCard({
             </div>
 
             <div className="flex items-center gap-2 font-headline text-[11px] font-semibold uppercase tracking-[0.3em] text-on-background transition-transform duration-300 group-hover:translate-x-1">
-              <span style={{ color }}>Enter</span>
+              <span style={{ color }}>Explore</span>
               <Icon
                 name="arrow_forward"
                 size={16}
@@ -186,7 +186,7 @@ export function DivisionsGrid() {
               </span>
             </>
           }
-          subtitle="Each division carries its own color signature and specialty, unified under the same filosofia: the auteur directs, the AI amplifies."
+          subtitle="Each division carries its own color signature and specialty, unified under the same vision: one mind directs, the AI amplifies."
         />
 
         <motion.div

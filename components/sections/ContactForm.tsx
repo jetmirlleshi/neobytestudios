@@ -171,7 +171,7 @@ export function ContactForm() {
                     name="email"
                     type="email"
                     required
-                    placeholder="you@signal.net"
+                    placeholder="you@example.com"
                     aria-invalid={!!fieldError("email")}
                     aria-describedby={fieldError("email") ? "email-error" : undefined}
                     onBlur={handleBlur}

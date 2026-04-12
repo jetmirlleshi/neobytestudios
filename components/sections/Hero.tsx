@@ -46,7 +46,7 @@ export function Hero() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="animate-badge-pulse"
         >
-          <Badge color="primary">The Cosmic Auteur</Badge>
+          <Badge color="primary">One Mind. Infinite Worlds.</Badge>
         </motion.div>
 
         <motion.h1
@@ -87,7 +87,7 @@ export function Hero() {
               size="lg"
               iconRight="arrow_forward"
             >
-              Explore The Universe
+              Enter The Universe
             </Button>
           </motion.div>
           <motion.div
@@ -96,7 +96,7 @@ export function Hero() {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.55 }}
           >
             <Button href="/portfolio" variant="secondary" size="lg">
-              View Portfolio
+              The Archive
             </Button>
           </motion.div>
         </div>
@@ -113,7 +113,7 @@ export function Hero() {
         className="absolute inset-x-0 bottom-10 mx-auto flex w-fit flex-col items-center gap-2 text-on-surface-variant hover:text-primary"
       >
         <span className="font-headline text-[10px] uppercase tracking-[0.4em]">
-          Scroll
+          Descend
         </span>
         <span className="animate-bounce-soft">
           <Icon name="expand_more" size={28} />

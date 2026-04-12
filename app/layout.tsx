@@ -4,6 +4,8 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
+import { AnalyticsProvider } from "@/components/AnalyticsProvider";
+import { CookieConsent } from "@/components/CookieConsent";
 import { SITE } from "@/lib/constants";
 import "./globals.css";
 
@@ -86,6 +88,8 @@ export default function RootLayout({
         <main id="main-content" className="flex-1">{children}</main>
         <Footer />
         <ServiceWorkerRegister />
+        <AnalyticsProvider />
+        <CookieConsent />
       </body>
     </html>
   );

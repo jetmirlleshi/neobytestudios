@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
-const LAST_UPDATED = "April 9, 2026";
+const LAST_UPDATED = "April 12, 2026";
 
 export default function PrivacyPage() {
   return (
@@ -50,8 +50,13 @@ export default function PrivacyPage() {
               <li>Message content</li>
             </ul>
             <p className="mt-3">
-              We do <strong className="text-white/90">not</strong> use cookies for tracking, and we do{" "}
-              <strong className="text-white/90">not</strong> use analytics tools that collect personal data.
+              We use <strong className="text-white/90">Vercel Web Analytics</strong> to
+              collect anonymous, aggregated page-view data (no personal
+              information, no cross-site tracking). Analytics are activated{" "}
+              <strong className="text-white/90">only after you accept</strong> via the
+              consent banner. Your choice is stored in your browser&apos;s
+              localStorage under the key <code className="text-white/80">cookie-consent</code> —
+              this is not a cookie and is never sent to our servers.
             </p>
           </Section>
 
@@ -123,6 +128,7 @@ export default function PrivacyPage() {
               <li><strong className="text-white/90">Vercel</strong> — hosting and deployment</li>
               <li><strong className="text-white/90">Resend</strong> — transactional email delivery</li>
               <li><strong className="text-white/90">Google Fonts</strong> — typography (loaded via Next.js, no tracking)</li>
+              <li><strong className="text-white/90">Vercel Web Analytics</strong> — privacy-focused, anonymous page-view analytics (consent-based, no PII)</li>
             </ul>
           </Section>
 

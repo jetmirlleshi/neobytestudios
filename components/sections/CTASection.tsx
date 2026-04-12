@@ -78,7 +78,7 @@ export function CTASection() {
             size="lg"
             iconRight="rocket_launch"
           >
-            Initiate Project
+            Start Transmission
           </Button>
         </motion.div>
       </div>
