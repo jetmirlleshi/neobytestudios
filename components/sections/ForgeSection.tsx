@@ -102,7 +102,7 @@ export function ForgeSection() {
           </ul>
 
           <div className="pt-2">
-            <DivisionCTA slug="forge" label="Technical Specs" variant="secondary" />
+            <DivisionCTA slug="forge" label="Technical Specs" variant="secondary" hex={d.hex} />
           </div>
         </motion.div>
       </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
 import type { Division } from "@/lib/types";
@@ -62,16 +63,46 @@ export function DivisionFeatureIcon({
   );
 }
 
-/** CTA button linking to /divisions/<slug>. */
+/** CTA button linking to /divisions/<slug>. Uses division hex color for secondary variant. */
 export function DivisionCTA({
   slug,
   label,
   variant = "primary",
+  hex,
 }: {
   slug: Division["slug"];
   label: string;
   variant?: "primary" | "secondary";
+  hex?: string;
 }) {
+  if (variant === "secondary" && hex) {
+    return (
+      <Link
+        href={`/divisions/${slug}`}
+        className="group/cta inline-flex items-center justify-center gap-2 rounded-full border px-8 py-3.5 font-headline text-xs font-bold uppercase tracking-[0.25em] transition-all duration-300"
+        style={
+          {
+            borderColor: `${hex}60`,
+            color: "var(--color-on-background)",
+            "--division-hex": hex,
+          } as React.CSSProperties
+        }
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = hex;
+          e.currentTarget.style.color = hex;
+          e.currentTarget.style.backgroundColor = `${hex}15`;
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = `${hex}60`;
+          e.currentTarget.style.color = "var(--color-on-background)";
+          e.currentTarget.style.backgroundColor = "transparent";
+        }}
+      >
+        {label}
+        <Icon name="arrow_forward" size={16} />
+      </Link>
+    );
+  }
   return (
     <Button href={`/divisions/${slug}`} variant={variant} size="md" iconRight="arrow_forward">
       {label}
