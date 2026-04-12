@@ -63,7 +63,7 @@ export function DivisionFeatureIcon({
   );
 }
 
-/** CTA button linking to /divisions/<slug>. Filled with division hex color. */
+/** CTA button linking to /divisions/<slug>. Outline with division hex color. */
 export function DivisionCTA({
   slug,
   label,
@@ -78,16 +78,20 @@ export function DivisionCTA({
     return (
       <Link
         href={`/divisions/${slug}`}
-        className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 font-headline text-xs font-bold uppercase tracking-[0.25em] text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98]"
+        className="inline-flex items-center justify-center gap-2 rounded-full border px-8 py-3.5 font-headline text-xs font-bold uppercase tracking-[0.25em] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
         style={{
-          backgroundColor: hex,
-          boxShadow: `0 0 20px ${hex}44`,
+          borderColor: `${hex}60`,
+          color: hex,
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.boxShadow = `0 0 40px ${hex}66`;
+          e.currentTarget.style.borderColor = hex;
+          e.currentTarget.style.backgroundColor = `${hex}15`;
+          e.currentTarget.style.boxShadow = `0 0 30px ${hex}33`;
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.boxShadow = `0 0 20px ${hex}44`;
+          e.currentTarget.style.borderColor = `${hex}60`;
+          e.currentTarget.style.backgroundColor = "transparent";
+          e.currentTarget.style.boxShadow = "none";
         }}
       >
         {label}
