@@ -63,39 +63,44 @@ export function DivisionFeatureIcon({
   );
 }
 
-/** CTA button linking to /divisions/<slug>. Uses division hex color for secondary variant. */
+/**
+ * Gradient pairs per division — from → to.
+ * Writer: violet → pink | Forge: blue → cyan
+ * Games: mint → teal  | Vision: gold → amber
+ */
+const CTA_GRADIENTS: Record<string, [string, string]> = {
+  writer: ["#c084fc", "#e879f9"],
+  forge: ["#e879f9", "#60a5fa"],
+  games: ["#60a5fa", "#65ffc8"],
+  vision: ["#65ffc8", "#f59e0b"],
+};
+
+/** CTA button linking to /divisions/<slug>. Gradient filled with division colors. */
 export function DivisionCTA({
   slug,
   label,
-  variant = "primary",
-  hex,
 }: {
   slug: Division["slug"];
   label: string;
   variant?: "primary" | "secondary";
   hex?: string;
 }) {
-  if (variant === "secondary" && hex) {
+  const gradient = CTA_GRADIENTS[slug];
+  if (gradient) {
     return (
       <Link
         href={`/divisions/${slug}`}
-        className="group/cta inline-flex items-center justify-center gap-2 rounded-full border px-8 py-3.5 font-headline text-xs font-bold uppercase tracking-[0.25em] transition-all duration-300"
-        style={
-          {
-            borderColor: `${hex}60`,
-            color: "var(--color-on-background)",
-            "--division-hex": hex,
-          } as React.CSSProperties
-        }
+        className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 font-headline text-xs font-bold uppercase tracking-[0.25em] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+        style={{
+          background: `linear-gradient(to right, ${gradient[0]}, ${gradient[1]})`,
+          color: slug === "vision" ? "#1a1a2e" : "#0a0a14",
+          boxShadow: `0 0 20px ${gradient[0]}44`,
+        }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = hex;
-          e.currentTarget.style.color = hex;
-          e.currentTarget.style.backgroundColor = `${hex}15`;
+          e.currentTarget.style.boxShadow = `0 0 40px ${gradient[0]}66`;
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = `${hex}60`;
-          e.currentTarget.style.color = "var(--color-on-background)";
-          e.currentTarget.style.backgroundColor = "transparent";
+          e.currentTarget.style.boxShadow = `0 0 20px ${gradient[0]}44`;
         }}
       >
         {label}
@@ -104,7 +109,7 @@ export function DivisionCTA({
     );
   }
   return (
-    <Button href={`/divisions/${slug}`} variant={variant} size="md" iconRight="arrow_forward">
+    <Button href={`/divisions/${slug}`} variant="primary" size="md" iconRight="arrow_forward">
       {label}
     </Button>
   );
