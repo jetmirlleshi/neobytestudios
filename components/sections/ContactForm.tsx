@@ -195,7 +195,7 @@ export function ContactForm() {
                     name="division"
                     required
                     defaultValue=""
-                    className={inputClass}
+                    className={inputClass(false)}
                   >
                     <option value="" disabled>
                       Select a division
@@ -217,7 +217,7 @@ export function ContactForm() {
                     name="type"
                     required
                     defaultValue=""
-                    className={inputClass}
+                    className={inputClass(false)}
                   >
                     <option value="" disabled>
                       Select a type
