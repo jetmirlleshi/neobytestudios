@@ -70,9 +70,9 @@ export function DivisionFeatureIcon({
  */
 const CTA_GRADIENTS: Record<string, [string, string]> = {
   writer: ["#c084fc", "#e879f9"],
-  forge: ["#60a5fa", "#38bdf8"],
-  games: ["#65ffc8", "#2dd4bf"],
-  vision: ["#fbbf24", "#f59e0b"],
+  forge: ["#e879f9", "#60a5fa"],
+  games: ["#60a5fa", "#65ffc8"],
+  vision: ["#65ffc8", "#f59e0b"],
 };
 
 /** CTA button linking to /divisions/<slug>. Gradient filled with division colors. */
