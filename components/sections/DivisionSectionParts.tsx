@@ -63,42 +63,16 @@ export function DivisionFeatureIcon({
   );
 }
 
-/** CTA button linking to /divisions/<slug>. Outline with division hex color. */
+/** CTA button linking to /divisions/<slug>. Gradient filled like homepage CTA. */
 export function DivisionCTA({
   slug,
   label,
-  hex,
 }: {
   slug: Division["slug"];
   label: string;
   variant?: "primary" | "secondary";
   hex?: string;
 }) {
-  if (hex) {
-    return (
-      <Link
-        href={`/divisions/${slug}`}
-        className="inline-flex items-center justify-center gap-2 rounded-full border px-8 py-3.5 font-headline text-xs font-bold uppercase tracking-[0.25em] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
-        style={{
-          borderColor: `${hex}60`,
-          color: hex,
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = hex;
-          e.currentTarget.style.backgroundColor = `${hex}15`;
-          e.currentTarget.style.boxShadow = `0 0 30px ${hex}33`;
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = `${hex}60`;
-          e.currentTarget.style.backgroundColor = "transparent";
-          e.currentTarget.style.boxShadow = "none";
-        }}
-      >
-        {label}
-        <Icon name="arrow_forward" size={16} />
-      </Link>
-    );
-  }
   return (
     <Button href={`/divisions/${slug}`} variant="primary" size="md" iconRight="arrow_forward">
       {label}
