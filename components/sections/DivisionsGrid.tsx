@@ -70,7 +70,7 @@ function DivisionCard({
               alt=""
               fill
               sizes={isBanner ? "100vw" : isTall ? "50vw" : "25vw"}
-              className="pointer-events-none object-cover opacity-20 transition-opacity duration-700 group-hover:opacity-35"
+              className="pointer-events-none object-cover opacity-[0.4] transition-opacity duration-700 group-hover:opacity-[0.65]"
             />
           )}
 
