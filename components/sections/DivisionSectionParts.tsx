@@ -63,11 +63,10 @@ export function DivisionFeatureIcon({
   );
 }
 
-/** CTA button linking to /divisions/<slug>. Uses division hex color for secondary variant. */
+/** CTA button linking to /divisions/<slug>. Filled with division hex color. */
 export function DivisionCTA({
   slug,
   label,
-  variant = "primary",
   hex,
 }: {
   slug: Division["slug"];
@@ -75,27 +74,20 @@ export function DivisionCTA({
   variant?: "primary" | "secondary";
   hex?: string;
 }) {
-  if (variant === "secondary" && hex) {
+  if (hex) {
     return (
       <Link
         href={`/divisions/${slug}`}
-        className="group/cta inline-flex items-center justify-center gap-2 rounded-full border px-8 py-3.5 font-headline text-xs font-bold uppercase tracking-[0.25em] transition-all duration-300"
-        style={
-          {
-            borderColor: `${hex}60`,
-            color: "var(--color-on-background)",
-            "--division-hex": hex,
-          } as React.CSSProperties
-        }
+        className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 font-headline text-xs font-bold uppercase tracking-[0.25em] text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98]"
+        style={{
+          backgroundColor: hex,
+          boxShadow: `0 0 20px ${hex}44`,
+        }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = hex;
-          e.currentTarget.style.color = hex;
-          e.currentTarget.style.backgroundColor = `${hex}15`;
+          e.currentTarget.style.boxShadow = `0 0 40px ${hex}66`;
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = `${hex}60`;
-          e.currentTarget.style.color = "var(--color-on-background)";
-          e.currentTarget.style.backgroundColor = "transparent";
+          e.currentTarget.style.boxShadow = `0 0 20px ${hex}44`;
         }}
       >
         {label}
@@ -104,7 +96,7 @@ export function DivisionCTA({
     );
   }
   return (
-    <Button href={`/divisions/${slug}`} variant={variant} size="md" iconRight="arrow_forward">
+    <Button href={`/divisions/${slug}`} variant="primary" size="md" iconRight="arrow_forward">
       {label}
     </Button>
   );
