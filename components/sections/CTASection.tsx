@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { CosmicOrbs } from "@/components/ui/CosmicOrbs";
+import { NewsletterForm } from "@/components/NewsletterForm";
 
 /**
  * Final CTA — closing punctuation of the homepage.
@@ -80,6 +81,19 @@ export function CTASection() {
           >
             Start Transmission
           </Button>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, delay: 0.45 }}
+          className="mt-16 w-full max-w-md"
+        >
+          <div className="mx-auto h-px w-16 bg-outline-variant/40" aria-hidden />
+          <div className="mt-8">
+            <NewsletterForm variant="card" />
+          </div>
         </motion.div>
       </div>
     </section>

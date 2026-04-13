@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SITE } from "@/lib/constants";
+import { NewsletterForm } from "@/components/NewsletterForm";
 
 /**
  * Global footer.
@@ -39,6 +40,15 @@ export function Footer() {
               Architecting future-state narratives through the fusion of human
               vision and machine intelligence.
             </p>
+            <div className="mt-8">
+              <p className="font-headline text-[10px] font-semibold uppercase tracking-[0.4em] text-on-surface-variant">
+                Stay in orbit
+              </p>
+              <p className="mt-2 mb-4 font-body text-xs text-on-surface-variant/70">
+                Get updates on new divisions and projects.
+              </p>
+              <NewsletterForm variant="inline" />
+            </div>
           </div>
 
           <div>

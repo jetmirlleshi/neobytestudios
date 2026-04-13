@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
-const LAST_UPDATED = "April 12, 2026";
+const LAST_UPDATED = "April 13, 2026";
 
 export default function PrivacyPage() {
   return (
@@ -41,14 +41,25 @@ export default function PrivacyPage() {
           </Section>
 
           <Section title="2. Data We Collect">
-            <p>We collect personal data only when you voluntarily provide it through our contact form:</p>
-            <ul className="ml-4 mt-2 list-disc space-y-1 text-white/60">
+            <p>We collect personal data only when you voluntarily provide it:</p>
+            <p className="mt-2"><strong className="text-white/90">Contact form:</strong></p>
+            <ul className="ml-4 mt-1 list-disc space-y-1 text-white/60">
               <li>Full name</li>
               <li>Email address</li>
               <li>Division of interest</li>
               <li>Project type</li>
               <li>Message content</li>
             </ul>
+            <p className="mt-3"><strong className="text-white/90">Newsletter:</strong></p>
+            <ul className="ml-4 mt-1 list-disc space-y-1 text-white/60">
+              <li>Email address (required)</li>
+            </ul>
+            <p className="mt-2 text-white/60">
+              By subscribing to our newsletter, you explicitly consent to
+              receiving periodic updates about new divisions, projects, and
+              studio news. You can unsubscribe at any time via the link in
+              every email.
+            </p>
             <p className="mt-3">
               We use <strong className="text-white/90">Vercel Web Analytics</strong> to
               collect anonymous, aggregated page-view data (no personal
@@ -66,6 +77,7 @@ export default function PrivacyPage() {
               <li>Respond to your inquiry</li>
               <li>Send you a confirmation email</li>
               <li>Communicate about potential projects</li>
+              <li>Send newsletter updates (only if you subscribed)</li>
             </ul>
             <p className="mt-3">
               We will never sell, rent, or share your personal data with third
@@ -75,10 +87,12 @@ export default function PrivacyPage() {
 
           <Section title="4. Email Processing">
             <p>
-              Our contact form uses <strong className="text-white/90">Resend</strong> as our email
-              delivery service. When you submit the form, your data is processed
-              by Resend to deliver emails. Resend acts as a data processor on our
-              behalf and does not use your data for any other purpose.
+              Our contact form and newsletter use <strong className="text-white/90">Resend</strong> as
+              our email delivery and subscriber management service. When you
+              submit the contact form or subscribe to our newsletter, your data
+              is processed by Resend to deliver emails and manage your
+              subscription. Resend acts as a data processor on our behalf and
+              does not use your data for any other purpose.
             </p>
           </Section>
 

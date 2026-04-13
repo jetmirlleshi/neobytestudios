@@ -79,7 +79,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=architecture,arrow_forward,auto_stories,bolt,check,check_circle,close,cloud_done,edit_note,expand_more,home,hub,lan,memory,menu,movie_filter,precision_manufacturing,rebase,refresh,rocket_launch,send,shutter_speed,sports_esports,sync,terminal,videogame_asset&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=architecture,arrow_forward,auto_stories,bolt,check,check_circle,close,cloud_done,edit_note,expand_more,home,hub,lan,mail,memory,menu,movie_filter,precision_manufacturing,rebase,refresh,rocket_launch,send,shutter_speed,sports_esports,sync,terminal,videogame_asset&display=swap"
         />
         <JsonLd />
       </head>
