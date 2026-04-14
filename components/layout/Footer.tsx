@@ -22,7 +22,8 @@ const LEGAL = [
   { label: "Support", href: "mailto:support@neobytestudios.com" },
 ];
 
-export function Footer() {
+export function Footer({ lang = "en" }: { lang?: string }) {
+  const l = (href: string) => (href.startsWith("/") ? `/${lang}${href}` : href);
   const year = new Date().getFullYear();
 
   return (
@@ -30,7 +31,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-20 md:px-12">
         <div className="grid gap-16 md:grid-cols-[2fr_1fr_1fr]">
           <div>
-            <Link href="/" aria-label={`${SITE.name} — home`} className="inline-flex items-center gap-2">
+            <Link href={l("/")} aria-label={`${SITE.name} — home`} className="inline-flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-primary" />
               <span className="font-headline text-sm font-bold uppercase tracking-[0.35em] text-primary">
                 {SITE.shortName}
@@ -59,7 +60,7 @@ export function Footer() {
               {RESOURCES.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    href={l(link.href)}
                     className="font-headline text-sm uppercase tracking-[0.2em] text-on-background transition-colors hover:text-primary"
                   >
                     {link.label}
@@ -84,7 +85,7 @@ export function Footer() {
                         {link.label}
                       </a>
                     ) : (
-                      <Link href={link.href} className={linkClass}>
+                      <Link href={l(link.href)} className={linkClass}>
                         {link.label}
                       </Link>
                     )}

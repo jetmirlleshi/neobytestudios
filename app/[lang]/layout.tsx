@@ -78,7 +78,7 @@ export default async function LocaleLayout({
       <main id="main-content" className="flex-1">
         {children}
       </main>
-      <Footer />
+      <Footer lang={lang} />
       <ServiceWorkerRegister />
       <AnalyticsProvider />
       <CookieConsent />

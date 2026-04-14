@@ -7,6 +7,17 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { NAV_LINKS, SITE } from "@/lib/constants";
+import { locales } from "@/lib/i18n";
+
+const LOCALE_LABELS: Record<string, string> = { en: "EN", it: "IT" };
+
+/** Prefix an internal href with the current locale. */
+function localized(href: string, lang: string): string {
+  if (href.startsWith("/#")) return `/${lang}${href.slice(1)}`;
+  if (href === "/") return `/${lang}`;
+  if (href.startsWith("/")) return `/${lang}${href}`;
+  return href;
+}
 
 /**
  * Fixed top navigation bar.
@@ -18,6 +29,7 @@ import { NAV_LINKS, SITE } from "@/lib/constants";
  */
 export function Navbar() {
   const pathname = usePathname();
+  const lang = pathname.split("/")[1] || "en";
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
@@ -82,9 +94,17 @@ export function Navbar() {
   }, [menuOpen]);
 
   const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
-    if (href.startsWith("/#")) return pathname === "/";
-    return pathname?.startsWith(href) ?? false;
+    const full = localized(href, lang);
+    if (href === "/") return pathname === `/${lang}` || pathname === `/${lang}/`;
+    if (href.startsWith("/#")) return pathname === `/${lang}` || pathname === `/${lang}/`;
+    return pathname?.startsWith(full) ?? false;
+  };
+
+  /** Build the equivalent path for a different locale. */
+  const switchLocalePath = (targetLang: string) => {
+    // Replace the current lang prefix with the target
+    const rest = pathname.replace(new RegExp(`^/${lang}`), "");
+    return `/${targetLang}${rest || ""}`;
   };
 
   return (
@@ -106,7 +126,7 @@ export function Navbar() {
       >
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-12 md:py-5">
           <Link
-            href="/"
+            href={localized("/", lang)}
             className="group flex items-center gap-2"
             aria-label={`${SITE.name} home`}
           >
@@ -126,7 +146,7 @@ export function Navbar() {
               return (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    href={localized(link.href, lang)}
                     className={[
                       "relative font-headline text-[11px] font-semibold uppercase tracking-[0.3em] transition-colors",
                       active
@@ -144,8 +164,28 @@ export function Navbar() {
             })}
           </ul>
 
-          <div className="hidden md:block">
-            <Button href="/contact" variant="secondary" size="sm">
+          {/* Language switcher */}
+          <div className="hidden items-center gap-3 md:flex">
+            <div className="flex items-center gap-1 rounded-full border border-outline-variant/40 px-1 py-0.5">
+              {locales.map((loc) => (
+                <Link
+                  key={loc}
+                  href={switchLocalePath(loc)}
+                  className={[
+                    "rounded-full px-2.5 py-1 font-headline text-[10px] font-semibold uppercase tracking-[0.2em] transition-all duration-200",
+                    loc === lang
+                      ? "bg-primary/20 text-primary"
+                      : "text-on-surface-variant hover:text-on-background",
+                  ].join(" ")}
+                  onClick={() => {
+                    document.cookie = `NEXT_LOCALE=${loc};path=/;max-age=31536000`;
+                  }}
+                >
+                  {LOCALE_LABELS[loc] ?? loc.toUpperCase()}
+                </Link>
+              ))}
+            </div>
+            <Button href={localized("/contact", lang)} variant="secondary" size="sm">
               Open Channel
             </Button>
           </div>
@@ -198,7 +238,7 @@ export function Navbar() {
                   }}
                 >
                   <Link
-                    href={link.href}
+                    href={localized(link.href, lang)}
                     onClick={closeMenu}
                     className="font-headline text-3xl font-bold uppercase tracking-[0.2em] text-on-background hover:text-primary"
                   >
@@ -213,7 +253,27 @@ export function Navbar() {
                 }}
                 className="mt-6"
               >
-                <Button href="/contact" variant="primary" onClick={closeMenu}>
+                <div className="flex items-center gap-2">
+                  {locales.map((loc) => (
+                    <Link
+                      key={loc}
+                      href={switchLocalePath(loc)}
+                      onClick={() => {
+                        document.cookie = `NEXT_LOCALE=${loc};path=/;max-age=31536000`;
+                        closeMenu();
+                      }}
+                      className={[
+                        "rounded-full border px-4 py-2 font-headline text-sm font-bold uppercase tracking-[0.2em] transition-all",
+                        loc === lang
+                          ? "border-primary/60 bg-primary/15 text-primary"
+                          : "border-outline-variant text-on-surface-variant",
+                      ].join(" ")}
+                    >
+                      {LOCALE_LABELS[loc] ?? loc.toUpperCase()}
+                    </Link>
+                  ))}
+                </div>
+                <Button href={localized("/contact", lang)} variant="primary" onClick={closeMenu}>
                   Open Channel
                 </Button>
               </motion.li>
