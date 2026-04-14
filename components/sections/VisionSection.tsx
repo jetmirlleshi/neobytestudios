@@ -18,7 +18,7 @@ import {
  * A single large glass-panel centered over a cosmic background.
  * Amber/gold identity (#fbbf24).
  */
-export function VisionSection() {
+export function VisionSection({ dict, lang }: { dict?: Record<string, any>; lang?: string }) {
   const d = getDivision("vision")!;
   return (
     <section
@@ -40,12 +40,12 @@ export function VisionSection() {
           radius="3xl"
           className="flex flex-col items-center gap-10 p-10 text-center md:p-16"
         >
-          <Badge color="accent-yellow">{d.statusLabel}</Badge>
+          <Badge color="accent-yellow">{dict?.statusLabel ?? d.statusLabel}</Badge>
 
           <DivisionTitle shortName="VISION" hex={d.hex} />
 
           <blockquote className="max-w-2xl font-headline text-xl font-light italic leading-snug text-on-surface-variant md:text-2xl">
-            &ldquo;{d.tagline}&rdquo;
+            &ldquo;{dict?.tagline ?? d.tagline}&rdquo;
           </blockquote>
 
           <div className="relative w-full max-w-2xl overflow-hidden rounded-2xl">
@@ -58,7 +58,7 @@ export function VisionSection() {
             />
             <Image
               src="/images/vision-hero.webp"
-              alt="NeoByteVision — cosmic film reel spiraling through space"
+              alt={dict?.heroAlt ?? "NeoByteVision — cosmic film reel spiraling through space"}
               width={1200}
               height={675}
               className="h-auto w-full rounded-2xl"
@@ -66,32 +66,35 @@ export function VisionSection() {
           </div>
 
           <div className="grid w-full gap-5 md:grid-cols-2">
-            {d.features.map((f, i) => (
-              <motion.div
-                key={f.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
-                className="flex flex-col items-start gap-3 rounded-2xl border border-outline-variant bg-surface-container-lowest/60 p-6 text-left"
-              >
-                <DivisionFeatureIcon
-                  hex={d.hex}
-                  iconName={f.icon ?? d.icon}
-                  size={22}
-                  className="h-11 w-11 rounded-lg"
-                />
-                <h3 className="font-headline text-lg font-semibold text-on-background">
-                  {f.title}
-                </h3>
-                <p className="font-body text-sm text-on-surface-variant">
-                  {f.description}
-                </p>
-              </motion.div>
-            ))}
+            {d.features.map((f, i) => {
+              const df = dict?.features?.[i];
+              return (
+                <motion.div
+                  key={f.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
+                  className="flex flex-col items-start gap-3 rounded-2xl border border-outline-variant bg-surface-container-lowest/60 p-6 text-left"
+                >
+                  <DivisionFeatureIcon
+                    hex={d.hex}
+                    iconName={f.icon ?? d.icon}
+                    size={22}
+                    className="h-11 w-11 rounded-lg"
+                  />
+                  <h3 className="font-headline text-lg font-semibold text-on-background">
+                    {df?.title ?? f.title}
+                  </h3>
+                  <p className="font-body text-sm text-on-surface-variant">
+                    {df?.description ?? f.description}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
 
-          <DivisionCTA slug="vision" label="Enter The Core" variant="secondary" hex={d.hex} />
+          <DivisionCTA slug="vision" label={dict?.ctaLabel ?? "Enter The Core"} variant="secondary" hex={d.hex} lang={lang} />
         </GlassCard>
       </motion.div>
     </section>

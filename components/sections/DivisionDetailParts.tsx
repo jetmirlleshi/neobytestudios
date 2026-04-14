@@ -11,7 +11,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 
 /* ============ Hero ============ */
 
-export function DivisionHero({ d }: { d: Division }) {
+export function DivisionHero({ d, dict, divDict, lang }: { d: Division; dict?: Record<string, any>; divDict?: Record<string, any>; lang?: string }) {
   return (
     <section className="relative isolate flex min-h-[85vh] items-center overflow-hidden px-6 pt-28 pb-16 md:px-12">
       <CosmicOrbs preset="hero" />
@@ -34,31 +34,31 @@ export function DivisionHero({ d }: { d: Division }) {
           transition={{ duration: 0.9, ease: "easeOut" }}
           className="flex flex-col gap-8"
         >
-          <Badge color={d.colorToken}>{d.statusLabel}</Badge>
+          <Badge color={d.colorToken}>{divDict?.statusLabel ?? d.statusLabel}</Badge>
 
           <h1 className="font-headline text-5xl font-bold leading-[0.95] tracking-tighter text-on-background md:text-7xl lg:text-8xl">
             {d.shortName.charAt(0) + d.shortName.slice(1).toLowerCase()}
             <br />
             <span className="font-light italic" style={{ color: d.hex }}>
-              {d.tagline.split(" ").slice(0, 3).join(" ")}
+              {(divDict?.tagline ?? d.tagline).split(" ").slice(0, 3).join(" ")}
             </span>
           </h1>
 
           <p className="max-w-2xl font-body text-lg text-on-surface-variant md:text-xl">
-            {d.description}
+            {divDict?.description ?? d.description}
           </p>
 
           <div className="flex flex-wrap gap-4 pt-2">
             <Button
-              href="/contact"
+              href={lang ? `/${lang}/contact` : "/contact"}
               variant="primary"
               size="md"
               iconRight="rocket_launch"
             >
-              Commission {d.shortName}
+              {(dict?.commission ?? "Commission {shortName}").replace("{shortName}", d.shortName)}
             </Button>
-            <Button href="/divisions" variant="secondary" size="md">
-              All Divisions
+            <Button href={lang ? `/${lang}/divisions` : "/divisions"} variant="secondary" size="md">
+              {dict?.allDivisions ?? "All Divisions"}
             </Button>
           </div>
         </motion.div>
@@ -104,27 +104,27 @@ export function DivisionHero({ d }: { d: Division }) {
 
 /* ============ Mission ============ */
 
-export function DivisionMission({ d }: { d: Division }) {
+export function DivisionMission({ d, dict, divDict }: { d: Division; dict?: Record<string, any>; divDict?: Record<string, any> }) {
+  const m = dict?.mission;
   return (
     <section className="relative px-6 py-24 md:px-12 md:py-32">
       <div className="mx-auto max-w-4xl text-center">
         <SectionHeader
           align="center"
-          label="Mission"
+          label={m?.label ?? "Mission"}
           title={
             <>
               The{" "}
               <span className="font-light italic" style={{ color: d.hex }}>
-                mandate
+                {m?.titleHighlight ?? "mandate"}
               </span>
             </>
           }
-          subtitle={d.tagline}
+          subtitle={divDict?.tagline ?? d.tagline}
         />
         <p className="mx-auto mt-10 max-w-3xl font-body text-lg leading-relaxed text-on-surface-variant md:text-xl">
-          {d.description} Within the NeoByte universe, {d.name} carries the
-          charge of turning raw intent into structured reality — operating at the
-          intersection of classical craftsmanship and autonomous intelligence.
+          {divDict?.description ?? d.description}{" "}
+          {(m?.suffix ?? "Within the NeoByte universe, {name} carries the charge of turning raw intent into structured reality \u2014 operating at the intersection of classical craftsmanship and autonomous intelligence.").replace("{name}", d.name)}
         </p>
       </div>
     </section>
@@ -133,24 +133,26 @@ export function DivisionMission({ d }: { d: Division }) {
 
 /* ============ Capabilities ============ */
 
-export function DivisionCapabilities({ d }: { d: Division }) {
+export function DivisionCapabilities({ d, dict, divDict }: { d: Division; dict?: Record<string, any>; divDict?: Record<string, any> }) {
+  const c = dict?.capabilities;
+  const caps = divDict?.capabilities ?? d.capabilities;
   return (
     <section className="relative bg-surface-container-lowest px-6 py-24 md:px-12 md:py-32">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
-          label="Capabilities"
+          label={c?.label ?? "Capabilities"}
           title={
             <>
               What we{" "}
               <span className="font-light italic" style={{ color: d.hex }}>
-                ship
+                {c?.titleHighlight ?? "ship"}
               </span>
             </>
           }
-          subtitle={`Core services offered by ${d.name}. All battle-tested through Jetmir's solo-with-AI pipeline.`}
+          subtitle={(c?.subtitle ?? "Core services offered by {name}. All battle-tested through Jetmir's solo-with-AI pipeline.").replace("{name}", d.name)}
         />
         <div className="mt-16 grid gap-6 md:grid-cols-2">
-          {d.capabilities.map((cap, i) => (
+          {caps.map((cap: string, i: number) => (
             <motion.div
               key={cap}
               initial={{ opacity: 0, y: 30 }}
@@ -208,24 +210,26 @@ const PROCESS_STEPS = [
   },
 ];
 
-export function DivisionProcess({ d }: { d: Division }) {
+export function DivisionProcess({ d, dict }: { d: Division; dict?: Record<string, any> }) {
+  const p = dict?.process;
+  const steps = p?.steps ?? PROCESS_STEPS;
   return (
     <section className="relative px-6 py-24 md:px-12 md:py-32">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
-          label="Process"
+          label={p?.label ?? "Process"}
           title={
             <>
               Four{" "}
               <span className="font-light italic" style={{ color: d.hex }}>
-                gravity wells
+                {p?.titleHighlight ?? "gravity wells"}
               </span>
             </>
           }
-          subtitle="A repeatable orbit from signal to launch. No BS, no bloated kickoffs."
+          subtitle={p?.subtitle ?? "A repeatable orbit from signal to launch. No BS, no bloated kickoffs."}
         />
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {PROCESS_STEPS.map((step, i) => (
+          {steps.map((step: { id: string; title: string; description: string }, i: number) => (
             <motion.div
               key={step.id}
               initial={{ opacity: 0, y: 30 }}
@@ -257,21 +261,22 @@ export function DivisionProcess({ d }: { d: Division }) {
 
 /* ============ Artifacts placeholder ============ */
 
-export function DivisionArtifacts({ d }: { d: Division }) {
+export function DivisionArtifacts({ d, dict }: { d: Division; dict?: Record<string, any> }) {
+  const a = dict?.artifacts;
   return (
     <section className="relative bg-surface-container-lowest px-6 py-24 md:px-12 md:py-32">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
-          label="Signature Artifacts"
+          label={a?.label ?? "Signature Artifacts"}
           title={
             <>
               Featured{" "}
               <span className="font-light italic" style={{ color: d.hex }}>
-                vessels
+                {a?.titleHighlight ?? "vessels"}
               </span>
             </>
           }
-          subtitle="The studio is young. New artifacts are entering orbit — the archive updates as soon as each one lands."
+          subtitle={a?.subtitle ?? "The studio is young. New artifacts are entering orbit \u2014 the archive updates as soon as each one lands."}
         />
         <div className="mt-16 grid gap-6 md:grid-cols-3">
           {[1, 2, 3].map((n) => (
@@ -287,17 +292,17 @@ export function DivisionArtifacts({ d }: { d: Division }) {
                 className="flex aspect-[4/5] flex-col justify-between p-6"
               >
                 <span className="font-headline text-[10px] font-semibold uppercase tracking-[0.3em] text-on-surface-variant">
-                  ARTIFACT / {String(n).padStart(2, "0")}
+                  {(a?.artifactLabel ?? "ARTIFACT / {number}").replace("{number}", String(n).padStart(2, "0"))}
                 </span>
                 <div>
                   <h3 className="font-headline text-xl font-semibold text-on-background">
-                    In transit
+                    {a?.inTransit ?? "In transit"}
                   </h3>
                   <p
                     className="mt-2 font-headline text-[11px] font-semibold uppercase tracking-[0.3em]"
                     style={{ color: d.hex }}
                   >
-                    ● Coming Orbit
+                    {a?.comingOrbit ?? "\u25cf Coming Orbit"}
                   </p>
                 </div>
               </GlassCard>
@@ -311,7 +316,8 @@ export function DivisionArtifacts({ d }: { d: Division }) {
 
 /* ============ CTA ============ */
 
-export function DivisionCTA({ d }: { d: Division }) {
+export function DivisionCTA({ d, dict, lang }: { d: Division; dict?: Record<string, any>; lang?: string }) {
+  const ct = dict?.ctaSection;
   return (
     <section className="relative isolate overflow-hidden px-6 py-24 md:px-12 md:py-32">
       <CosmicOrbs preset="cta" />
@@ -325,16 +331,15 @@ export function DivisionCTA({ d }: { d: Division }) {
         <h2 className="font-headline text-4xl font-bold leading-[1.05] tracking-tighter text-on-background md:text-6xl">
           Ready to enter{" "}
           <span className="font-light italic" style={{ color: d.hex }}>
-            the {d.shortName.toLowerCase()} orbit?
+            {(ct?.titleHighlight ?? "the {shortName} orbit?").replace("{shortName}", d.shortName.toLowerCase())}
           </span>
         </h2>
         <p className="mt-6 max-w-xl font-body text-lg text-on-surface-variant">
-          Open a channel with the studio. First contact is always free — signals
-          travel at light-speed.
+          {ct?.subtitle ?? "Open a channel with the studio. First contact is always free \u2014 signals travel at light-speed."}
         </p>
         <div className="mt-10">
-          <Button href="/contact" variant="primary" size="lg" iconRight="send">
-            Initiate Transmission
+          <Button href={lang ? `/${lang}/contact` : "/contact"} variant="primary" size="lg" iconRight="send">
+            {ct?.button ?? "Initiate Transmission"}
           </Button>
         </div>
       </motion.div>

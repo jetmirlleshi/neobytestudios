@@ -47,10 +47,10 @@ export default async function DivisionsPage({ params }: Props) {
     <>
       <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Divisions" }]} />
       <DivisionsHeader dict={dict.divisionsHeader} />
-      <WriterSection />
-      <ForgeSection />
-      <GamesSection />
-      <VisionSection />
+      <WriterSection dict={dict.divisions.writer} lang={lang} />
+      <ForgeSection dict={dict.divisions.forge} lang={lang} />
+      <GamesSection dict={dict.divisions.games} lang={lang} />
+      <VisionSection dict={dict.divisions.vision} lang={lang} />
       <CTASection dict={dict.cta} lang={lang} />
     </>
   );
