@@ -1,0 +1,364 @@
+{
+  "site": {
+    "name": "NEOBYTE STUDIOS",
+    "shortName": "NEOBYTE",
+    "tagline": "Where AI Unlocks Imagination",
+    "motto": "Beyond The Void",
+    "description": "A monoauthor creative studio amplified by artificial intelligence. Sculpting cosmic narratives, engineering immersive worlds, and weaving visual poems through the prism of AI.",
+    "founder": "Jetmir",
+    "founderTitle": "Architect",
+    "location": "UTC+1",
+    "email": "contact@neobytestudios.com"
+  },
+  "nav": {
+    "studio": "Studio",
+    "divisions": "Divisions",
+    "universe": "Universe",
+    "about": "About",
+    "ctaButton": "Open Channel",
+    "skipToContent": "Skip to main content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "badge": "One Mind. Infinite Worlds.",
+    "titleLine1": "Where",
+    "titleHighlight": "AI",
+    "titleLine2": "Unlocks",
+    "titleLine3": "Imagination",
+    "subtitle": "One creator, AI-amplified. Sculpting ethereal universes that transcend pages, screens, and reality through the prism of digital wonder.",
+    "ctaPrimary": "Enter The Universe",
+    "ctaSecondary": "The Archive",
+    "scrollHint": "Descend",
+    "scrollHintAriaLabel": "Scroll to divisions"
+  },
+  "philosophy": {
+    "label": "The Philosophy",
+    "titleLine1": "AI doesn't replace creativity",
+    "titleLine2": "— it sets it free.",
+    "paragraph1": "At NEOBYTE STUDIOS, artificial intelligence is not a shortcut; it is a lens. A prism through which one creator's imagination is refracted into infinite spectra of narrative, design, and interactive experience.",
+    "paragraph2": "Every pixel, every word, every frame passes through a human sensibility. The AI amplifies; the auteur directs. The result is a body of work that feels both impossibly vast and deeply personal.",
+    "founderImageAlt": "The Architect — cosmic silhouette of the NeoByte founder",
+    "signatureLabel": "NeoByte Vision Statement"
+  },
+  "divisionsGrid": {
+    "label": "The Framework",
+    "titlePart1": "Four Divisions.",
+    "titleHighlight": "One Shared Dream.",
+    "subtitle": "Each division carries its own color signature and specialty, unified under the same vision: one mind directs, the AI amplifies.",
+    "explore": "Explore",
+    "exploreAriaLabel": "Explore {name}"
+  },
+  "timeline": {
+    "label": "The Timeline",
+    "titlePart1": "The",
+    "titleHighlight": "Ethereal Path",
+    "subtitle": "Three orbits in our ongoing cosmic anthology. Past, present, and the blooming horizon.",
+    "currentOrbit": "● Current Orbit",
+    "entries": [
+      {
+        "year": "2026",
+        "title": "The Awakening",
+        "description": "Merging narrative souls with NeoByteWriter v1.0. The first chapter of our cosmic anthology begins."
+      },
+      {
+        "year": "2027",
+        "title": "World-Weaving",
+        "description": "Breathing life into boundless organic worlds. Real-time atmospheric synthesis for deep sensory experiences."
+      },
+      {
+        "year": "2028",
+        "title": "Universal Bloom",
+        "description": "The birth of a complete cinematic ecosystem. Seamless neural narratives spanning the entire digital void."
+      }
+    ]
+  },
+  "studioEvolution": {
+    "label": "The Evolution",
+    "titlePart1": "Three Orbits of",
+    "titleHighlight": "Becoming",
+    "subtitle": "From ignition to stellar persistence. Our trajectory through the void, one gravity well at a time.",
+    "steps": [
+      {
+        "id": "ORBIT_01",
+        "title": "Cosmic Ignition",
+        "description": "Foundation of our gravity-defying architecture. Establishing the core propulsion systems for digital storytelling, prioritizing narrative density within the vacuum of execution.",
+        "status": "Orbit Achieved"
+      },
+      {
+        "id": "ORBIT_02",
+        "title": "Galactic Expansion",
+        "description": "Launching our interstellar network. Integrating AI-enhanced luminous rendering protocols across 32+ nodes to illuminate previously uncharted creative territories.",
+        "status": "Multi-System Link"
+      },
+      {
+        "id": "ORBIT_03",
+        "title": "Stellar Persistence",
+        "description": "Deployment of Universe v1. A self-evolving digital ecology operating at light-speed within Jetmir's 'Conscious Script' framework, achieving perpetual existence in the cosmic void.",
+        "status": "Singularity Active"
+      }
+    ]
+  },
+  "cta": {
+    "titleLine1": "Ready to Dream",
+    "titleHighlight": "The Future?",
+    "subtitle": "Step into a universe where every idea becomes an experience. Let us craft something extraordinary together.",
+    "button": "Start Transmission"
+  },
+  "divisions": {
+    "writer": {
+      "statusLabel": "Active Narrative Core",
+      "tagline": "Sculpting cosmic narratives and ancient lore from pure thought.",
+      "description": "Architecting profound narratives through algorithmic deep-lore and cinematic screenwriting. We don't just tell stories; we construct realities.",
+      "capabilities": [
+        "World-building for complex narrative universes",
+        "Cinematic and game screenwriting",
+        "Dynamic dialogue systems driven by emotional logic",
+        "Lore frameworks for transmedia IPs"
+      ],
+      "features": [
+        { "title": "Deep Lore", "description": "Expansive world-building frameworks for complex narrative universes." },
+        { "title": "Script Tech", "description": "Dynamic dialogue systems powered by emotionally-aware logic." }
+      ],
+      "ctaLabel": "Explore Narrative",
+      "heroAlt": "NeoByteWriter — cosmic pen writing stories in the void"
+    },
+    "forge": {
+      "statusLabel": "Structural Logic Engaged",
+      "tagline": "Crystallizing ethereal geometries into tangible digital worlds.",
+      "description": "The engineering core. Forge develops the proprietary tools and skeletal frameworks that power modern immersive experiences with unmatched technical precision.",
+      "capabilities": [
+        "Proprietary tools for creative pipelines",
+        "Frameworks and libraries for immersive experiences",
+        "High-performance data architectures",
+        "Simulation engines"
+      ],
+      "features": [
+        { "title": "Logic-Driven Asset Generation", "description": "Rule-based automatic asset generation at scale." },
+        { "title": "Hyper-Threaded Simulation Engines", "description": "Parallel high-performance simulation engines for real-time worlds." },
+        { "title": "Quantum-Safe Data Architecture", "description": "Data architectures resistant to quantum-era cryptographic threats." }
+      ],
+      "ctaLabel": "Technical Specs",
+      "heroAlt": "NeoByteForge — energy orb of computational creation"
+    },
+    "games": {
+      "statusLabel": "Interactive Mode: Live",
+      "tagline": "Orchestrating interactive symphonies within the AI consciousness.",
+      "description": "Interactive experiences that push the boundaries of immersion through next-gen technology and emotionally resonant design.",
+      "capabilities": [
+        "Indie game development with generative AI",
+        "Immersive VR/AR experiences",
+        "Cloud gaming and edge streaming",
+        "Haptic feedback systems"
+      ],
+      "features": [
+        { "title": "Unreal Integration", "description": "UE5.4 powered real-time photorealism for immersive worlds.", "target": "HARDCORE GAMERS" },
+        { "title": "Haptic Feedback", "description": "Physical immersion systems that translate signal into sensation.", "target": "VR ENTHUSIASTS" },
+        { "title": "Edge Streaming", "description": "Cloud rendering with low-latency delivery to any device.", "target": "GLOBAL AUDIENCE" }
+      ],
+      "ctaLabel": "Enter The Arena",
+      "heroAlt": "NeoByteGames — portal to infinite gaming worlds"
+    },
+    "vision": {
+      "statusLabel": "Strategic Foresight",
+      "tagline": "Weaving visual poems and neural cinema from the fabric of stardust.",
+      "description": "Seeing beyond the event horizon of current technology. Pioneering brand aesthetics and R&D into neural-link interfaces.",
+      "capabilities": [
+        "Visual identity and branding for spatial computing",
+        "R&D on neural interfaces and bio-feedback UI",
+        "Neural cinematography and visual poems",
+        "Long-horizon strategic foresight"
+      ],
+      "features": [
+        { "title": "Visual Identity", "description": "Brand aesthetics for spatial computing and multi-modal interfaces." },
+        { "title": "Future Lab", "description": "R&D on neural-link interfaces and bio-feedback UI prototypes." }
+      ],
+      "ctaLabel": "Enter The Core",
+      "heroAlt": "NeoByteVision — cosmic film reel spiraling through space"
+    }
+  },
+  "divisionDetail": {
+    "commission": "Commission {shortName}",
+    "allDivisions": "All Divisions",
+    "mission": {
+      "label": "Mission",
+      "titleHighlight": "mandate",
+      "suffix": "Within the NeoByte universe, {name} carries the charge of turning raw intent into structured reality — operating at the intersection of classical craftsmanship and autonomous intelligence."
+    },
+    "capabilities": {
+      "label": "Capabilities",
+      "titleHighlight": "ship",
+      "subtitle": "Core services offered by {name}. All battle-tested through Jetmir's solo-with-AI pipeline."
+    },
+    "process": {
+      "label": "Process",
+      "titleHighlight": "gravity wells",
+      "subtitle": "A repeatable orbit from signal to launch. No BS, no bloated kickoffs.",
+      "steps": [
+        { "id": "01", "title": "Signal", "description": "We open a channel with the client. Deep listening, constraint mapping, creative alignment." },
+        { "id": "02", "title": "Forge", "description": "Rapid prototyping with AI-amplified workflows. Ideas become tangible artifacts within days, not months." },
+        { "id": "03", "title": "Refine", "description": "Human craftsmanship dials in the details. Every pixel, word, and frame is interrogated." },
+        { "id": "04", "title": "Launch", "description": "Delivery of the finished vessel, with ongoing orbit support for evolution post-release." }
+      ]
+    },
+    "artifacts": {
+      "label": "Signature Artifacts",
+      "titleHighlight": "vessels",
+      "subtitle": "The studio is young. New artifacts are entering orbit — the archive updates as soon as each one lands.",
+      "artifactLabel": "ARTIFACT / {number}",
+      "inTransit": "In transit",
+      "comingOrbit": "● Coming Orbit"
+    },
+    "ctaSection": {
+      "titleHighlight": "the {shortName} orbit?",
+      "subtitle": "Open a channel with the studio. First contact is always free — signals travel at light-speed.",
+      "button": "Initiate Transmission"
+    }
+  },
+  "about": {
+    "label": "Origin Sequence",
+    "titlePart1": "The Story of",
+    "titleHighlight": "NeoByteStudios",
+    "subtitle": "Engineering narratives at the intersection of classical craftsmanship and autonomous intelligence. Founded by Jetmir to bridge the void between imagination and execution.",
+    "scrollIndicator": "Initialize Scroll"
+  },
+  "quote": {
+    "badge": "The Protocol",
+    "text": "We don't build tools; we build vessels for the imagination. Every pixel is a star, every line of code a law of physics for a new world.",
+    "attribution": "Jetmir — Architect"
+  },
+  "divisionsHeader": {
+    "label": "Four Pillars",
+    "titleHighlight": "Divisions",
+    "subtitle": "Four specialized cores orbiting a single creative consciousness. Each division is an autonomous engine with its own gravity, its own language, its own art of the possible."
+  },
+  "contact": {
+    "formTitle": "Initiate",
+    "formTitleHighlight": "Transmission",
+    "formSubtitle": "Open a channel with the studio. All fields are required unless marked otherwise.",
+    "labels": {
+      "name": "Name",
+      "email": "Email",
+      "division": "Division",
+      "projectType": "Project type",
+      "message": "Message"
+    },
+    "placeholders": {
+      "name": "Your callsign",
+      "email": "your@coordinates.net",
+      "message": "Tell us about the world you want to build."
+    },
+    "selectDefaults": {
+      "division": "Select a division",
+      "projectType": "Select a type",
+      "crossDivision": "Not sure / cross-division"
+    },
+    "projectTypes": ["Narrative / Script", "Interactive / Game", "Tool / Engine", "Brand / Vision", "Consultation", "Other"],
+    "validation": {
+      "nameRequired": "Identify the transmission source.",
+      "emailRequired": "Transmission coordinates required.",
+      "emailInvalid": "Enter valid transmission coordinates.",
+      "messageRequired": "A message is required to decode your intent."
+    },
+    "submitButton": "Transmit Signal",
+    "submitting": "Transmitting...",
+    "error": "Transmission failed. Please try again or email us directly.",
+    "successTitle": "Signal received.",
+    "successMessage": "Your transmission has entered the NeoByte orbit. Expect a reply within 48 light-hours.",
+    "sidebar": {
+      "directChannel": "Direct Channel",
+      "coordinates": "Coordinates",
+      "coordinatesDesc": "Remote-first. Orbiting the entire timezone grid.",
+      "responseWindow": "Response Window",
+      "responseValue": "Within 48 light-hours",
+      "responseDesc": "Mon – Fri. Urgent signals get priority routing."
+    }
+  },
+  "portfolio": {
+    "label": "The Archive",
+    "titlePart1": "Signature",
+    "titleHighlight": "Artifacts",
+    "subtitle": "A chronicle of vessels built at the edge of craft and computation. Each one a fragment of the NeoByte universe.",
+    "filters": { "all": "All", "writer": "Writer", "forge": "Forge", "games": "Games", "vision": "Vision" },
+    "filterAriaLabel": "Filter by {label}",
+    "viewDossier": "View dossier",
+    "emptyTitle": "No artifacts in this orbit yet.",
+    "emptyDescription": "The studio is young — new vessels are entering production. Check back soon or explore the divisions to see what's coming.",
+    "emptyCta": "Explore Divisions",
+    "projects": [
+      { "id": "p1", "title": "Codex of the Void", "description": "A branching narrative engine that weaves adaptive lore from player moral drift." },
+      { "id": "p2", "title": "Forge Core v1", "description": "Proprietary asset pipeline turning sketches into production-ready 3D in minutes." },
+      { "id": "p3", "title": "Haptic Prototype", "description": "VR sandbox experiment mapping emotion-driven feedback loops to narrative beats." },
+      { "id": "p4", "title": "Neural Brand System", "description": "Brand aesthetics for spatial computing — fluid identity that reacts to gaze." },
+      { "id": "p5", "title": "The Silent Cosmos", "description": "A dark-fantasy anthology spanning three centuries of a dying starlight civilization." },
+      { "id": "p6", "title": "Orbital Stream", "description": "Cloud-rendered microworlds deployed through an edge network of relay nodes." }
+    ]
+  },
+  "footer": {
+    "tagline": "Architecting future-state narratives through the fusion of human vision and machine intelligence.",
+    "stayInOrbit": "Stay in orbit",
+    "stayInOrbitDesc": "Get updates on new divisions and projects.",
+    "resources": "Resources",
+    "legal": "Legal",
+    "statusOnline": "Status: Online"
+  },
+  "cookie": {
+    "message": "We use {link} to understand how visitors use this site. No personal data is collected.",
+    "linkText": "privacy-friendly analytics",
+    "decline": "Decline",
+    "accept": "Accept"
+  },
+  "newsletter": {
+    "cardTitle": "Join",
+    "cardTitleHighlight": "The Signal",
+    "cardDescription": "Rare transmissions about new divisions, projects, and cosmic updates.",
+    "placeholder": "your@coordinates.net",
+    "submit": "Join The Orbit",
+    "submitting": "Joining...",
+    "success": "You're in the orbit.",
+    "validationEmail": "Enter valid transmission coordinates.",
+    "errorFallback": "Signal lost. Try again."
+  },
+  "error": {
+    "label": "System Error",
+    "titlePart1": "Something",
+    "titleHighlight": "Broke",
+    "description": "An unexpected glitch disrupted the signal. Try again — if the issue persists, reach out to us.",
+    "retry": "Try Again"
+  },
+  "notFound": {
+    "label": "Error 404",
+    "titlePart1": "Signal",
+    "titleHighlight": "Not Found",
+    "description": "The coordinates you entered don't match any known location in the NeoByte universe.",
+    "home": "Return to Base"
+  },
+  "loading": {
+    "text": "Initiating Sequence"
+  },
+  "meta": {
+    "home": {
+      "title": "NEOBYTE STUDIOS — Where AI Unlocks Imagination",
+      "description": "A monoauthor creative studio amplified by AI. Beyond The Void."
+    },
+    "about": {
+      "title": "About — The Origin Sequence",
+      "description": "The story of NeoByteStudios. Founded by Jetmir to bridge the void between imagination and execution through AI-amplified craftsmanship."
+    },
+    "divisions": {
+      "title": "Divisions — The Four Pillars",
+      "description": "Writer, Forge, Games, Vision. Four specialized cores of NeoByteStudios, each an autonomous engine for a different slice of the creative universe."
+    },
+    "contact": {
+      "title": "Contact — Open A Channel",
+      "description": "Open a transmission channel with NeoByteStudios. Briefs, partnerships, or just a signal into the void — all welcome."
+    },
+    "portfolio": {
+      "title": "Portfolio — The Archive",
+      "description": "Signature artifacts from the NeoByteStudios orbit. Narratives, engines, games and visual systems shipped by Jetmir with AI amplification."
+    },
+    "notFound": {
+      "title": "404 — Signal Not Found"
+    }
+  }
+}

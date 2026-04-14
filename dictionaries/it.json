@@ -1,0 +1,364 @@
+{
+  "site": {
+    "name": "NEOBYTE STUDIOS",
+    "shortName": "NEOBYTE",
+    "tagline": "Dove l'IA Libera l'Immaginazione",
+    "motto": "Oltre il Vuoto",
+    "description": "Uno studio creativo monoautore amplificato dall'intelligenza artificiale. Scolpiamo narrazioni cosmiche, costruiamo mondi immersivi e tessiamo poesie visive attraverso il prisma dell'IA.",
+    "founder": "Jetmir",
+    "founderTitle": "Architetto",
+    "location": "UTC+1",
+    "email": "contact@neobytestudios.com"
+  },
+  "nav": {
+    "studio": "Studio",
+    "divisions": "Divisioni",
+    "universe": "Universo",
+    "about": "Chi Siamo",
+    "ctaButton": "Apri Canale",
+    "skipToContent": "Vai al contenuto principale",
+    "openMenu": "Apri menu",
+    "closeMenu": "Chiudi menu"
+  },
+  "hero": {
+    "badge": "Una Mente. Infiniti Mondi.",
+    "titleLine1": "Dove",
+    "titleHighlight": "l'IA",
+    "titleLine2": "Libera",
+    "titleLine3": "l'Immaginazione",
+    "subtitle": "Un solo creatore, amplificato dall'IA. Scolpiamo universi eterei che trascendono pagine, schermi e realtà attraverso il prisma della meraviglia digitale.",
+    "ctaPrimary": "Entra nell'Universo",
+    "ctaSecondary": "L'Archivio",
+    "scrollHint": "Discendi",
+    "scrollHintAriaLabel": "Scorri verso le divisioni"
+  },
+  "philosophy": {
+    "label": "La Filosofia",
+    "titleLine1": "L'IA non sostituisce la creatività",
+    "titleLine2": "— la libera.",
+    "paragraph1": "In NEOBYTE STUDIOS, l'intelligenza artificiale non è una scorciatoia; è una lente. Un prisma attraverso cui l'immaginazione di un singolo creatore si rifrange in spettri infiniti di narrativa, design ed esperienza interattiva.",
+    "paragraph2": "Ogni pixel, ogni parola, ogni fotogramma passa attraverso una sensibilità umana. L'IA amplifica; l'autore dirige. Il risultato è un corpo di opere che appare al contempo impossibilmente vasto e profondamente personale.",
+    "founderImageAlt": "L'Architetto — silhouette cosmica del fondatore di NeoByte",
+    "signatureLabel": "Dichiarazione di Visione NeoByte"
+  },
+  "divisionsGrid": {
+    "label": "La Struttura",
+    "titlePart1": "Quattro Divisioni.",
+    "titleHighlight": "Un Unico Sogno.",
+    "subtitle": "Ogni divisione porta la propria firma cromatica e specialità, unificate dalla stessa visione: una mente dirige, l'IA amplifica.",
+    "explore": "Esplora",
+    "exploreAriaLabel": "Esplora {name}"
+  },
+  "timeline": {
+    "label": "La Timeline",
+    "titlePart1": "Il",
+    "titleHighlight": "Sentiero Etereo",
+    "subtitle": "Tre orbite nella nostra antologia cosmica in divenire. Passato, presente e l'orizzonte in fiore.",
+    "currentOrbit": "● Orbita Corrente",
+    "entries": [
+      {
+        "year": "2026",
+        "title": "Il Risveglio",
+        "description": "Fusione di anime narrative con NeoByteWriter v1.0. Il primo capitolo della nostra antologia cosmica ha inizio."
+      },
+      {
+        "year": "2027",
+        "title": "Tessitura di Mondi",
+        "description": "Diamo vita a mondi organici senza confini. Sintesi atmosferica in tempo reale per esperienze sensoriali profonde."
+      },
+      {
+        "year": "2028",
+        "title": "Fioritura Universale",
+        "description": "La nascita di un ecosistema cinematografico completo. Narrazioni neurali senza soluzione di continuità attraverso l'intero vuoto digitale."
+      }
+    ]
+  },
+  "studioEvolution": {
+    "label": "L'Evoluzione",
+    "titlePart1": "Tre Orbite di",
+    "titleHighlight": "Divenire",
+    "subtitle": "Dall'accensione alla persistenza stellare. La nostra traiettoria attraverso il vuoto, un pozzo gravitazionale alla volta.",
+    "steps": [
+      {
+        "id": "ORBIT_01",
+        "title": "Ignizione Cosmica",
+        "description": "Fondazione della nostra architettura antigravitazionale. Stabilire i sistemi di propulsione per la narrazione digitale, privilegiando la densità narrativa nel vuoto dell'esecuzione.",
+        "status": "Orbita Raggiunta"
+      },
+      {
+        "id": "ORBIT_02",
+        "title": "Espansione Galattica",
+        "description": "Lancio della nostra rete interstellare. Integrazione di protocolli di rendering luminoso potenziati dall'IA su oltre 32 nodi per illuminare territori creativi inesplorati.",
+        "status": "Collegamento Multi-Sistema"
+      },
+      {
+        "id": "ORBIT_03",
+        "title": "Persistenza Stellare",
+        "description": "Distribuzione di Universe v1. Un'ecologia digitale auto-evolutiva che opera alla velocità della luce nel framework 'Conscious Script' di Jetmir, raggiungendo l'esistenza perpetua nel vuoto cosmico.",
+        "status": "Singolarità Attiva"
+      }
+    ]
+  },
+  "cta": {
+    "titleLine1": "Pronti a Sognare",
+    "titleHighlight": "Il Futuro?",
+    "subtitle": "Entra in un universo dove ogni idea diventa un'esperienza. Costruiamo insieme qualcosa di straordinario.",
+    "button": "Avvia Trasmissione"
+  },
+  "divisions": {
+    "writer": {
+      "statusLabel": "Nucleo Narrativo Attivo",
+      "tagline": "Scolpiamo narrazioni cosmiche e antichi saperi dal puro pensiero.",
+      "description": "Architettare narrazioni profonde attraverso deep-lore algoritmico e sceneggiatura cinematografica. Non raccontiamo semplicemente storie; costruiamo realtà.",
+      "capabilities": [
+        "World-building per universi narrativi complessi",
+        "Sceneggiatura cinematografica e videoludica",
+        "Sistemi di dialogo dinamici guidati dalla logica emotiva",
+        "Framework di lore per IP transmediali"
+      ],
+      "features": [
+        { "title": "Deep Lore", "description": "Framework espansivi di world-building per universi narrativi complessi." },
+        { "title": "Script Tech", "description": "Sistemi di dialogo dinamici alimentati da logica emotivamente consapevole." }
+      ],
+      "ctaLabel": "Esplora la Narrativa",
+      "heroAlt": "NeoByteWriter — penna cosmica che scrive storie nel vuoto"
+    },
+    "forge": {
+      "statusLabel": "Logica Strutturale Attiva",
+      "tagline": "Cristallizzare geometrie eteree in mondi digitali tangibili.",
+      "description": "Il nucleo ingegneristico. Forge sviluppa gli strumenti proprietari e i framework strutturali che alimentano le moderne esperienze immersive con precisione tecnica impareggiabile.",
+      "capabilities": [
+        "Strumenti proprietari per pipeline creative",
+        "Framework e librerie per esperienze immersive",
+        "Architetture dati ad alte prestazioni",
+        "Motori di simulazione"
+      ],
+      "features": [
+        { "title": "Generazione Asset Logica", "description": "Generazione automatica di asset basata su regole, su scala." },
+        { "title": "Motori di Simulazione Hyper-Threaded", "description": "Motori di simulazione paralleli ad alte prestazioni per mondi in tempo reale." },
+        { "title": "Architettura Dati Quantum-Safe", "description": "Architetture dati resistenti alle minacce crittografiche dell'era quantistica." }
+      ],
+      "ctaLabel": "Specifiche Tecniche",
+      "heroAlt": "NeoByteForge — sfera di energia della creazione computazionale"
+    },
+    "games": {
+      "statusLabel": "Modalità Interattiva: Live",
+      "tagline": "Orchestrare sinfonie interattive nella coscienza dell'IA.",
+      "description": "Esperienze interattive che spingono i confini dell'immersione attraverso tecnologia di nuova generazione e design emotivamente risonante.",
+      "capabilities": [
+        "Sviluppo videogiochi indie con IA generativa",
+        "Esperienze VR/AR immersive",
+        "Cloud gaming e streaming edge",
+        "Sistemi di feedback aptico"
+      ],
+      "features": [
+        { "title": "Integrazione Unreal", "description": "Fotorealismo in tempo reale con UE5.4 per mondi immersivi.", "target": "GIOCATORI HARDCORE" },
+        { "title": "Feedback Aptico", "description": "Sistemi di immersione fisica che traducono il segnale in sensazione.", "target": "APPASSIONATI VR" },
+        { "title": "Streaming Edge", "description": "Rendering cloud con distribuzione a bassa latenza su qualsiasi dispositivo.", "target": "PUBBLICO GLOBALE" }
+      ],
+      "ctaLabel": "Entra nell'Arena",
+      "heroAlt": "NeoByteGames — portale verso infiniti mondi videoludici"
+    },
+    "vision": {
+      "statusLabel": "Previsione Strategica",
+      "tagline": "Tessere poesie visive e cinema neurale dalla polvere di stelle.",
+      "description": "Vedere oltre l'orizzonte degli eventi della tecnologia attuale. Pionieri dell'estetica del brand e della R&S su interfacce neurali.",
+      "capabilities": [
+        "Identità visiva e branding per spatial computing",
+        "R&S su interfacce neurali e UI bio-feedback",
+        "Cinematografia neurale e poesie visive",
+        "Previsione strategica a lungo orizzonte"
+      ],
+      "features": [
+        { "title": "Identità Visiva", "description": "Estetica del brand per spatial computing e interfacce multimodali." },
+        { "title": "Laboratorio Futuro", "description": "R&S su interfacce neurali e prototipi UI bio-feedback." }
+      ],
+      "ctaLabel": "Entra nel Nucleo",
+      "heroAlt": "NeoByteVision — bobina filmica cosmica che spiraleggia nello spazio"
+    }
+  },
+  "divisionDetail": {
+    "commission": "Commissiona {shortName}",
+    "allDivisions": "Tutte le Divisioni",
+    "mission": {
+      "label": "Missione",
+      "titleHighlight": "mandato",
+      "suffix": "Nell'universo NeoByte, {name} porta la responsabilità di trasformare l'intento grezzo in realtà strutturata — operando all'intersezione tra artigianato classico e intelligenza autonoma."
+    },
+    "capabilities": {
+      "label": "Capacità",
+      "titleHighlight": "realizziamo",
+      "subtitle": "Servizi core offerti da {name}. Tutti testati sul campo attraverso la pipeline solo-con-IA di Jetmir."
+    },
+    "process": {
+      "label": "Processo",
+      "titleHighlight": "pozzi gravitazionali",
+      "subtitle": "Un'orbita ripetibile dal segnale al lancio. Niente fuffa, niente kickoff gonfiati.",
+      "steps": [
+        { "id": "01", "title": "Segnale", "description": "Apriamo un canale con il cliente. Ascolto profondo, mappatura dei vincoli, allineamento creativo." },
+        { "id": "02", "title": "Forgia", "description": "Prototipazione rapida con workflow amplificati dall'IA. Le idee diventano artefatti tangibili in giorni, non mesi." },
+        { "id": "03", "title": "Raffina", "description": "L'artigianato umano perfeziona i dettagli. Ogni pixel, parola e fotogramma viene interrogato." },
+        { "id": "04", "title": "Lancio", "description": "Consegna del vascello finito, con supporto orbitale continuo per l'evoluzione post-rilascio." }
+      ]
+    },
+    "artifacts": {
+      "label": "Artefatti Distintivi",
+      "titleHighlight": "vascelli",
+      "subtitle": "Lo studio è giovane. Nuovi artefatti stanno entrando in orbita — l'archivio si aggiorna appena ciascuno atterra.",
+      "artifactLabel": "ARTEFATTO / {number}",
+      "inTransit": "In transito",
+      "comingOrbit": "● Orbita in Arrivo"
+    },
+    "ctaSection": {
+      "titleHighlight": "l'orbita di {shortName}?",
+      "subtitle": "Apri un canale con lo studio. Il primo contatto è sempre gratuito — i segnali viaggiano alla velocità della luce.",
+      "button": "Avvia Trasmissione"
+    }
+  },
+  "about": {
+    "label": "Sequenza d'Origine",
+    "titlePart1": "La Storia di",
+    "titleHighlight": "NeoByteStudios",
+    "subtitle": "Ingegnerizzare narrazioni all'intersezione tra artigianato classico e intelligenza autonoma. Fondato da Jetmir per colmare il vuoto tra immaginazione ed esecuzione.",
+    "scrollIndicator": "Inizializza Scorrimento"
+  },
+  "quote": {
+    "badge": "Il Protocollo",
+    "text": "Non costruiamo strumenti; costruiamo vascelli per l'immaginazione. Ogni pixel è una stella, ogni riga di codice una legge della fisica per un nuovo mondo.",
+    "attribution": "Jetmir — Architetto"
+  },
+  "divisionsHeader": {
+    "label": "Quattro Pilastri",
+    "titleHighlight": "Divisioni",
+    "subtitle": "Quattro nuclei specializzati in orbita attorno a una singola coscienza creativa. Ogni divisione è un motore autonomo con la propria gravità, il proprio linguaggio, la propria arte del possibile."
+  },
+  "contact": {
+    "formTitle": "Avvia",
+    "formTitleHighlight": "Trasmissione",
+    "formSubtitle": "Apri un canale con lo studio. Tutti i campi sono obbligatori salvo diversa indicazione.",
+    "labels": {
+      "name": "Nome",
+      "email": "Email",
+      "division": "Divisione",
+      "projectType": "Tipo di progetto",
+      "message": "Messaggio"
+    },
+    "placeholders": {
+      "name": "Il tuo nominativo",
+      "email": "la-tua@email.net",
+      "message": "Raccontaci del mondo che vuoi costruire."
+    },
+    "selectDefaults": {
+      "division": "Seleziona una divisione",
+      "projectType": "Seleziona un tipo",
+      "crossDivision": "Non sicuro / cross-divisione"
+    },
+    "projectTypes": ["Narrativa / Sceneggiatura", "Interattivo / Gioco", "Strumento / Motore", "Brand / Visione", "Consulenza", "Altro"],
+    "validation": {
+      "nameRequired": "Identifica la fonte della trasmissione.",
+      "emailRequired": "Coordinate di trasmissione richieste.",
+      "emailInvalid": "Inserisci coordinate di trasmissione valide.",
+      "messageRequired": "Un messaggio è necessario per decodificare il tuo intento."
+    },
+    "submitButton": "Trasmetti Segnale",
+    "submitting": "Trasmissione in corso...",
+    "error": "Trasmissione fallita. Riprova o scrivici direttamente.",
+    "successTitle": "Segnale ricevuto.",
+    "successMessage": "La tua trasmissione è entrata nell'orbita NeoByte. Aspettati una risposta entro 48 ore-luce.",
+    "sidebar": {
+      "directChannel": "Canale Diretto",
+      "coordinates": "Coordinate",
+      "coordinatesDesc": "Remote-first. In orbita sull'intera griglia di fusi orari.",
+      "responseWindow": "Finestra di Risposta",
+      "responseValue": "Entro 48 ore-luce",
+      "responseDesc": "Lun – Ven. I segnali urgenti hanno routing prioritario."
+    }
+  },
+  "portfolio": {
+    "label": "L'Archivio",
+    "titlePart1": "Artefatti",
+    "titleHighlight": "Distintivi",
+    "subtitle": "Una cronaca di vascelli costruiti al confine tra artigianato e computazione. Ciascuno un frammento dell'universo NeoByte.",
+    "filters": { "all": "Tutti", "writer": "Writer", "forge": "Forge", "games": "Games", "vision": "Vision" },
+    "filterAriaLabel": "Filtra per {label}",
+    "viewDossier": "Vedi dossier",
+    "emptyTitle": "Nessun artefatto in questa orbita ancora.",
+    "emptyDescription": "Lo studio è giovane — nuovi vascelli sono in fase di produzione. Torna presto o esplora le divisioni per vedere cosa sta arrivando.",
+    "emptyCta": "Esplora le Divisioni",
+    "projects": [
+      { "id": "p1", "title": "Codex of the Void", "description": "Un motore narrativo ramificato che tesse lore adattivo dalla deriva morale del giocatore." },
+      { "id": "p2", "title": "Forge Core v1", "description": "Pipeline proprietaria che trasforma schizzi in 3D pronto per la produzione in pochi minuti." },
+      { "id": "p3", "title": "Haptic Prototype", "description": "Esperimento sandbox VR che mappa loop di feedback emotivi su battute narrative." },
+      { "id": "p4", "title": "Neural Brand System", "description": "Estetica del brand per spatial computing — identità fluida che reagisce allo sguardo." },
+      { "id": "p5", "title": "The Silent Cosmos", "description": "Un'antologia dark-fantasy che abbraccia tre secoli di una civiltà di luce stellare morente." },
+      { "id": "p6", "title": "Orbital Stream", "description": "Micromondi renderizzati in cloud distribuiti attraverso una rete edge di nodi relay." }
+    ]
+  },
+  "footer": {
+    "tagline": "Architettare narrazioni futuristiche attraverso la fusione di visione umana e intelligenza artificiale.",
+    "stayInOrbit": "Resta in orbita",
+    "stayInOrbitDesc": "Ricevi aggiornamenti su nuove divisioni e progetti.",
+    "resources": "Risorse",
+    "legal": "Legale",
+    "statusOnline": "Stato: Online"
+  },
+  "cookie": {
+    "message": "Utilizziamo {link} per capire come i visitatori usano questo sito. Nessun dato personale viene raccolto.",
+    "linkText": "analytics rispettosi della privacy",
+    "decline": "Rifiuta",
+    "accept": "Accetta"
+  },
+  "newsletter": {
+    "cardTitle": "Unisciti",
+    "cardTitleHighlight": "Al Segnale",
+    "cardDescription": "Trasmissioni rare su nuove divisioni, progetti e aggiornamenti cosmici.",
+    "placeholder": "la-tua@email.net",
+    "submit": "Unisciti all'Orbita",
+    "submitting": "Connessione...",
+    "success": "Sei nell'orbita.",
+    "validationEmail": "Inserisci coordinate di trasmissione valide.",
+    "errorFallback": "Segnale perso. Riprova."
+  },
+  "error": {
+    "label": "Errore di Sistema",
+    "titlePart1": "Qualcosa si è",
+    "titleHighlight": "Rotto",
+    "description": "Un glitch inaspettato ha interrotto il segnale. Riprova — se il problema persiste, contattaci.",
+    "retry": "Riprova"
+  },
+  "notFound": {
+    "label": "Errore 404",
+    "titlePart1": "Segnale",
+    "titleHighlight": "Non Trovato",
+    "description": "Le coordinate inserite non corrispondono a nessuna posizione nota nell'universo NeoByte.",
+    "home": "Torna alla Base"
+  },
+  "loading": {
+    "text": "Sequenza di Avvio"
+  },
+  "meta": {
+    "home": {
+      "title": "NEOBYTE STUDIOS — Dove l'IA Libera l'Immaginazione",
+      "description": "Uno studio creativo monoautore amplificato dall'IA. Oltre il Vuoto."
+    },
+    "about": {
+      "title": "Chi Siamo — La Sequenza d'Origine",
+      "description": "La storia di NeoByteStudios. Fondato da Jetmir per colmare il vuoto tra immaginazione ed esecuzione attraverso l'artigianato amplificato dall'IA."
+    },
+    "divisions": {
+      "title": "Divisioni — I Quattro Pilastri",
+      "description": "Writer, Forge, Games, Vision. Quattro nuclei specializzati di NeoByteStudios, ciascuno un motore autonomo per una diversa fetta dell'universo creativo."
+    },
+    "contact": {
+      "title": "Contatti — Apri un Canale",
+      "description": "Apri un canale di trasmissione con NeoByteStudios. Brief, partnership o semplicemente un segnale nel vuoto — tutti benvenuti."
+    },
+    "portfolio": {
+      "title": "Portfolio — L'Archivio",
+      "description": "Artefatti distintivi dall'orbita di NeoByteStudios. Narrazioni, motori, giochi e sistemi visivi realizzati da Jetmir con amplificazione IA."
+    },
+    "notFound": {
+      "title": "404 — Segnale Non Trovato"
+    }
+  }
+}
