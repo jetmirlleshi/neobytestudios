@@ -17,7 +17,7 @@ import {
  * Centered layout. 3-column grid of feature cards (Unreal, Haptic, Edge).
  * Mint identity (#65ffc8).
  */
-export function GamesSection() {
+export function GamesSection({ dict, lang }: { dict?: Record<string, any>; lang?: string }) {
   const d = getDivision("games")!;
   return (
     <section
@@ -34,14 +34,14 @@ export function GamesSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex flex-col items-center text-center"
         >
-          <Badge color="tertiary">{d.statusLabel}</Badge>
+          <Badge color="tertiary">{dict?.statusLabel ?? d.statusLabel}</Badge>
 
           <div className="mt-8">
             <DivisionTitle shortName="GAMES" hex={d.hex} />
           </div>
 
           <p className="mt-6 max-w-2xl font-body text-lg text-on-surface-variant">
-            {d.description}
+            {dict?.description ?? d.description}
           </p>
         </motion.div>
 
@@ -61,7 +61,7 @@ export function GamesSection() {
           />
           <Image
             src="/images/games-hero.webp"
-            alt="NeoByteGames — portal to infinite gaming worlds"
+            alt={dict?.heroAlt ?? "NeoByteGames — portal to infinite gaming worlds"}
             width={1200}
             height={675}
             className="h-auto w-full rounded-3xl"

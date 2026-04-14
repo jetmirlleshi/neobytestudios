@@ -17,7 +17,7 @@ import {
  * Layout: 2 columns (text left, cosmic portrait orb right).
  * Purple identity color (#c084fc).
  */
-export function WriterSection() {
+export function WriterSection({ dict, lang }: { dict?: Record<string, any>; lang?: string }) {
   const d = getDivision("writer")!;
   return (
     <section
@@ -34,43 +34,46 @@ export function WriterSection() {
           transition={{ duration: 0.9, ease: "easeOut" }}
           className="flex flex-col gap-8"
         >
-          <Badge color="primary">{d.statusLabel}</Badge>
+          <Badge color="primary">{dict?.statusLabel ?? d.statusLabel}</Badge>
 
           <DivisionTitle shortName="WRITER" hex={d.hex} />
 
           <p className="max-w-xl font-body text-lg text-on-surface-variant">
-            {d.description}
+            {dict?.description ?? d.description}
           </p>
 
           <div className="grid gap-5 sm:grid-cols-2">
-            {d.features.map((f, i) => (
-              <motion.div
-                key={f.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
-              >
-                <GlassCard radius="2xl" className="h-full p-6">
-                  <DivisionFeatureIcon
-                    hex={d.hex}
-                    iconName={f.icon ?? d.icon}
-                    size={20}
-                    className="mb-4 h-10 w-10 rounded-lg"
-                  />
-                  <h3 className="font-headline text-lg font-semibold text-on-background">
-                    {f.title}
-                  </h3>
-                  <p className="mt-2 font-body text-sm text-on-surface-variant">
-                    {f.description}
-                  </p>
-                </GlassCard>
-              </motion.div>
-            ))}
+            {d.features.map((f, i) => {
+              const df = dict?.features?.[i];
+              return (
+                <motion.div
+                  key={f.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
+                >
+                  <GlassCard radius="2xl" className="h-full p-6">
+                    <DivisionFeatureIcon
+                      hex={d.hex}
+                      iconName={f.icon ?? d.icon}
+                      size={20}
+                      className="mb-4 h-10 w-10 rounded-lg"
+                    />
+                    <h3 className="font-headline text-lg font-semibold text-on-background">
+                      {df?.title ?? f.title}
+                    </h3>
+                    <p className="mt-2 font-body text-sm text-on-surface-variant">
+                      {df?.description ?? f.description}
+                    </p>
+                  </GlassCard>
+                </motion.div>
+              );
+            })}
           </div>
 
           <div className="pt-2">
-            <DivisionCTA slug="writer" label="Explore Narrative" variant="secondary" hex={d.hex} />
+            <DivisionCTA slug="writer" label={dict?.ctaLabel ?? "Explore Narrative"} variant="secondary" hex={d.hex} lang={lang} />
           </div>
         </motion.div>
 
@@ -91,7 +94,7 @@ export function WriterSection() {
           />
           <Image
             src="/images/writer-hero.webp"
-            alt="NeoByteWriter — cosmic pen writing stories in the void"
+            alt={dict?.heroAlt ?? "NeoByteWriter — cosmic pen writing stories in the void"}
             width={1200}
             height={675}
             className="h-auto w-full rounded-3xl"

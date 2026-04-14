@@ -79,17 +79,20 @@ const CTA_GRADIENTS: Record<string, [string, string]> = {
 export function DivisionCTA({
   slug,
   label,
+  lang,
 }: {
   slug: Division["slug"];
   label: string;
   variant?: "primary" | "secondary";
   hex?: string;
+  lang?: string;
 }) {
+  const prefix = lang ? `/${lang}` : "";
   const gradient = CTA_GRADIENTS[slug];
   if (gradient) {
     return (
       <Link
-        href={`/divisions/${slug}`}
+        href={`${prefix}/divisions/${slug}`}
         className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 font-headline text-xs font-bold uppercase tracking-[0.25em] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         style={{
           background: `linear-gradient(to right, ${gradient[0]}, ${gradient[1]})`,
@@ -109,7 +112,7 @@ export function DivisionCTA({
     );
   }
   return (
-    <Button href={`/divisions/${slug}`} variant="primary" size="md" iconRight="arrow_forward">
+    <Button href={`${prefix}/divisions/${slug}`} variant="primary" size="md" iconRight="arrow_forward">
       {label}
     </Button>
   );

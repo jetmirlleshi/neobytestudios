@@ -24,7 +24,7 @@ const OFFSET_ICONS = [
   { icon: "memory", label: "Core Logic" },
 ];
 
-export function ForgeSection() {
+export function ForgeSection({ dict, lang }: { dict?: Record<string, any>; lang?: string }) {
   const d = getDivision("forge")!;
   return (
     <section
@@ -52,7 +52,7 @@ export function ForgeSection() {
             />
             <Image
               src="/images/forge-hero.webp"
-              alt="NeoByteForge — energy orb of computational creation"
+              alt={dict?.heroAlt ?? "NeoByteForge — energy orb of computational creation"}
               width={1200}
               height={675}
               className="h-auto w-full rounded-3xl"
@@ -68,48 +68,51 @@ export function ForgeSection() {
           transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
           className="order-1 flex flex-col gap-8 lg:order-2"
         >
-          <Badge color="secondary">{d.statusLabel}</Badge>
+          <Badge color="secondary">{dict?.statusLabel ?? d.statusLabel}</Badge>
 
           <DivisionTitle shortName="FORGE" hex={d.hex} />
 
           <p className="max-w-xl font-body text-lg text-on-surface-variant">
-            {d.description}
+            {dict?.description ?? d.description}
           </p>
 
           <ul className="flex flex-col gap-4">
-            {d.features.map((f, i) => (
-              <motion.li
-                key={f.title}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
-                className="flex items-start gap-4"
-              >
-                <span
-                  className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border"
-                  style={{
-                    borderColor: `${d.hex}66`,
-                    background: `${d.hex}15`,
-                    color: d.hex,
-                  }}
+            {d.features.map((f, i) => {
+              const df = dict?.features?.[i];
+              return (
+                <motion.li
+                  key={f.title}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
+                  className="flex items-start gap-4"
                 >
-                  <Icon name="check" size={14} weight={600} />
-                </span>
-                <div>
-                  <h3 className="font-headline text-base font-semibold text-on-background">
-                    {f.title}
-                  </h3>
-                  <p className="font-body text-sm text-on-surface-variant">
-                    {f.description}
-                  </p>
-                </div>
-              </motion.li>
-            ))}
+                  <span
+                    className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border"
+                    style={{
+                      borderColor: `${d.hex}66`,
+                      background: `${d.hex}15`,
+                      color: d.hex,
+                    }}
+                  >
+                    <Icon name="check" size={14} weight={600} />
+                  </span>
+                  <div>
+                    <h3 className="font-headline text-base font-semibold text-on-background">
+                      {df?.title ?? f.title}
+                    </h3>
+                    <p className="font-body text-sm text-on-surface-variant">
+                      {df?.description ?? f.description}
+                    </p>
+                  </div>
+                </motion.li>
+              );
+            })}
           </ul>
 
           <div className="pt-2">
-            <DivisionCTA slug="forge" label="Technical Specs" variant="secondary" hex={d.hex} />
+            <DivisionCTA slug="forge" label={dict?.ctaLabel ?? "Technical Specs"} variant="secondary" hex={d.hex} lang={lang} />
           </div>
         </motion.div>
       </div>
