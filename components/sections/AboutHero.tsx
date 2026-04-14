@@ -11,7 +11,11 @@ import { Icon } from "@/components/ui/Icon";
  * - Display title with "NeoByteStudios" in cosmic gradient
  * - Vertical scroll indicator on the right edge
  */
-export function AboutHero() {
+export function AboutHero({
+  dict,
+}: {
+  dict: Record<string, any>;
+}) {
   return (
     <section className="relative isolate flex min-h-screen items-center overflow-hidden px-6 pt-28 pb-20 md:px-12">
       <CosmicOrbs preset="subtle" />
@@ -30,7 +34,7 @@ export function AboutHero() {
         >
           <span className="h-px w-16 bg-tertiary/60" aria-hidden />
           <span className="font-headline text-[10px] font-semibold uppercase tracking-[0.5em] text-tertiary">
-            Origin Sequence
+            {dict.label}
           </span>
           <span className="h-px w-16 bg-tertiary/60" aria-hidden />
         </motion.div>
@@ -41,10 +45,10 @@ export function AboutHero() {
           transition={{ duration: 0.9, delay: 0.1, ease: "easeOut" }}
           className="font-headline text-5xl font-bold leading-[0.95] tracking-tighter text-on-background md:text-7xl lg:text-8xl"
         >
-          The Story of
+          {dict.titlePart1}
           <br />
           <span className="cosmic-gradient-text font-light italic">
-            NeoByteStudios
+            {dict.titleHighlight}
           </span>
         </motion.h1>
 
@@ -54,9 +58,7 @@ export function AboutHero() {
           transition={{ duration: 0.8, delay: 0.25 }}
           className="max-w-2xl font-body text-lg text-on-surface-variant md:text-xl"
         >
-          Engineering narratives at the intersection of classical craftsmanship
-          and autonomous intelligence. Founded by Jetmir to bridge the void
-          between imagination and execution.
+          {dict.subtitle}
         </motion.p>
       </div>
 
@@ -71,7 +73,7 @@ export function AboutHero() {
           className="font-headline text-[10px] uppercase tracking-[0.5em] text-on-surface-variant"
           style={{ writingMode: "vertical-rl" }}
         >
-          Initialize Scroll
+          {dict.scrollIndicator}
         </span>
         <span className="animate-bounce-soft text-on-surface-variant">
           <Icon name="expand_more" size={24} />

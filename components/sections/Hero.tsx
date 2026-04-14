@@ -16,7 +16,24 @@ import { Icon } from "@/components/ui/Icon";
  * - Primary + secondary CTAs with staggered entrance
  * - Soft bouncing arrow scroll hint that fades out on scroll
  */
-export function Hero() {
+export function Hero({
+  dict,
+  lang = "en",
+}: {
+  dict: {
+    badge: string;
+    titleLine1: string;
+    titleHighlight: string;
+    titleLine2: string;
+    titleLine3: string;
+    subtitle: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+    scrollHint: string;
+    scrollHintAriaLabel: string;
+  };
+  lang?: string;
+}) {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -46,7 +63,7 @@ export function Hero() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="animate-badge-pulse"
         >
-          <Badge color="primary">One Mind. Infinite Worlds.</Badge>
+          <Badge color="primary">{dict.badge}</Badge>
         </motion.div>
 
         <motion.h1
@@ -55,12 +72,12 @@ export function Hero() {
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.1 }}
           className="font-headline text-6xl font-bold leading-[0.95] tracking-tighter text-on-background md:text-8xl lg:text-9xl"
         >
-          Where{" "}
+          {dict.titleLine1}{" "}
           <span className="cosmic-gradient-text font-light italic">
-            AI
+            {dict.titleHighlight}
           </span>{" "}
-          Unlocks <br className="hidden md:block" />
-          Imagination
+          {dict.titleLine2} <br className="hidden md:block" />
+          {dict.titleLine3}
         </motion.h1>
 
         <motion.p
@@ -69,9 +86,7 @@ export function Hero() {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.25 }}
           className="max-w-2xl font-body text-lg text-on-surface-variant md:text-xl"
         >
-          One creator, AI-amplified. Sculpting ethereal universes that
-          transcend pages, screens, and reality through the prism of digital
-          wonder.
+          {dict.subtitle}
         </motion.p>
 
         {/* Staggered CTA buttons */}
@@ -82,12 +97,12 @@ export function Hero() {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
           >
             <Button
-              href="/divisions"
+              href={`/${lang}/divisions`}
               variant="primary"
               size="lg"
               iconRight="arrow_forward"
             >
-              Enter The Universe
+              {dict.ctaPrimary}
             </Button>
           </motion.div>
           <motion.div
@@ -95,8 +110,8 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.55 }}
           >
-            <Button href="/portfolio" variant="secondary" size="lg">
-              The Archive
+            <Button href={`/${lang}/portfolio`} variant="secondary" size="lg">
+              {dict.ctaSecondary}
             </Button>
           </motion.div>
         </div>
@@ -105,7 +120,7 @@ export function Hero() {
       {/* Scroll hint — fades out as user scrolls */}
       <motion.a
         href="#divisions"
-        aria-label="Scroll to divisions"
+        aria-label={dict.scrollHintAriaLabel}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.8 }}
@@ -113,7 +128,7 @@ export function Hero() {
         className="absolute inset-x-0 bottom-10 mx-auto flex w-fit flex-col items-center gap-2 text-on-surface-variant hover:text-primary"
       >
         <span className="font-headline text-[10px] uppercase tracking-[0.4em]">
-          Descend
+          {dict.scrollHint}
         </span>
         <span className="animate-bounce-soft">
           <Icon name="expand_more" size={28} />

@@ -6,7 +6,11 @@ import { motion } from "framer-motion";
  * /divisions overview top header.
  * Centered "THE DIVISIONS" display title + subtitle.
  */
-export function DivisionsHeader() {
+export function DivisionsHeader({
+  dict,
+}: {
+  dict: Record<string, any>;
+}) {
   return (
     <section className="relative isolate px-6 pt-36 pb-16 md:px-12 md:pt-44 md:pb-20">
       <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
@@ -18,7 +22,7 @@ export function DivisionsHeader() {
         >
           <span className="h-px w-16 bg-tertiary/60" aria-hidden />
           <span className="font-headline text-[10px] font-semibold uppercase tracking-[0.5em] text-tertiary">
-            Four Pillars
+            {dict.label}
           </span>
           <span className="h-px w-16 bg-tertiary/60" aria-hidden />
         </motion.div>
@@ -31,7 +35,7 @@ export function DivisionsHeader() {
         >
           The{" "}
           <span className="cosmic-gradient-text font-light italic">
-            Divisions
+            {dict.titleHighlight}
           </span>
         </motion.h1>
 
@@ -41,9 +45,7 @@ export function DivisionsHeader() {
           transition={{ duration: 0.8, delay: 0.25 }}
           className="mt-6 max-w-2xl font-body text-lg text-on-surface-variant md:text-xl"
         >
-          Four specialized cores orbiting a single creative consciousness. Each
-          division is an autonomous engine with its own gravity, its own
-          language, its own art of the possible.
+          {dict.subtitle}
         </motion.p>
       </div>
     </section>

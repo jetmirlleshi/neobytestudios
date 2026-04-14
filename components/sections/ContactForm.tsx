@@ -10,7 +10,7 @@ import { ContactSidebar } from "@/components/sections/ContactSidebar";
 
 /** Contact page — form + side info. Submits to /api/contact (Resend). */
 
-const PROJECT_TYPES = [
+const PROJECT_TYPES_FALLBACK = [
   "Narrative / Script",
   "Interactive / Game",
   "Tool / Engine",
@@ -23,14 +23,16 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type FieldErrors = Partial<Record<"name" | "email" | "message", string>>;
 
-function validate(name: string, value: string): string | undefined {
-  if (name === "name" && !value.trim()) return "Identify the transmission source.";
-  if (name === "email") {
-    if (!value.trim()) return "Transmission coordinates required.";
-    if (!EMAIL_RE.test(value)) return "Enter valid transmission coordinates.";
-  }
-  if (name === "message" && !value.trim()) return "A message is required to decode your intent.";
-  return undefined;
+function makeValidate(validation: Record<string, string>) {
+  return function validate(name: string, value: string): string | undefined {
+    if (name === "name" && !value.trim()) return validation.nameRequired;
+    if (name === "email") {
+      if (!value.trim()) return validation.emailRequired;
+      if (!EMAIL_RE.test(value)) return validation.emailInvalid;
+    }
+    if (name === "message" && !value.trim()) return validation.messageRequired;
+    return undefined;
+  };
 }
 
 const baseInputClass =
@@ -43,7 +45,13 @@ function inputClass(hasError: boolean) {
 const labelClass =
   "font-headline text-[10px] font-semibold uppercase tracking-[0.3em] text-on-surface-variant";
 
-export function ContactForm() {
+export function ContactForm({
+  dict,
+}: {
+  dict: Record<string, any>;
+}) {
+  const validate = makeValidate(dict.validation);
+  const projectTypes: string[] = dict.projectTypes ?? PROJECT_TYPES_FALLBACK;
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [serverError, setServerError] = useState("");
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
@@ -118,32 +126,30 @@ export function ContactForm() {
                 <Icon name="check_circle" size={32} />
               </div>
               <h2 className="font-headline text-3xl font-bold tracking-tight text-on-background md:text-4xl">
-                Signal received.
+                {dict.successTitle}
               </h2>
               <p className="max-w-md font-body text-on-surface-variant">
-                Your transmission has entered the NeoByte orbit. Expect a reply
-                within 48 light-hours.
+                {dict.successMessage}
               </p>
             </motion.div>
           ) : (
             <form onSubmit={onSubmit} className="flex flex-col gap-6">
               <div>
                 <h2 className="font-headline text-3xl font-bold tracking-tight text-on-background md:text-4xl">
-                  Initiate{" "}
+                  {dict.formTitle}{" "}
                   <span className="cosmic-gradient-text font-light italic">
-                    Transmission
+                    {dict.formTitleHighlight}
                   </span>
                 </h2>
                 <p className="mt-3 font-body text-on-surface-variant">
-                  Open a channel with the studio. All fields are required
-                  unless marked otherwise.
+                  {dict.formSubtitle}
                 </p>
               </div>
 
               <div className="grid gap-5 md:grid-cols-2">
                 <div className="flex flex-col gap-2">
                   <label htmlFor="name" className={labelClass}>
-                    Name
+                    {dict.labels.name}
                   </label>
                   <input
                     id="name"
@@ -151,7 +157,7 @@ export function ContactForm() {
                     type="text"
                     required
                     aria-required="true"
-                    placeholder="Your callsign"
+                    placeholder={dict.placeholders.name}
                     aria-invalid={!!fieldError("name")}
                     aria-describedby={fieldError("name") ? "name-error" : undefined}
                     onBlur={handleBlur}
@@ -165,7 +171,7 @@ export function ContactForm() {
                 </div>
                 <div className="flex flex-col gap-2">
                   <label htmlFor="email" className={labelClass}>
-                    Email
+                    {dict.labels.email}
                   </label>
                   <input
                     id="email"
@@ -173,7 +179,7 @@ export function ContactForm() {
                     type="email"
                     required
                     aria-required="true"
-                    placeholder="your@coordinates.net"
+                    placeholder={dict.placeholders.email}
                     aria-invalid={!!fieldError("email")}
                     aria-describedby={fieldError("email") ? "email-error" : undefined}
                     onBlur={handleBlur}
@@ -190,7 +196,7 @@ export function ContactForm() {
               <div className="grid gap-5 md:grid-cols-2">
                 <div className="flex flex-col gap-2">
                   <label htmlFor="division" className={labelClass}>
-                    Division
+                    {dict.labels.division}
                   </label>
                   <select
                     id="division"
@@ -200,19 +206,19 @@ export function ContactForm() {
                     className={inputClass(false)}
                   >
                     <option value="" disabled>
-                      Select a division
+                      {dict.selectDefaults.division}
                     </option>
                     {DIVISIONS.map((d) => (
                       <option key={d.slug} value={d.slug}>
                         {d.name}
                       </option>
                     ))}
-                    <option value="any">Not sure / cross-division</option>
+                    <option value="any">{dict.selectDefaults.crossDivision}</option>
                   </select>
                 </div>
                 <div className="flex flex-col gap-2">
                   <label htmlFor="type" className={labelClass}>
-                    Project type
+                    {dict.labels.projectType}
                   </label>
                   <select
                     id="type"
@@ -222,9 +228,9 @@ export function ContactForm() {
                     className={inputClass(false)}
                   >
                     <option value="" disabled>
-                      Select a type
+                      {dict.selectDefaults.projectType}
                     </option>
-                    {PROJECT_TYPES.map((t) => (
+                    {projectTypes.map((t) => (
                       <option key={t} value={t}>
                         {t}
                       </option>
@@ -235,7 +241,7 @@ export function ContactForm() {
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="message" className={labelClass}>
-                  Message
+                  {dict.labels.message}
                 </label>
                 <textarea
                   id="message"
@@ -243,7 +249,7 @@ export function ContactForm() {
                   required
                   aria-required="true"
                   rows={6}
-                  placeholder="Tell us about the world you want to build."
+                  placeholder={dict.placeholders.message}
                   aria-invalid={!!fieldError("message")}
                   aria-describedby={fieldError("message") ? "message-error" : undefined}
                   onBlur={handleBlur}
@@ -258,7 +264,7 @@ export function ContactForm() {
 
               {status === "error" && (
                 <p role="alert" className="font-body text-sm text-red-400">
-                  {serverError || "Transmission failed. Please try again or email us directly."}
+                  {serverError || dict.error}
                 </p>
               )}
 
@@ -271,14 +277,14 @@ export function ContactForm() {
                   disabled={status === "sending"}
                   aria-busy={status === "sending"}
                 >
-                  {status === "sending" ? "Transmitting..." : "Transmit Signal"}
+                  {status === "sending" ? dict.submitting : dict.submitButton}
                 </Button>
               </div>
             </form>
           )}
         </GlassCard>
 
-        <ContactSidebar />
+        <ContactSidebar dict={dict.sidebar} />
       </div>
     </section>
   );

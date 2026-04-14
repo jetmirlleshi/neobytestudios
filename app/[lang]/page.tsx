@@ -33,14 +33,17 @@ const Timeline = dynamic(() =>
   import("@/components/sections/Timeline").then((m) => m.Timeline),
 );
 
-export default function Home() {
+export default async function Home({ params }: Props) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang as Locale);
+
   return (
     <>
-      <Hero />
-      <DivisionsGrid />
-      <Philosophy />
-      <Timeline />
-      <CTASection />
+      <Hero dict={dict.hero} lang={lang} />
+      <DivisionsGrid dict={dict.divisionsGrid} lang={lang} />
+      <Philosophy dict={dict.philosophy} />
+      <Timeline dict={dict.timeline} />
+      <CTASection dict={dict.cta} lang={lang} />
     </>
   );
 }

@@ -35,14 +35,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function AboutPage() {
+export default async function AboutPage({ params }: Props) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang as Locale);
+
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "About" }]} />
-      <AboutHero />
-      <QuoteProtocol />
-      <StudioEvolution />
-      <CTASection />
+      <AboutHero dict={dict.about} />
+      <QuoteProtocol dict={dict.quote} />
+      <StudioEvolution dict={dict.studioEvolution} />
+      <CTASection dict={dict.cta} lang={lang} />
     </>
   );
 }

@@ -13,21 +13,32 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
  *  - Mobile: vertical stack with the gradient line on the left.
  */
 
-export function Timeline() {
+export function Timeline({
+  dict,
+}: {
+  dict: {
+    label: string;
+    titlePart1: string;
+    titleHighlight: string;
+    subtitle: string;
+    currentOrbit: string;
+    entries: { year: string; title: string; description: string }[];
+  };
+}) {
   return (
     <section id="universe" className="relative px-6 py-24 md:px-12 md:py-32">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
-          label="The Timeline"
+          label={dict.label}
           title={
             <>
-              The{" "}
+              {dict.titlePart1}{" "}
               <span className="cosmic-gradient-text font-light italic">
-                Ethereal Path
+                {dict.titleHighlight}
               </span>
             </>
           }
-          subtitle="Three orbits in our ongoing cosmic anthology. Past, present, and the blooming horizon."
+          subtitle={dict.subtitle}
         />
 
         {/* ===== Desktop (md+): horizontal ===== */}
@@ -47,6 +58,7 @@ export function Timeline() {
             {TIMELINE.map((entry, i) => {
               const hex = HEX_BY_COLOR_TOKEN[entry.colorToken];
               const active = entry.active;
+              const dictEntry = dict.entries[i];
               return (
                 <motion.div
                   key={entry.year}
@@ -82,7 +94,7 @@ export function Timeline() {
                         ].join(" ")}
                         style={{ color: hex }}
                       >
-                        {entry.year}
+                        {dictEntry?.year ?? entry.year}
                       </span>
                       {active ? (
                         <span
@@ -98,17 +110,17 @@ export function Timeline() {
                     className="font-headline text-xl font-semibold tracking-tight text-on-background md:text-2xl"
                     style={{ color: active ? hex : undefined }}
                   >
-                    {entry.title}
+                    {dictEntry?.title ?? entry.title}
                   </h3>
                   <p className="mt-3 max-w-xs font-body text-sm text-on-surface-variant">
-                    {entry.description}
+                    {dictEntry?.description ?? entry.description}
                   </p>
                   {active ? (
                     <span
                       className="mt-4 font-headline text-[10px] font-semibold uppercase tracking-[0.3em]"
                       style={{ color: hex }}
                     >
-                      ● Current Orbit
+                      {dict.currentOrbit}
                     </span>
                   ) : null}
                 </motion.div>
@@ -132,6 +144,7 @@ export function Timeline() {
             {TIMELINE.map((entry, i) => {
               const hex = HEX_BY_COLOR_TOKEN[entry.colorToken];
               const active = entry.active;
+              const dictEntry = dict.entries[i];
               return (
                 <motion.div
                   key={entry.year}
@@ -156,7 +169,7 @@ export function Timeline() {
                       className="font-headline text-sm font-bold"
                       style={{ color: hex }}
                     >
-                      {entry.year}
+                      {dictEntry?.year ?? entry.year}
                     </span>
                   </div>
                   <div className="flex-1 pt-1">
@@ -164,10 +177,10 @@ export function Timeline() {
                       className="font-headline text-xl font-semibold tracking-tight text-on-background"
                       style={{ color: active ? hex : undefined }}
                     >
-                      {entry.title}
+                      {dictEntry?.title ?? entry.title}
                     </h3>
                     <p className="mt-2 font-body text-sm text-on-surface-variant">
-                      {entry.description}
+                      {dictEntry?.description ?? entry.description}
                     </p>
                   </div>
                 </motion.div>

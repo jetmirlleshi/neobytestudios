@@ -1,12 +1,16 @@
 import { SITE } from "@/lib/constants";
 import { GlassCard } from "@/components/ui/GlassCard";
 
-export function ContactSidebar() {
+export function ContactSidebar({
+  dict,
+}: {
+  dict: Record<string, any>;
+}) {
   return (
     <div className="flex flex-col gap-6">
       <GlassCard radius="2xl" className="p-6">
         <span className="font-headline text-[10px] font-semibold uppercase tracking-[0.3em] text-on-surface-variant">
-          Direct Channel
+          {dict.directChannel}
         </span>
         <a
           href={`mailto:${SITE.email}`}
@@ -18,23 +22,23 @@ export function ContactSidebar() {
 
       <GlassCard radius="2xl" className="p-6">
         <span className="font-headline text-[10px] font-semibold uppercase tracking-[0.3em] text-on-surface-variant">
-          Coordinates
+          {dict.coordinates}
         </span>
         <p className="mt-3 font-body text-on-background">{SITE.location}</p>
         <p className="mt-1 font-body text-sm text-on-surface-variant">
-          Remote-first. Orbiting the entire timezone grid.
+          {dict.coordinatesDesc}
         </p>
       </GlassCard>
 
       <GlassCard radius="2xl" className="p-6">
         <span className="font-headline text-[10px] font-semibold uppercase tracking-[0.3em] text-on-surface-variant">
-          Response Window
+          {dict.responseWindow}
         </span>
         <p className="mt-3 font-body text-on-background">
-          Within 48 light-hours
+          {dict.responseValue}
         </p>
         <p className="mt-1 font-body text-sm text-on-surface-variant">
-          Mon – Fri. Urgent signals get priority routing.
+          {dict.responseDesc}
         </p>
       </GlassCard>
     </div>

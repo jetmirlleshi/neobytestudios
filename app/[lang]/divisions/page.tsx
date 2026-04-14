@@ -39,16 +39,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function DivisionsPage() {
+export default async function DivisionsPage({ params }: Props) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang as Locale);
+
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Divisions" }]} />
-      <DivisionsHeader />
+      <DivisionsHeader dict={dict.divisionsHeader} />
       <WriterSection />
       <ForgeSection />
       <GamesSection />
       <VisionSection />
-      <CTASection />
+      <CTASection dict={dict.cta} lang={lang} />
     </>
   );
 }

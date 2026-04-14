@@ -36,10 +36,16 @@ function DivisionCard({
   division,
   className,
   variant,
+  exploreText,
+  exploreAriaLabel,
+  lang,
 }: {
   division: Division;
   className?: string;
   variant: "tall" | "standard" | "banner";
+  exploreText: string;
+  exploreAriaLabel: string;
+  lang: string;
 }) {
   const isBanner = variant === "banner";
   const isTall = variant === "tall";
@@ -52,9 +58,9 @@ function DivisionCard({
       className={className}
     >
       <Link
-        href={`/divisions/${division.slug}`}
+        href={`/${lang}/divisions/${division.slug}`}
         className="group relative block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-        aria-label={`Explore ${division.name}`}
+        aria-label={exploreAriaLabel.replace("{name}", division.name)}
       >
         <GlassCard
           className={[
@@ -149,7 +155,7 @@ function DivisionCard({
             </div>
 
             <div className="flex items-center gap-2 font-headline text-[11px] font-semibold uppercase tracking-[0.3em] text-on-background transition-transform duration-300 group-hover:translate-x-1">
-              <span style={{ color }}>Explore</span>
+              <span style={{ color }}>{exploreText}</span>
               <Icon
                 name="arrow_forward"
                 size={16}
@@ -163,7 +169,20 @@ function DivisionCard({
   );
 }
 
-export function DivisionsGrid() {
+export function DivisionsGrid({
+  dict,
+  lang = "en",
+}: {
+  dict: {
+    label: string;
+    titlePart1: string;
+    titleHighlight: string;
+    subtitle: string;
+    explore: string;
+    exploreAriaLabel: string;
+  };
+  lang?: string;
+}) {
   // Pin by slug so markup order matches design regardless of constants order.
   const writer = DIVISIONS.find((d) => d.slug === "writer")!;
   const forge = DIVISIONS.find((d) => d.slug === "forge")!;
@@ -177,16 +196,16 @@ export function DivisionsGrid() {
     >
       <div className="mx-auto max-w-7xl">
         <SectionHeader
-          label="The Framework"
+          label={dict.label}
           title={
             <>
-              Four Divisions.{" "}
+              {dict.titlePart1}{" "}
               <span className="cosmic-gradient-text font-light italic">
-                One Shared Dream.
+                {dict.titleHighlight}
               </span>
             </>
           }
-          subtitle="Each division carries its own color signature and specialty, unified under the same vision: one mind directs, the AI amplifies."
+          subtitle={dict.subtitle}
         />
 
         <motion.div
@@ -200,13 +219,19 @@ export function DivisionsGrid() {
             division={writer}
             variant="tall"
             className="lg:col-span-2 lg:row-span-1"
+            exploreText={dict.explore}
+            exploreAriaLabel={dict.exploreAriaLabel}
+            lang={lang}
           />
-          <DivisionCard division={forge} variant="standard" />
-          <DivisionCard division={games} variant="standard" />
+          <DivisionCard division={forge} variant="standard" exploreText={dict.explore} exploreAriaLabel={dict.exploreAriaLabel} lang={lang} />
+          <DivisionCard division={games} variant="standard" exploreText={dict.explore} exploreAriaLabel={dict.exploreAriaLabel} lang={lang} />
           <DivisionCard
             division={vision}
             variant="banner"
             className="md:col-span-2 lg:col-span-4"
+            exploreText={dict.explore}
+            exploreAriaLabel={dict.exploreAriaLabel}
+            lang={lang}
           />
         </motion.div>
       </div>

@@ -10,7 +10,18 @@ import { NewsletterForm } from "@/components/NewsletterForm";
  * Deep-void background, two opposing orbs, giant display title with
  * cosmic gradient highlight on "The Future?".
  */
-export function CTASection() {
+export function CTASection({
+  dict,
+  lang = "en",
+}: {
+  dict: {
+    titleLine1: string;
+    titleHighlight: string;
+    subtitle: string;
+    button: string;
+  };
+  lang?: string;
+}) {
   return (
     <section className="relative isolate overflow-hidden bg-surface-container-lowest px-6 py-32 md:px-12 md:py-48">
       <CosmicOrbs preset="cta" />
@@ -48,10 +59,10 @@ export function CTASection() {
           transition={{ duration: 0.9, ease: "easeOut" }}
           className="font-headline text-5xl font-bold leading-[1.05] tracking-tighter text-on-background md:text-8xl"
         >
-          Ready to Dream
+          {dict.titleLine1}
           <br />
           <span className="cosmic-gradient-text font-light italic">
-            The Future?
+            {dict.titleHighlight}
           </span>
         </motion.h2>
 
@@ -62,8 +73,7 @@ export function CTASection() {
           transition={{ duration: 0.8, delay: 0.15 }}
           className="mt-8 max-w-2xl font-body text-lg text-on-surface-variant md:text-xl"
         >
-          Step into a universe where every idea becomes an experience. Let us
-          craft something extraordinary together.
+          {dict.subtitle}
         </motion.p>
 
         <motion.div
@@ -74,12 +84,12 @@ export function CTASection() {
           className="mt-12"
         >
           <Button
-            href="/contact"
+            href={`/${lang}/contact`}
             variant="primary"
             size="lg"
             iconRight="rocket_launch"
           >
-            Start Transmission
+            {dict.button}
           </Button>
         </motion.div>
 

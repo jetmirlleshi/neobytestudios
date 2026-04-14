@@ -30,7 +30,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function PortfolioPage() {
+export default async function PortfolioPage({ params }: Props) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang as Locale);
+  const p = dict.portfolio;
+
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Portfolio" }]} />
@@ -39,24 +43,23 @@ export default function PortfolioPage() {
           <div className="flex items-center gap-4">
             <span className="h-px w-16 bg-tertiary/60" aria-hidden />
             <span className="font-headline text-[10px] font-semibold uppercase tracking-[0.5em] text-tertiary">
-              The Archive
+              {p.label}
             </span>
             <span className="h-px w-16 bg-tertiary/60" aria-hidden />
           </div>
           <h1 className="mt-8 font-headline text-5xl font-bold leading-[0.95] tracking-tighter text-on-background md:text-7xl lg:text-8xl">
-            Signature{" "}
+            {p.titlePart1}{" "}
             <span className="cosmic-gradient-text font-light italic">
-              Artifacts
+              {p.titleHighlight}
             </span>
           </h1>
           <p className="mt-6 max-w-2xl font-body text-lg text-on-surface-variant md:text-xl">
-            A chronicle of vessels built at the edge of craft and computation.
-            Each one a fragment of the NeoByte universe.
+            {p.subtitle}
           </p>
         </ScrollReveal>
       </section>
       <PortfolioGrid />
-      <CTASection />
+      <CTASection dict={dict.cta} lang={lang} />
     </>
   );
 }

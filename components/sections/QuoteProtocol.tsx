@@ -27,7 +27,11 @@ const CODE_RIGHT = [
   "> status: live",
 ];
 
-export function QuoteProtocol() {
+export function QuoteProtocol({
+  dict,
+}: {
+  dict: Record<string, any>;
+}) {
   return (
     <section className="relative overflow-hidden px-6 py-32 md:px-12 md:py-40">
       {/* Very subtle radial cosmic tint */}
@@ -67,25 +71,16 @@ export function QuoteProtocol() {
         transition={{ duration: 0.9, ease: "easeOut" }}
         className="relative z-10 mx-auto flex max-w-4xl flex-col items-center text-center"
       >
-        <Badge color="tertiary">The Protocol</Badge>
+        <Badge color="tertiary">{dict.badge}</Badge>
 
         <blockquote className="mt-10 font-headline text-3xl font-bold leading-tight tracking-tight text-on-background md:text-5xl lg:text-6xl">
-          &ldquo;We don&apos;t build tools; we build{" "}
-          <span className="relative inline-block italic font-light text-tertiary">
-            vessels
-            <span
-              aria-hidden
-              className="absolute inset-x-0 -bottom-1 h-px bg-tertiary"
-            />
-          </span>{" "}
-          for the imagination. Every pixel is a star, every line of code a law
-          of physics for a new world.&rdquo;
+          &ldquo;{dict.text}&rdquo;
         </blockquote>
 
         <div className="mt-12 flex items-center gap-4">
           <span className="h-px w-12 bg-outline-variant" aria-hidden />
           <span className="font-headline text-[11px] font-semibold uppercase tracking-[0.4em] text-on-surface-variant">
-            Jetmir — Architect
+            {dict.attribution}
           </span>
           <span className="h-px w-12 bg-outline-variant" aria-hidden />
         </div>

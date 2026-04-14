@@ -5,26 +5,37 @@ import { STUDIO_EVOLUTION, HEX_BY_COLOR_TOKEN } from "@/lib/constants";
 import { Icon } from "@/components/ui/Icon";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
-export function StudioEvolution() {
+export function StudioEvolution({
+  dict,
+}: {
+  dict: {
+    label: string;
+    titlePart1: string;
+    titleHighlight: string;
+    subtitle: string;
+    steps: { id: string; title: string; description: string; status: string }[];
+  };
+}) {
   return (
     <section className="relative px-6 py-24 md:px-12 md:py-32">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
-          label="The Evolution"
+          label={dict.label}
           title={
             <>
-              Three Orbits of{" "}
+              {dict.titlePart1}{" "}
               <span className="cosmic-gradient-text font-light italic">
-                Becoming
+                {dict.titleHighlight}
               </span>
             </>
           }
-          subtitle="From ignition to stellar persistence. Our trajectory through the void, one gravity well at a time."
+          subtitle={dict.subtitle}
         />
 
         <div className="mt-20 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-outline-variant bg-outline-variant md:grid-cols-3">
           {STUDIO_EVOLUTION.map((step, i) => {
             const hex = HEX_BY_COLOR_TOKEN[step.colorToken];
+            const dictStep = dict.steps[i];
             return (
               <motion.article
                 key={step.id}
@@ -39,7 +50,7 @@ export function StudioEvolution() {
                   <span
                     className="font-headline text-[10px] font-semibold uppercase tracking-[0.4em] text-on-surface-variant"
                   >
-                    {step.id}
+                    {dictStep?.id ?? step.id}
                   </span>
 
                   <div
@@ -59,10 +70,10 @@ export function StudioEvolution() {
                 {/* Middle: title + body */}
                 <div className="flex-1">
                   <h3 className="font-headline text-2xl font-semibold leading-tight tracking-tight text-on-background md:text-3xl">
-                    {step.title}
+                    {dictStep?.title ?? step.title}
                   </h3>
                   <p className="mt-5 font-body text-[15px] leading-relaxed text-on-surface-variant">
-                    {step.description}
+                    {dictStep?.description ?? step.description}
                   </p>
                 </div>
 
@@ -85,7 +96,7 @@ export function StudioEvolution() {
                     className="font-headline text-[11px] font-semibold uppercase tracking-[0.3em]"
                     style={{ color: hex }}
                   >
-                    {step.status}
+                    {dictStep?.status ?? step.status}
                   </span>
                 </div>
 

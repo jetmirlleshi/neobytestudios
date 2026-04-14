@@ -29,7 +29,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ContactPage() {
+export default async function ContactPage({ params }: Props) {
+  const { lang } = await params;
+  const dict = await getDictionary(lang as Locale);
+  const c = dict.contact;
+
   return (
     <>
       <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Contact" }]} />
@@ -38,23 +42,22 @@ export default function ContactPage() {
           <div className="flex items-center gap-4">
             <span className="h-px w-16 bg-tertiary/60" aria-hidden />
             <span className="font-headline text-[10px] font-semibold uppercase tracking-[0.5em] text-tertiary">
-              Open A Channel
+              {c.pageLabel}
             </span>
             <span className="h-px w-16 bg-tertiary/60" aria-hidden />
           </div>
           <h1 className="mt-8 font-headline text-5xl font-bold leading-[0.95] tracking-tighter text-on-background md:text-7xl lg:text-8xl">
-            Initiate{" "}
+            {c.pageTitlePart1}{" "}
             <span className="cosmic-gradient-text font-light italic">
-              Transmission
+              {c.pageTitleHighlight}
             </span>
           </h1>
           <p className="mt-6 max-w-2xl font-body text-lg text-on-surface-variant md:text-xl">
-            Briefs, partnerships, or pure curiosity. Every signal gets read —
-            every serious one gets a reply.
+            {c.pageSubtitle}
           </p>
         </ScrollReveal>
       </section>
-      <ContactForm />
+      <ContactForm dict={c} />
     </>
   );
 }
