@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import { getDictionary } from "@/lib/dictionaries";
+import type { Locale } from "@/lib/i18n";
 import { AboutHero } from "@/components/sections/AboutHero";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { LazyCTASection as CTASection } from "@/components/sections/lazy";
@@ -13,18 +15,25 @@ const StudioEvolution = dynamic(() =>
   ),
 );
 
-export const metadata: Metadata = {
-  title: "About — The Origin Sequence",
-  description:
-    "The story of NeoByteStudios. Founded by Jetmir to bridge the void between imagination and execution through AI-amplified craftsmanship.",
-  alternates: { canonical: "https://neobytestudios.com/about" },
-  openGraph: {
-    title: "About — The Origin Sequence",
-    description:
-      "The story of NeoByteStudios. Founded by Jetmir to bridge the void between imagination and execution through AI-amplified craftsmanship.",
-    url: "https://neobytestudios.com/about",
-  },
-};
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const dict = await getDictionary(lang as Locale);
+  return {
+    title: dict.meta.about.title,
+    description: dict.meta.about.description,
+    alternates: {
+      canonical: `https://neobytestudios.com/${lang}/about`,
+      languages: { en: "/en/about", it: "/it/about" },
+    },
+    openGraph: {
+      title: dict.meta.about.title,
+      description: dict.meta.about.description,
+      url: `https://neobytestudios.com/${lang}/about`,
+    },
+  };
+}
 
 export default function AboutPage() {
   return (

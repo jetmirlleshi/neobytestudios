@@ -5,7 +5,10 @@ export const metadata: Metadata = {
   title: "Privacy Policy — NeoByte Studios",
   description:
     "How NeoByte Studios collects, uses, and protects your personal data.",
-  alternates: { canonical: "https://neobytestudios.com/legal/privacy" },
+  alternates: {
+    canonical: "https://neobytestudios.com/legal/privacy",
+    languages: { en: "/en/legal/privacy", it: "/it/legal/privacy" },
+  },
   robots: { index: false, follow: true },
 };
 

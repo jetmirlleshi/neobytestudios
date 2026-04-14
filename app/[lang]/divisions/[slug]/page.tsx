@@ -13,20 +13,26 @@ export function generateStaticParams() {
 export const dynamicParams = false;
 
 interface PageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ lang: string; slug: string }>;
 }
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { lang, slug } = await params;
   const d = getDivision(slug);
   if (!d) return { title: "Division not found" };
-  const url = `https://neobytestudios.com/divisions/${slug}`;
+  const url = `https://neobytestudios.com/${lang}/divisions/${slug}`;
   return {
     title: `${d.name} — ${d.statusLabel}`,
     description: d.description,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      languages: {
+        en: `/en/divisions/${slug}`,
+        it: `/it/divisions/${slug}`,
+      },
+    },
     openGraph: {
       title: `${d.name} — ${d.statusLabel}`,
       description: d.description,

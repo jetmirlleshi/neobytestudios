@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import { getDictionary } from "@/lib/dictionaries";
+import type { Locale } from "@/lib/i18n";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { LazyCTASection as CTASection } from "@/components/sections/lazy";
@@ -8,18 +10,25 @@ const PortfolioGrid = dynamic(() =>
   import("@/components/sections/PortfolioGrid").then((m) => m.PortfolioGrid),
 );
 
-export const metadata: Metadata = {
-  title: "Portfolio — The Archive",
-  description:
-    "Signature artifacts from the NeoByteStudios orbit. Narratives, engines, games and visual systems shipped by Jetmir with AI amplification.",
-  alternates: { canonical: "https://neobytestudios.com/portfolio" },
-  openGraph: {
-    title: "Portfolio — The Archive",
-    description:
-      "Signature artifacts from the NeoByteStudios orbit.",
-    url: "https://neobytestudios.com/portfolio",
-  },
-};
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const dict = await getDictionary(lang as Locale);
+  return {
+    title: dict.meta.portfolio.title,
+    description: dict.meta.portfolio.description,
+    alternates: {
+      canonical: `https://neobytestudios.com/${lang}/portfolio`,
+      languages: { en: "/en/portfolio", it: "/it/portfolio" },
+    },
+    openGraph: {
+      title: dict.meta.portfolio.title,
+      description: dict.meta.portfolio.description,
+      url: `https://neobytestudios.com/${lang}/portfolio`,
+    },
+  };
+}
 
 export default function PortfolioPage() {
   return (

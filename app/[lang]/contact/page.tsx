@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import { getDictionary } from "@/lib/dictionaries";
+import type { Locale } from "@/lib/i18n";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
@@ -7,17 +9,25 @@ const ContactForm = dynamic(() =>
   import("@/components/sections/ContactForm").then((m) => m.ContactForm),
 );
 
-export const metadata: Metadata = {
-  title: "Contact — Open A Channel",
-  description:
-    "Open a transmission channel with NeoByteStudios. Briefs, partnerships, or just a signal into the void — all welcome.",
-  alternates: { canonical: "https://neobytestudios.com/contact" },
-  openGraph: {
-    title: "Contact — Open A Channel",
-    description: "Open a transmission channel with NeoByteStudios.",
-    url: "https://neobytestudios.com/contact",
-  },
-};
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const dict = await getDictionary(lang as Locale);
+  return {
+    title: dict.meta.contact.title,
+    description: dict.meta.contact.description,
+    alternates: {
+      canonical: `https://neobytestudios.com/${lang}/contact`,
+      languages: { en: "/en/contact", it: "/it/contact" },
+    },
+    openGraph: {
+      title: dict.meta.contact.title,
+      description: dict.meta.contact.description,
+      url: `https://neobytestudios.com/${lang}/contact`,
+    },
+  };
+}
 
 export default function ContactPage() {
   return (

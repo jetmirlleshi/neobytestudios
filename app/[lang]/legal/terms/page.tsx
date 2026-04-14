@@ -5,7 +5,10 @@ export const metadata: Metadata = {
   title: "Terms of Service — NeoByte Studios",
   description:
     "Terms and conditions for using the NeoByte Studios website and services.",
-  alternates: { canonical: "https://neobytestudios.com/legal/terms" },
+  alternates: {
+    canonical: "https://neobytestudios.com/legal/terms",
+    languages: { en: "/en/legal/terms", it: "/it/legal/terms" },
+  },
   robots: { index: false, follow: true },
 };
 

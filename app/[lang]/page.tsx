@@ -2,16 +2,26 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/sections/Hero";
 import { LazyCTASection as CTASection } from "@/components/sections/lazy";
+import { getDictionary } from "@/lib/dictionaries";
+import type { Locale } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "https://neobytestudios.com" },
-  openGraph: {
-    title: "NEOBYTE STUDIOS — Where AI Unlocks Imagination",
-    description:
-      "A monoauthor creative studio amplified by AI. Beyond The Void.",
-    url: "https://neobytestudios.com",
-  },
-};
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const dict = await getDictionary(lang as Locale);
+  return {
+    alternates: {
+      canonical: `https://neobytestudios.com/${lang}`,
+      languages: { en: "/en", it: "/it" },
+    },
+    openGraph: {
+      title: dict.meta.home.title,
+      description: dict.meta.home.description,
+      url: `https://neobytestudios.com/${lang}`,
+    },
+  };
+}
 
 const DivisionsGrid = dynamic(() =>
   import("@/components/sections/DivisionsGrid").then((m) => m.DivisionsGrid),
