@@ -20,7 +20,13 @@ function getServerSnapshot(): string | null {
   return "unknown";
 }
 
-export function CookieConsent() {
+export function CookieConsent({
+  dict,
+  lang = "en",
+}: {
+  dict?: { message: string; linkText: string; decline: string; accept: string };
+  lang?: string;
+}) {
   const consent = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const visible = consent === null;
 
@@ -49,22 +55,28 @@ export function CookieConsent() {
         >
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-6 py-5 sm:flex-row sm:justify-between">
             <p className="text-center font-body text-sm text-on-surface-variant sm:text-left">
-              We use{" "}
-              <Link
-                href="/legal/privacy"
-                className="underline transition-colors hover:text-primary"
-              >
-                privacy-friendly analytics
-              </Link>{" "}
-              to understand how visitors use this site. No personal data is
-              collected.
+              {(dict?.message ?? "We use {link} to understand how visitors use this site. No personal data is collected.").split("{link}").map((part, i) =>
+                i === 0 ? (
+                  <span key={i}>{part}</span>
+                ) : (
+                  <span key={i}>
+                    <Link
+                      href={`/${lang}/legal/privacy`}
+                      className="underline transition-colors hover:text-primary"
+                    >
+                      {dict?.linkText ?? "privacy-friendly analytics"}
+                    </Link>
+                    {part}
+                  </span>
+                ),
+              )}
             </p>
             <div className="flex shrink-0 gap-3">
               <Button variant="secondary" size="sm" onClick={decline}>
-                Decline
+                {dict?.decline ?? "Decline"}
               </Button>
               <Button variant="primary" size="sm" onClick={accept}>
-                Accept
+                {dict?.accept ?? "Accept"}
               </Button>
             </div>
           </div>

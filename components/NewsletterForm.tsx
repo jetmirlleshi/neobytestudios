@@ -15,7 +15,13 @@ type Status = "idle" | "sending" | "success" | "error";
  * - `inline`: horizontal email + button row (for Footer)
  * - `card`: GlassCard wrapper with title/description (for CTASection)
  */
-export function NewsletterForm({ variant = "inline" }: { variant?: "inline" | "card" }) {
+export function NewsletterForm({
+  variant = "inline",
+  dict,
+}: {
+  variant?: "inline" | "card";
+  dict?: Record<string, string>;
+}) {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -27,7 +33,7 @@ export function NewsletterForm({ variant = "inline" }: { variant?: "inline" | "c
     const email = (fd.get("email") as string).trim();
 
     if (!email || !EMAIL_RE.test(email)) {
-      setErrorMsg("Enter valid transmission coordinates.");
+      setErrorMsg(dict?.validationEmail ?? "Enter valid transmission coordinates.");
       return;
     }
 
@@ -47,7 +53,7 @@ export function NewsletterForm({ variant = "inline" }: { variant?: "inline" | "c
 
       setStatus("success");
     } catch (err) {
-      setErrorMsg(err instanceof Error ? err.message : "Signal lost. Try again.");
+      setErrorMsg(err instanceof Error ? err.message : (dict?.errorFallback ?? "Signal lost. Try again."));
       setStatus("error");
     }
   }
@@ -62,7 +68,7 @@ export function NewsletterForm({ variant = "inline" }: { variant?: "inline" | "c
         <Icon name="check_circle" size={18} />
       </div>
       <p className="font-headline text-sm font-semibold text-on-background">
-        You&rsquo;re in the orbit.
+        {dict?.success ?? "You\u2019re in the orbit."}
       </p>
     </motion.div>
   );
@@ -76,7 +82,7 @@ export function NewsletterForm({ variant = "inline" }: { variant?: "inline" | "c
           required
           aria-required="true"
           aria-label="Email address"
-          placeholder="your@coordinates.net"
+          placeholder={dict?.placeholder ?? "your@coordinates.net"}
           className="w-full rounded-xl border border-outline-variant bg-surface-container-lowest/60 px-4 py-2.5 font-body text-sm text-on-background placeholder:text-on-surface-variant/60 transition-colors duration-300 focus:border-primary/70 focus:outline-none focus:ring-2 focus:ring-primary/30"
         />
         <Button
@@ -88,7 +94,7 @@ export function NewsletterForm({ variant = "inline" }: { variant?: "inline" | "c
           aria-busy={status === "sending"}
           className="shrink-0"
         >
-          {status === "sending" ? "Joining..." : "Join The Orbit"}
+          {status === "sending" ? (dict?.submitting ?? "Joining...") : (dict?.submit ?? "Join The Orbit")}
         </Button>
       </div>
       <AnimatePresence>
@@ -119,11 +125,11 @@ export function NewsletterForm({ variant = "inline" }: { variant?: "inline" | "c
             <div key="form" className="flex flex-col gap-5">
               <div className="text-center">
                 <h3 className="font-headline text-xl font-bold tracking-tight text-on-background md:text-2xl">
-                  Join{" "}
-                  <span className="cosmic-gradient-text font-light italic">The Signal</span>
+                  {dict?.cardTitle ?? "Join"}{" "}
+                  <span className="cosmic-gradient-text font-light italic">{dict?.cardTitleHighlight ?? "The Signal"}</span>
                 </h3>
                 <p className="mt-2 font-body text-sm text-on-surface-variant">
-                  Rare transmissions about new divisions, projects, and cosmic updates.
+                  {dict?.cardDescription ?? "Rare transmissions about new divisions, projects, and cosmic updates."}
                 </p>
               </div>
               {formView}

@@ -67,8 +67,7 @@ export default async function LocaleLayout({
   params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
-  // Preload dictionary to validate locale — pages will load it themselves
-  await getDictionary(lang as Locale);
+  const dict = await getDictionary(lang as Locale);
 
   return (
     <>
@@ -78,10 +77,10 @@ export default async function LocaleLayout({
       <main id="main-content" className="flex-1">
         {children}
       </main>
-      <Footer lang={lang} />
+      <Footer lang={lang} dict={dict.footer} />
       <ServiceWorkerRegister />
       <AnalyticsProvider />
-      <CookieConsent />
+      <CookieConsent dict={dict.cookie} lang={lang} />
     </>
   );
 }

@@ -22,7 +22,7 @@ const LEGAL = [
   { label: "Support", href: "mailto:support@neobytestudios.com" },
 ];
 
-export function Footer({ lang = "en" }: { lang?: string }) {
+export function Footer({ lang = "en", dict }: { lang?: string; dict?: Record<string, string> }) {
   const l = (href: string) => (href.startsWith("/") ? `/${lang}${href}` : href);
   const year = new Date().getFullYear();
 
@@ -38,15 +38,14 @@ export function Footer({ lang = "en" }: { lang?: string }) {
               </span>
             </Link>
             <p className="mt-6 max-w-md font-body text-base text-on-surface-variant md:text-lg">
-              Architecting future-state narratives through the fusion of human
-              vision and machine intelligence.
+              {dict?.tagline ?? "Architecting future-state narratives through the fusion of human vision and machine intelligence."}
             </p>
             <div className="mt-8">
               <p className="font-headline text-[10px] font-semibold uppercase tracking-[0.4em] text-on-surface-variant">
-                Stay in orbit
+                {dict?.stayInOrbit ?? "Stay in orbit"}
               </p>
               <p className="mt-2 mb-4 font-body text-xs text-on-surface-variant/70">
-                Get updates on new divisions and projects.
+                {dict?.stayInOrbitDesc ?? "Get updates on new divisions and projects."}
               </p>
               <NewsletterForm variant="inline" />
             </div>
@@ -54,7 +53,7 @@ export function Footer({ lang = "en" }: { lang?: string }) {
 
           <div>
             <h3 className="font-headline text-[10px] font-semibold uppercase tracking-[0.4em] text-on-surface-variant">
-              Resources
+              {dict?.resources ?? "Resources"}
             </h3>
             <ul className="mt-6 flex flex-col gap-4">
               {RESOURCES.map((link) => (
@@ -72,7 +71,7 @@ export function Footer({ lang = "en" }: { lang?: string }) {
 
           <div>
             <h3 className="font-headline text-[10px] font-semibold uppercase tracking-[0.4em] text-on-surface-variant">
-              Legal
+              {dict?.legal ?? "Legal"}
             </h3>
             <ul className="mt-6 flex flex-col gap-4">
               {LEGAL.map((link) => {
@@ -106,7 +105,7 @@ export function Footer({ lang = "en" }: { lang?: string }) {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-tertiary opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-tertiary" />
               </span>
-              Status: Online
+              {dict?.statusOnline ?? "Status: Online"}
             </span>
             <span className="font-headline text-[10px] uppercase tracking-[0.3em] text-on-surface-variant">
               Local Time: {SITE.location}
