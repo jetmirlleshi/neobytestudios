@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude mcp:*)",
+      "mcp__stitch__list_projects",
+      "mcp__stitch__list_screens",
+      "mcp__stitch__list_design_systems",
+      "mcp__stitch__get_screen",
+      "WebFetch(domain:contribution.usercontent.google.com)",
+      "Bash(cygpath:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx next:*)",
+      "Bash(git -c user.email=jetmir93@hotmail.it -c 'user.name=Jetmir Lleshi' commit -m ' *)"
+    ]
+  }
+}

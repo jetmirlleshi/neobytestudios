@@ -1,0 +1,326 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #05030d;
+  --ink-2: #0a0618;
+  --panel: #0f0a22;
+  --line: rgba(168, 85, 247, 0.18);
+  --fg: #f6f3ff;
+  --fg-dim: #b8a8e0;
+  --fg-mute: #6f5f9a;
+  --violet: #a855f7;
+  --violet-hi: #c084fc;
+  --violet-deep: #4c1d95;
+  --violet-soft: #d6b6ff;
+  --blue: #3b82f6;
+  --blue-hi: #60a5fa;
+  --green: #22c55e;
+  --amber: #f0b545;
+  --accent: var(--violet);
+  --display: var(--font-headline), "Space Grotesk", system-ui, sans-serif;
+  --mono: var(--font-mono), "JetBrains Mono", ui-monospace, monospace;
+  --body: var(--font-headline), "Space Grotesk", system-ui, sans-serif;
+}
+
+body { font-family: var(--body); }
+h1, h2, h3, h4, h5, h6, .display { font-family: var(--display); }
+
+body[data-anim="low"] * { animation-duration: 2s !important; }
+body[data-anim="low"] .fx-heavy { opacity: 0.4 !important; }
+body[data-anim="off"] *, body[data-anim="off"] *::before, body[data-anim="off"] *::after {
+  animation: none !important;
+  transition: none !important;
+}
+body[data-anim="off"] .fx-heavy { display: none !important; }
+
+/* container (original from index.html) */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 48px;
+  width: 100%;
+}
+@media (max-width: 768px) { .container { padding: 0 20px; } }
+
+@theme inline {
+  /* === Core Palette — Orbital === */
+  --color-background: #05030d;
+  --color-ink: #05030d;
+  --color-ink-2: #0a0618;
+  --color-panel: #0f0a22;
+  --color-fg: #f6f3ff;
+  --color-fg-dim: #b8a8e0;
+  --color-fg-mute: #6f5f9a;
+
+  /* === Primary (Viola) === */
+  --color-violet: #a855f7;
+  --color-violet-hi: #c084fc;
+  --color-violet-deep: #4c1d95;
+  --color-violet-soft: #d6b6ff;
+
+  /* === Secondary === */
+  --color-blue: #3b82f6;
+  --color-blue-hi: #60a5fa;
+  --color-green: #22c55e;
+  --color-amber: #f0b545;
+
+  /* === Neutrals === */
+  --color-on-surface: #e7defc;
+  --color-border-custom: rgba(192, 132, 252, 0.22);
+
+  /* === Fonts === */
+  --font-display: "Unbounded", "Space Grotesk", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-headline: "Space Grotesk", sans-serif;
+}
+
+/* === Base Styles === */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #05030d;
+  color: #f6f3ff;
+  font-family: var(--body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+body { min-height: 100vh; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; }
+
+::selection { background: #a855f7; color: #000; }
+
+/* scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #05030d; }
+::-webkit-scrollbar-thumb { background: rgba(168, 85, 247, 0.25); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(168, 85, 247, 0.5); }
+
+/* === Utilities === */
+.mono { font-family: var(--font-mono); }
+.display { font-family: var(--display); letter-spacing: -0.03em; }
+.container-nb { max-width: 1440px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .container-nb { padding: 0 20px; } }
+
+/* === Keyframes === */
+@keyframes orb-spin-slow { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }
+@keyframes orb-spin-rev  { from { transform: rotate(360deg) } to { transform: rotate(0deg) } }
+@keyframes orb-pulse     { 0%,100% { transform: translate(-50%, -50%) scale(1); opacity: 0.9 } 50% { transform: translate(-50%, -50%) scale(1.06); opacity: 1 } }
+@keyframes orb-breathe   { 0%,100% { opacity: 0.55 } 50% { opacity: 1 } }
+@keyframes orb-float     { 0%,100% { transform: translate(-50%, 0) } 50% { transform: translate(-50%, -10px) } }
+@keyframes orb-gradshift { 0% { background-position: 0% 50% } 100% { background-position: 200% 50% } }
+@keyframes orb-orbit-1   { from { transform: rotate(0deg) translateX(20vmin) rotate(0deg) } to { transform: rotate(360deg) translateX(20vmin) rotate(-360deg) } }
+@keyframes orb-orbit-2   { from { transform: rotate(0deg) translateX(26vmin) rotate(0deg) } to { transform: rotate(-360deg) translateX(26vmin) rotate(360deg) } }
+@keyframes orb-orbit-3   { from { transform: rotate(0deg) translateX(33vmin) rotate(0deg) } to { transform: rotate(360deg) translateX(33vmin) rotate(-360deg) } }
+@keyframes orb-orbit-4   { from { transform: rotate(0deg) translateX(41vmin) rotate(0deg) } to { transform: rotate(-360deg) translateX(41vmin) rotate(360deg) } }
+@keyframes orb-span-sweep {
+  0%      { color: rgba(139,111,173,0); background-position: 100% 50%; }
+  33.33%  { color: rgba(139,111,173,0); background-position: 0% 50%; }
+  33.34%  { color: rgba(139,111,173,1); background-position: 0% 50%; }
+  100%    { color: rgba(139,111,173,1); background-position: 100% 50%; }
+}
+
+.orb-sweep-word {
+  display: inline-block;
+  background: linear-gradient(90deg,
+    #ffffff 0%,
+    #ffffff 10%,
+    #8b6fad 20%,
+    #c084fc 32%,
+    #60a5fa 42%,
+    #22c55e 52%,
+    #f0b545 62%,
+    #c084fc 72%,
+    #8b6fad 80%,
+    #ffffff 90%,
+    #ffffff 100%
+  );
+  background-size: 350% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #8b6fad;
+  animation: orb-span-sweep 12s linear infinite;
+}
+
+/* === Backgrounds === */
+.orb-bg-gradient {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 20%, rgba(168, 85, 247, 0.35), transparent 60%),
+    radial-gradient(ellipse 60% 45% at 15% 80%, rgba(59, 130, 246, 0.18), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 70%, rgba(192, 132, 252, 0.22), transparent 60%),
+    #05030d;
+}
+
+/* === Chip === */
+.orb-chip {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 7px 16px;
+  border: 1px solid rgba(192, 132, 252, 0.4);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: #d6b6ff;
+  background: rgba(168, 85, 247, 0.08);
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+.orb-chip::before {
+  content: ""; width: 6px; height: 6px;
+  background: #c084fc; border-radius: 50%;
+  box-shadow: 0 0 12px #c084fc;
+  animation: orb-breathe 2s infinite;
+}
+
+/* === Buttons === */
+.orb-btn {
+  position: relative; display: inline-flex; align-items: center; gap: 12px;
+  padding: 18px 32px;
+  font-family: var(--display); font-size: 14px;
+  letter-spacing: -0.01em; font-weight: 600;
+  color: #0a0618; cursor: pointer;
+  background: linear-gradient(110deg, #e5c7ff 0%, #c084fc 40%, #a855f7 70%, #c084fc 100%);
+  background-size: 220% 100%;
+  border: none; border-radius: 999px;
+  box-shadow: 0 12px 50px rgba(168, 85, 247, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.14) inset;
+  transition: all .25s;
+  animation: orb-gradshift 6s linear infinite;
+}
+.orb-btn:hover { transform: translateY(-2px); box-shadow: 0 18px 60px rgba(168, 85, 247, 0.7); }
+.orb-btn-ghost {
+  background: rgba(255, 255, 255, 0.03); color: #f6f3ff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: none; backdrop-filter: blur(10px);
+  animation: none;
+}
+.orb-btn-ghost:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(192, 132, 252, 0.5); }
+
+/* === Orbital System === */
+.orb-system {
+  position: absolute;
+  top: 54%; left: 50%;
+  width: min(115vmin, 1200px);
+  height: min(115vmin, 1200px);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.orb-rings { position: absolute; inset: 0; pointer-events: none; }
+.orb-ring  { position: absolute; inset: 0; border-radius: 50%; border: 1px dashed rgba(192, 132, 252, 0.22); }
+.orb-ring.r1 { inset: 12% }
+.orb-ring.r2 { inset: 22%; border-style: solid; border-color: rgba(192, 132, 252, 0.10) }
+.orb-ring.r3 { inset: 32%; border-style: dashed; border-color: rgba(96, 165, 250, 0.15) }
+.orb-ring.r4 { inset: 42%; border-color: rgba(192, 132, 252, 0.18) }
+
+.orb-planet-wrap {
+  position: absolute; top: 50%; left: 50%;
+  width: 0; height: 0; pointer-events: none;
+}
+.orb-planet-body {
+  position: absolute;
+  width: 76px; height: 76px; border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at 32% 30%, rgba(255, 255, 255, 0.95), currentColor 35%, rgba(15, 6, 36, 0.95) 85%);
+  box-shadow: 0 0 24px currentColor, 0 0 50px rgba(192, 132, 252, 0.4);
+  cursor: pointer;
+  transition: transform .3s cubic-bezier(.2, .8, .2, 1);
+  pointer-events: auto;
+}
+.orb-planet-body::after {
+  content: ""; position: absolute; inset: 6px; border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent 60%);
+}
+.orb-planet-body:hover { transform: translate(-50%, -50%) scale(1.25); }
+
+.orb-planet-label {
+  position: absolute; top: 100%; left: 50%;
+  transform: translate(-50%, 14px);
+  white-space: nowrap; pointer-events: none;
+}
+
+.orb-core {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px; height: 180px; border-radius: 50%;
+  background: radial-gradient(circle at 32% 30%, #fff 0%, #c084fc 25%, #a855f7 50%, #4c1d95 80%, rgba(10, 6, 24, 1));
+  box-shadow:
+    0 0 80px rgba(192, 132, 252, 0.7),
+    0 0 160px rgba(168, 85, 247, 0.5),
+    0 0 0 2px rgba(255, 255, 255, 0.12) inset;
+  animation: orb-pulse 5s ease-in-out infinite;
+}
+.orb-core::before {
+  content: ""; position: absolute; inset: -20px; border-radius: 50%;
+  border: 1px solid rgba(192, 132, 252, 0.3);
+  animation: orb-spin-slow 40s linear infinite;
+}
+
+/* === Product Cards === */
+.orb-product-card {
+  position: relative;
+  border-radius: 28px;
+  background: linear-gradient(160deg, rgba(168, 85, 247, 0.10), rgba(10, 6, 24, 0.75));
+  border: 1px solid rgba(192, 132, 252, 0.22);
+  backdrop-filter: blur(14px);
+  overflow: hidden;
+  transition: all .4s cubic-bezier(.2, .8, .2, 1);
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.18);
+}
+.orb-product-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(192, 132, 252, 0.55);
+  box-shadow: 0 30px 80px rgba(168, 85, 247, 0.25);
+}
+
+/* === Timeline Step === */
+.orb-step {
+  position: relative; padding: 32px 28px;
+  border-radius: 24px;
+  background: rgba(15, 10, 34, 0.55);
+  border: 1px solid rgba(192, 132, 252, 0.18);
+  backdrop-filter: blur(10px);
+  transition: all .3s;
+}
+.orb-step:hover { border-color: rgba(192, 132, 252, 0.45); transform: translateY(-4px); }
+.orb-step-dot {
+  position: absolute; top: -12px; left: 28px;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff, #c084fc 40%, #4c1d95);
+  box-shadow: 0 0 20px rgba(192, 132, 252, 0.9);
+}
+
+/* === Gradient Text === */
+.orb-grad-text {
+  background: linear-gradient(90deg, #fff 0%, #c084fc 30%, #60a5fa 60%, #c084fc 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: orb-gradshift 5s linear infinite;
+}
+
+/* === Energy flow panel === */
+.orb-flow-panel {
+  position: relative;
+  padding: 70px 24px 90px;
+  border-radius: 28px;
+  background:
+    radial-gradient(at 30% 20%, rgba(168, 85, 247, 0.22), transparent 55%),
+    radial-gradient(at 75% 80%, rgba(59, 130, 246, 0.18), transparent 55%),
+    radial-gradient(rgba(30, 10, 60, 0.9), rgba(5, 3, 13, 0.95) 80%);
+  border: 1px solid rgba(192, 132, 252, 0.2);
+  overflow: hidden;
+}
+
+/* === Scroll indicator === */
+.orb-scroll-indicator {
+  position: absolute; bottom: 32px; left: 50%;
+  color: rgba(214, 182, 255, 0.5);
+  font-size: 10px; letter-spacing: 0.3em;
+  font-family: var(--font-mono);
+  animation: orb-float 2.5s ease-in-out infinite;
+  z-index: 3;
+}
