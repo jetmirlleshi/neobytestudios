@@ -58,7 +58,6 @@ Thumbs.db
 .turbo/
 
 # large video/binary assets (served elsewhere, not committed)
-*.mp4
 *.mov
 *.webm
 public/assets/cosmic-flow.original.mp4
